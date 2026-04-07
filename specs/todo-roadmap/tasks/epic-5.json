@@ -1,0 +1,24 @@
+{
+  "id": "epic-5",
+  "type": "epic",
+  "title": "EPIC 5: SEO & Performance",
+  "description": "Implement SEO optimization, meta tags, sitemap, and performance enhancements",
+  "status": "todo",
+  "priority": "high",
+  "dependencies": ["epic-3", "epic-4"],
+  "canParallelize": false,
+  "phase": "seo",
+  "subtasks": ["task-5-1", "task-5-2", "task-5-3"],
+  "estimatedEffort": "2 days",
+  "acceptanceCriteria": [
+    "SEO meta tags on all pages",
+    "Sitemap.xml generated",
+    "Robots.txt created",
+    "Lighthouse score ≥ 90"
+  ],
+  "commands": {
+    "brief": "/brief seo-performance Meta tags sitemap optimization",
+    "implement": "/implement seo-performance"
+  },
+  "created": "2025-01-06"
+}

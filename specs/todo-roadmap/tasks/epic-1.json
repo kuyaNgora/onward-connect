@@ -1,0 +1,24 @@
+{
+  "id": "epic-1",
+  "type": "epic",
+  "title": "EPIC 1: Core Infrastructure",
+  "description": "Set up routing system, Redux store, and base layouts",
+  "status": "todo",
+  "priority": "high",
+  "dependencies": ["epic-0"],
+  "canParallelize": false,
+  "phase": "infrastructure",
+  "subtasks": ["task-1-1", "task-1-2", "task-1-3", "task-1-4"],
+  "estimatedEffort": "1 day",
+  "acceptanceCriteria": [
+    "React Router configured with all routes",
+    "Redux Store configured with slices",
+    "MainLayout component created",
+    "AuthLayout component created"
+  ],
+  "commands": {
+    "brief": "/brief core-infrastructure Routing Redux store layouts",
+    "implement": "/implement core-infrastructure"
+  },
+  "created": "2025-01-06"
+}

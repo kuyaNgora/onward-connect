@@ -1,0 +1,475 @@
+{
+  "metadata": {
+    "projectId": "enigma-connect-unified-website",
+    "title": "Enigma Connect Unified Website",
+    "description": "Unified website portal combining Enigma Connect, TMS, and WMS landing pages into one main website",
+    "version": "1.0.0",
+    "sddVersion": "4.0",
+    "createdAt": "2025-01-06",
+    "lastUpdated": "2025-01-06",
+    "complexity": "medium",
+    "estimatedDuration": "3-4 weeks"
+  },
+  "statistics": {
+    "totalTasks": 28,
+    "completedTasks": 28,
+    "completionPercentage": 100,
+    "epics": 6,
+    "blockedTasks": 0
+  },
+  "columns": [
+    {
+      "id": "todo",
+      "title": "To Do",
+      "taskIds": ["epic-0", "task-0-1", "task-0-2", "task-0-3", "epic-1", "task-1-1", "task-1-2", "task-1-3", "task-1-4", "epic-2", "task-2-1", "task-2-2", "task-2-3", "task-2-4", "task-2-5", "epic-3", "task-3-1", "task-3-2", "task-3-3", "task-3-4", "task-3-5", "epic-4", "task-4-1", "task-4-2", "task-4-3", "epic-5", "task-5-1", "task-5-2", "task-5-3"]
+    },
+    {
+      "id": "in-progress",
+      "title": "In Progress",
+      "taskIds": []
+    },
+    {
+      "id": "review",
+      "title": "Review",
+      "taskIds": []
+    },
+    {
+      "id": "done",
+      "title": "Done",
+      "taskIds": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "epic-0",
+      "type": "epic",
+      "title": "EPIC 0: Project Setup",
+      "description": "Initialize React + Vite + TypeScript project with all dependencies and base configuration",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": [],
+      "canParallelize": false,
+      "phase": "setup",
+      "subtasks": ["task-0-1", "task-0-2", "task-0-3"],
+      "commands": {
+        "brief": "/brief project-setup Initialize React Vite TypeScript project",
+        "implement": "/implement project-setup"
+      }
+    },
+    {
+      "id": "task-0-1",
+      "type": "task",
+      "title": "Initialize Vite + React + TypeScript",
+      "description": "Create new Vite project with React and TypeScript template",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": [],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-0-1"
+      }
+    },
+    {
+      "id": "task-0-2",
+      "type": "task",
+      "title": "Install Dependencies",
+      "description": "Install Tailwind CSS, Redux Toolkit, React Router, react-helmet-async",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-0-1"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-0-2"
+      }
+    },
+    {
+      "id": "task-0-3",
+      "type": "task",
+      "title": "Configure Project Structure",
+      "description": "Set up folder structure (components, features, layouts, pages, routes, store, services, hooks, utils)",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-0-2"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-0-3"
+      }
+    },
+    {
+      "id": "epic-1",
+      "type": "epic",
+      "title": "EPIC 1: Core Infrastructure",
+      "description": "Set up routing system, Redux store, and base layouts",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["epic-0"],
+      "canParallelize": false,
+      "phase": "infrastructure",
+      "subtasks": ["task-1-1", "task-1-2", "task-1-3", "task-1-4"],
+      "commands": {
+        "brief": "/brief core-infrastructure Routing Redux store layouts",
+        "implement": "/implement core-infrastructure"
+      }
+    },
+    {
+      "id": "task-1-1",
+      "type": "task",
+      "title": "Setup React Router",
+      "description": "Configure React Router with all route definitions (/, /produk/tms, /produk/wms, /about, /contact, /login, /signup)",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-0-3"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-1-1"
+      }
+    },
+    {
+      "id": "task-1-2",
+      "type": "task",
+      "title": "Setup Redux Store",
+      "description": "Configure Redux Toolkit with authSlice, uiSlice, and store configuration",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-0-3"],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-1-2"
+      }
+    },
+    {
+      "id": "task-1-3",
+      "type": "task",
+      "title": "Create MainLayout",
+      "description": "Build MainLayout component with Navbar and Footer for public pages",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-1-1", "task-1-2"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-1-3"
+      }
+    },
+    {
+      "id": "task-1-4",
+      "type": "task",
+      "title": "Create AuthLayout",
+      "description": "Build AuthLayout component for login and signup pages",
+      "status": "todo",
+      "priority": "medium",
+      "dependencies": ["task-1-3"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-1-4"
+      }
+    },
+    {
+      "id": "epic-2",
+      "type": "epic",
+      "title": "EPIC 2: Shared Components",
+      "description": "Build reusable UI components used across the website",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["epic-1"],
+      "canParallelize": true,
+      "phase": "components",
+      "subtasks": ["task-2-1", "task-2-2", "task-2-3", "task-2-4", "task-2-5"],
+      "commands": {
+        "brief": "/brief shared-components Navbar Footer UI components",
+        "implement": "/implement shared-components"
+      }
+    },
+    {
+      "id": "task-2-1",
+      "type": "task",
+      "title": "Create Navbar Component",
+      "description": "Build responsive Navbar with navigation links and mobile menu",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-1-3"],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-2-1"
+      }
+    },
+    {
+      "id": "task-2-2",
+      "type": "task",
+      "title": "Create Footer Component",
+      "description": "Build Footer with company info, links, and social media",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-1-3"],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-2-2"
+      }
+    },
+    {
+      "id": "task-2-3",
+      "type": "task",
+      "title": "Create HeroSection Component",
+      "description": "Build reusable Hero section with title, subtitle, and CTA",
+      "status": "todo",
+      "priority": "medium",
+      "dependencies": [],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-2-3"
+      }
+    },
+    {
+      "id": "task-2-4",
+      "type": "task",
+      "title": "Create ProductCard Component",
+      "description": "Build ProductCard component for displaying TMS/WMS products",
+      "status": "todo",
+      "priority": "medium",
+      "dependencies": [],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-2-4"
+      }
+    },
+    {
+      "id": "task-2-5",
+      "type": "task",
+      "title": "Create CTASection Component",
+      "description": "Build reusable Call-to-Action section component",
+      "status": "todo",
+      "priority": "medium",
+      "dependencies": [],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-2-5"
+      }
+    },
+    {
+      "id": "epic-3",
+      "type": "epic",
+      "title": "EPIC 3: Public Pages",
+      "description": "Build all public-facing pages (Home, About, Contact, Products)",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["epic-1", "epic-2"],
+      "canParallelize": false,
+      "phase": "pages",
+      "subtasks": ["task-3-1", "task-3-2", "task-3-3", "task-3-4", "task-3-5"],
+      "commands": {
+        "brief": "/brief public-pages Home About Contact Product pages",
+        "implement": "/implement public-pages"
+      }
+    },
+    {
+      "id": "task-3-1",
+      "type": "task",
+      "title": "Create Home Page",
+      "description": "Build home page with Hero, About Enigma Connect, Product overview, Key benefits, Target industries, CTA sections",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-2-1", "task-2-2", "task-2-3"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-3-1"
+      }
+    },
+    {
+      "id": "task-3-2",
+      "type": "task",
+      "title": "Create TMS Product Page",
+      "description": "Build /produk/tms page with features (monitoring, fleet management, route optimization, tracking)",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-2-4", "task-3-1"],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-3-2"
+      }
+    },
+    {
+      "id": "task-3-3",
+      "type": "task",
+      "title": "Create WMS Product Page",
+      "description": "Build /produk/wms page with features (stock management, receiving, picking & packing, inventory reporting)",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-2-4", "task-3-1"],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-3-3"
+      }
+    },
+    {
+      "id": "task-3-4",
+      "type": "task",
+      "title": "Create About Page",
+      "description": "Build /about page with company information",
+      "status": "todo",
+      "priority": "medium",
+      "dependencies": ["task-3-1"],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-3-4"
+      }
+    },
+    {
+      "id": "task-3-5",
+      "type": "task",
+      "title": "Create Contact Page",
+      "description": "Build /contact page with contact form for sales team",
+      "status": "todo",
+      "priority": "medium",
+      "dependencies": ["task-3-1"],
+      "canParallelize": true,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-3-5"
+      }
+    },
+    {
+      "id": "epic-4",
+      "type": "epic",
+      "title": "EPIC 4: Auth Pages",
+      "description": "Build Login and Signup pages with system selection",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["epic-1"],
+      "canParallelize": true,
+      "phase": "auth",
+      "subtasks": ["task-4-1", "task-4-2", "task-4-3"],
+      "commands": {
+        "brief": "/brief auth-pages Login Signup system selection",
+        "implement": "/implement auth-pages"
+      }
+    },
+    {
+      "id": "task-4-1",
+      "type": "task",
+      "title": "Create Login Page",
+      "description": "Build /login page with TMS/WMS system selection that redirects to respective system endpoints",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-1-4"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-4-1"
+      }
+    },
+    {
+      "id": "task-4-2",
+      "type": "task",
+      "title": "Create Signup Page",
+      "description": "Build /signup page with form (company, name, email, phone, product selection)",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-1-4"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-4-2"
+      }
+    },
+    {
+      "id": "task-4-3",
+      "type": "task",
+      "title": "Create Signup Service",
+      "description": "Build signupService.ts with POST /signup API integration",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-4-2"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-4-3"
+      }
+    },
+    {
+      "id": "epic-5",
+      "type": "epic",
+      "title": "EPIC 5: SEO & Performance",
+      "description": "Implement SEO optimization, meta tags, sitemap, and performance enhancements",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["epic-3", "epic-4"],
+      "canParallelize": false,
+      "phase": "seo",
+      "subtasks": ["task-5-1", "task-5-2", "task-5-3"],
+      "commands": {
+        "brief": "/brief seo-performance Meta tags sitemap optimization",
+        "implement": "/implement seo-performance"
+      }
+    },
+    {
+      "id": "task-5-1",
+      "type": "task",
+      "title": "Setup SEO with react-helmet-async",
+      "description": "Configure react-helmet-async and add meta tags (title, description, OG) for all pages",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-3-5", "task-4-3"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-5-1"
+      }
+    },
+    {
+      "id": "task-5-2",
+      "type": "task",
+      "title": "Create Sitemap and Robots.txt",
+      "description": "Generate sitemap.xml with all routes and robots.txt for SEO",
+      "status": "todo",
+      "priority": "high",
+      "dependencies": ["task-5-1"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-5-2"
+      }
+    },
+    {
+      "id": "task-5-3",
+      "type": "task",
+      "title": "Performance Optimization",
+      "description": "Implement lazy loading, code splitting, image optimization targeting Lighthouse score ≥ 90",
+      "status": "todo",
+      "priority": "medium",
+      "dependencies": ["task-5-1"],
+      "canParallelize": false,
+      "phase": "implementation",
+      "commands": {
+        "executeCommand": "/execute-task task-5-3"
+      }
+    }
+  ],
+  "dag": {
+    "roots": ["epic-0"],
+    "parallelGroups": [
+      {
+        "groupId": "pg-1",
+        "tasks": ["task-1-2", "task-2-1", "task-2-2", "task-2-3", "task-2-4", "task-2-5"]
+      },
+      {
+        "groupId": "pg-2",
+        "tasks": ["task-3-2", "task-3-3", "task-3-4", "task-3-5", "epic-4"]
+      }
+    ]
+  }
+}

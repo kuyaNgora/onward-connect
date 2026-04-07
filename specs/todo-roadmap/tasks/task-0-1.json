@@ -1,0 +1,23 @@
+{
+  "id": "task-0-1",
+  "epic": "epic-0",
+  "type": "task",
+  "title": "Initialize Vite + React + TypeScript",
+  "description": "Create new Vite project with React and TypeScript template",
+  "status": "todo",
+  "priority": "high",
+  "dependencies": [],
+  "canParallelize": false,
+  "phase": "implementation",
+  "estimatedEffort": "30 minutes",
+  "acceptanceCriteria": [
+    "Vite project created with React + TypeScript template",
+    "Project runs successfully with npm run dev",
+    "TypeScript configuration is correct"
+  ],
+  "commands": {
+    "brief": "/brief vite-project Initialize Vite React TypeScript",
+    "implement": "/implement vite-project"
+  },
+  "created": "2025-01-06"
+}

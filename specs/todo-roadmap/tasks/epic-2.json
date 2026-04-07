@@ -1,0 +1,25 @@
+{
+  "id": "epic-2",
+  "type": "epic",
+  "title": "EPIC 2: Shared Components",
+  "description": "Build reusable UI components used across the website",
+  "status": "todo",
+  "priority": "high",
+  "dependencies": ["epic-1"],
+  "canParallelize": true,
+  "phase": "components",
+  "subtasks": ["task-2-1", "task-2-2", "task-2-3", "task-2-4", "task-2-5"],
+  "estimatedEffort": "2 days",
+  "acceptanceCriteria": [
+    "Navbar component (responsive)",
+    "Footer component",
+    "HeroSection component",
+    "ProductCard component",
+    "CTASection component"
+  ],
+  "commands": {
+    "brief": "/brief shared-components Navbar Footer UI components",
+    "implement": "/implement shared-components"
+  },
+  "created": "2025-01-06"
+}

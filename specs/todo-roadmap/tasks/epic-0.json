@@ -1,0 +1,24 @@
+{
+  "id": "epic-0",
+  "type": "epic",
+  "title": "EPIC 0: Project Setup",
+  "description": "Initialize React + Vite + TypeScript project with all dependencies and base configuration",
+  "status": "todo",
+  "priority": "high",
+  "dependencies": [],
+  "canParallelize": false,
+  "phase": "setup",
+  "subtasks": ["task-0-1", "task-0-2", "task-0-3"],
+  "estimatedEffort": "2 hours",
+  "acceptanceCriteria": [
+    "Vite + React + TypeScript project initialized",
+    "All dependencies installed",
+    "Project structure configured",
+    "Development server runs successfully"
+  ],
+  "commands": {
+    "brief": "/brief project-setup Initialize React Vite TypeScript project",
+    "implement": "/implement project-setup"
+  },
+  "created": "2025-01-06"
+}

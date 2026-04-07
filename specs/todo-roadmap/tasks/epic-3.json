@@ -1,0 +1,25 @@
+{
+  "id": "epic-3",
+  "type": "epic",
+  "title": "EPIC 3: Public Pages",
+  "description": "Build all public-facing pages (Home, About, Contact, Products)",
+  "status": "todo",
+  "priority": "high",
+  "dependencies": ["epic-1", "epic-2"],
+  "canParallelize": false,
+  "phase": "pages",
+  "subtasks": ["task-3-1", "task-3-2", "task-3-3", "task-3-4", "task-3-5"],
+  "estimatedEffort": "3 days",
+  "acceptanceCriteria": [
+    "Home page with all sections",
+    "TMS product page",
+    "WMS product page",
+    "About page",
+    "Contact page with form"
+  ],
+  "commands": {
+    "brief": "/brief public-pages Home About Contact Product pages",
+    "implement": "/implement public-pages"
+  },
+  "created": "2025-01-06"
+}

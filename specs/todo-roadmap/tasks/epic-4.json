@@ -1,0 +1,23 @@
+{
+  "id": "epic-4",
+  "type": "epic",
+  "title": "EPIC 4: Auth Pages",
+  "description": "Build Login and Signup pages with system selection",
+  "status": "todo",
+  "priority": "high",
+  "dependencies": ["epic-1"],
+  "canParallelize": true,
+  "phase": "auth",
+  "subtasks": ["task-4-1", "task-4-2", "task-4-3"],
+  "estimatedEffort": "2 days",
+  "acceptanceCriteria": [
+    "Login page with TMS/WMS selection",
+    "Signup page with form",
+    "Signup service with API integration"
+  ],
+  "commands": {
+    "brief": "/brief auth-pages Login Signup system selection",
+    "implement": "/implement auth-pages"
+  },
+  "created": "2025-01-06"
+}
