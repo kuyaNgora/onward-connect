@@ -370,7 +370,7 @@ const features = [
       "Deteksi bottleneck otomatis",
       "Pelacakan throughput per zona",
     ],
-    image: "/images/wms_analytics_dashboard_1775533739271.png",
+    image: "/images/wms_hero.png?v=2",
     accent: "accent",
   },
   {
@@ -660,7 +660,7 @@ export default function WMSPage() {
                 <div className="relative w-full">
                   {/* Laptop Mockup */}
                   <LaptopMockup
-                    src="/images/wms_hero.png"
+                    src="/images/wms_hero.png?v=2"
                     alt="WMS Dashboard"
                   />
 

@@ -1,0 +1,93 @@
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseQuery } from "../baseQuery";
+
+/**
+ * TMS Onward - Authentication API
+ */
+export const authApi = createApi({
+  reducerPath: "authApi",
+  baseQuery,
+  endpoints: (builder) => ({
+    /**
+     * POST /auth/login
+     * User login with email and password
+     */
+    login: builder.mutation({
+      query: (credentials: { email: string; password: string }) => ({
+        url: "/auth/signin",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
+
+    /**
+     * POST /auth/register
+     * Register new company & admin user
+     * Body: { company_name, company_type, name, email, password, confirm_password, phone?, currency, language }
+     */
+    register: builder.mutation({
+      query: (data: {
+        name: string;
+        email: string;
+        username: string;
+        password: string;
+        confirm_password: string;
+        phone?: string;
+        company_name: string;
+        address: string;
+      }) => ({
+        url: "/auth/signup",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    /**
+     * POST /auth/logout
+     * Logout user and invalidate session
+     */
+    logout: builder.mutation({
+      query: () => ({
+        url: "/auth/logout",
+        method: "POST",
+      }),
+    }),
+
+    /**
+     * POST /auth/refresh
+     * Refresh access token
+     */
+    refreshToken: builder.mutation({
+      query: () => ({
+        url: "/auth/refresh",
+        method: "POST",
+      }),
+    }),
+
+    /**
+     * PUT /auth/password
+     * Change password for current user
+     * Body: { old_password, new_password, confirm_new_password }
+     */
+    changePassword: builder.mutation({
+      query: (data: {
+        old_password: string;
+        new_password: string;
+        confirm_new_password: string;
+      }) => ({
+        url: "/auth/password",
+        method: "PUT",
+        body: data,
+      }),
+    }),
+  }),
+});
+
+// Export RTK Query hooks
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useLogoutMutation,
+  useRefreshTokenMutation,
+  useChangePasswordMutation,
+} = authApi;

@@ -1,38 +1,71 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/services/auth/hooks";
+import { useAppSelector } from "@/hooks/useAppSelector";
 
 export default function SignupPage() {
+  const navigate = useNavigate();
+  const { register, registerResult } = useAuth();
+  const { isLoading, isSuccess, isError, error } = registerResult;
+  const { authenticated } = useAppSelector((state) => state.auth);
+
+  // Redirect authenticated users to login (they already have an account)
+  useEffect(() => {
+    if (authenticated) {
+      navigate("/login");
+    }
+  }, [authenticated, navigate]);
+
   const [formData, setFormData] = useState({
-    companyName: "",
-    fullName: "",
+    company_name: "",
+    address: "",
+    name: "",
     email: "",
     phone: "",
-    address: "",
+    username: "",
+    password: "",
+    confirm_password: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  // Watch for successful registration
+  useEffect(() => {
+    if (isSuccess) {
+      setSubmitted(true);
+      // Redirect to login after 3 seconds
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    }
+  }, [isSuccess, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
-    try {
-      // Mock API latency
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
-    } catch (error) {
-      console.error("Signup error:", error);
-    } finally {
-      setLoading(false);
+    if (formData.password !== formData.confirm_password) {
+      alert("Password dan konfirmasi password tidak cocok!");
+      return;
     }
+
+    // Call register with the exact payload format needed
+    await register({
+      company_name: formData.company_name,
+      address: formData.address,
+      name: formData.name,
+      email: formData.email,
+      username: formData.username,
+      password: formData.password,
+      confirm_password: formData.confirm_password,
+      phone: formData.phone,
+    });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
 
   return (
     <>
@@ -101,123 +134,233 @@ export default function SignupPage() {
                   Pendaftaran Berhasil!
                 </h2>
                 <p className="text-surface-400 text-base leading-relaxed">
-                  Terima kasih, tim kami akan segera memverifikasi data dan
-                  menghubungi Anda dalam 1x24 jam kerja.
+                  Akun Anda telah berhasil dibuat. Anda akan dialihkan ke halaman
+                  login dalam beberapa detik...
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="space-y-6 animate-fade-in"
+                className="space-y-8 animate-fade-in"
               >
-                {/* 2-Column layout for input fields taking advantage of the wider container */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {/* SECTION 1: Company Information */}
+                <div className="space-y-5">
+                  <div className="flex items-center gap-3 pb-2 border-b border-surface-800">
+                    <div className="w-8 h-8 rounded-lg bg-primary-500/20 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-bold text-white">Informasi Perusahaan</h3>
+                  </div>
+
+                  {/* Company Name */}
                   <div>
                     <label
-                      htmlFor="companyName"
+                      htmlFor="company_name"
                       className="block text-sm font-semibold text-surface-300 mb-2"
                     >
                       Nama Perusahaan <span className="text-accent-400">*</span>
                     </label>
                     <input
                       type="text"
-                      id="companyName"
-                      name="companyName"
+                      id="company_name"
+                      name="company_name"
                       required
-                      value={formData.companyName}
+                      value={formData.company_name}
                       onChange={handleChange}
-                      placeholder="PT Onward Logistik"
+                      placeholder="PT Lorem Ipsum"
                       className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
                     />
                   </div>
 
+                  {/* Address */}
                   <div>
                     <label
-                      htmlFor="fullName"
+                      htmlFor="address"
                       className="block text-sm font-semibold text-surface-300 mb-2"
                     >
-                      Nama Lengkap <span className="text-accent-400">*</span>
+                      Alamat Perusahaan <span className="text-accent-400">*</span>
+                    </label>
+                    <textarea
+                      id="address"
+                      name="address"
+                      required
+                      value={formData.address}
+                      onChange={handleChange}
+                      placeholder="Jl. Raya Darmo Permai III No. 45"
+                      rows={2}
+                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium resize-none"
+                    />
+                  </div>
+                </div>
+
+                {/* SECTION 2: Administrator Account */}
+                <div className="space-y-5">
+                  <div className="flex items-center gap-3 pb-2 border-b border-surface-800">
+                    <div className="w-8 h-8 rounded-lg bg-accent-500/20 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-bold text-white">Akun Administrator</h3>
+                  </div>
+
+                  {/* Username & Full Name */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label
+                        htmlFor="username"
+                        className="block text-sm font-semibold text-surface-300 mb-2"
+                      >
+                        Username <span className="text-accent-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        required
+                        value={formData.username}
+                        onChange={handleChange}
+                        placeholder="admin"
+                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-semibold text-surface-300 mb-2"
+                      >
+                        Nama Lengkap <span className="text-accent-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Budi Santoso"
+                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email & Phone */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-semibold text-surface-300 mb-2"
+                      >
+                        Email <span className="text-accent-400">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="admin@example.com"
+                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-semibold text-surface-300 mb-2"
+                      >
+                        Nomor Telepon <span className="text-accent-400">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="08123456789"
+                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* SECTION 3: Security */}
+                <div className="space-y-5">
+                  <div className="flex items-center gap-3 pb-2 border-b border-surface-800">
+                    <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-bold text-white">Keamanan</h3>
+                  </div>
+
+                  {/* Password */}
+                  <div>
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-semibold text-surface-300 mb-2"
+                    >
+                      Password <span className="text-accent-400">*</span>
                     </label>
                     <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
+                      type="password"
+                      id="password"
+                      name="password"
                       required
-                      value={formData.fullName}
+                      minLength={6}
+                      value={formData.password}
                       onChange={handleChange}
-                      placeholder="John Doe"
+                      placeholder="••••••••"
+                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
+                    />
+                    <p className="text-xs text-surface-500 mt-1">Minimal 6 karakter</p>
+                  </div>
+
+                  {/* Confirm Password */}
+                  <div>
+                    <label
+                      htmlFor="confirm_password"
+                      className="block text-sm font-semibold text-surface-300 mb-2"
+                    >
+                      Konfirmasi Password <span className="text-accent-400">*</span>
+                    </label>
+                    <input
+                      type="password"
+                      id="confirm_password"
+                      name="confirm_password"
+                      required
+                      minLength={6}
+                      value={formData.confirm_password}
+                      onChange={handleChange}
+                      placeholder="••••••••"
                       className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                    >
-                      Email Bisnis <span className="text-accent-400">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@perusahaan.com"
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                    />
+                {/* Error Message */}
+                {isError && (
+                  <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                    <p className="text-red-400 text-sm">
+                      {(error as any)?.data?.message || "Terjadi kesalahan saat pendaftaran. Silakan coba lagi."}
+                    </p>
                   </div>
+                )}
 
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                    >
-                      Nomor Telepon <span className="text-accent-400">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      required
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+62 812 3456 7890"
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                    />
-                  </div>
-                </div>
-
-                {/* Address Field */}
-                <div className="pt-2">
-                  <label
-                    htmlFor="address"
-                    className="block text-sm font-semibold text-surface-300 mb-2"
-                  >
-                    Alamat Perusahaan <span className="text-accent-400">*</span>
-                  </label>
-                  <textarea
-                    id="address"
-                    name="address"
-                    required
-                    value={formData.address}
-                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    placeholder="Jl. Sudirman No. 123, Jakarta Selatan, DKI Jakarta 12190"
-                    rows={3}
-                    className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium resize-none"
-                  />
-                </div>
-
+                {/* Submit Button */}
                 <div className="pt-4">
                   <button
                     type="submit"
-                    disabled={loading}
+                    disabled={isLoading}
                     className="w-full gradient-primary text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group relative overflow-hidden"
                   >
-                    {loading ? (
+                    {isLoading ? (
                       <svg
                         className="w-7 h-7 text-white animate-spin"
                         viewBox="0 0 24 24"
@@ -267,7 +410,7 @@ export default function SignupPage() {
               </Link>
             </div>
 
-            {/* Back to Home Mobile-only (since desktop has nav space or side panel) */}
+            {/* Back to Home Mobile-only */}
             <div
               className={`mt-8 pt-6 border-t border-surface-800/50 ${submitted ? "text-center" : ""}`}
             >

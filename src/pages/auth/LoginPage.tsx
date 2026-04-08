@@ -1,54 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { Link } from "react-router-dom";
+import { SSO_TARGETS } from "@/config/env";
+import { useAuth } from "@/services/auth/hooks";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useAppSelector } from "@/hooks/useAppSelector";
+import { setSelectedSystem } from "@/services/auth/slice";
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
+  const { login, loginResult } = useAuth();
+  const { isLoading } = loginResult;
+  const { authenticated, session } = useAppSelector((state) => state.auth);
 
   // State for login flow
   const [loginStep, setLoginStep] = useState<"form" | "selection">("form");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [selectedSystem, setSelectedSystem] = useState<"tms" | "wms" | null>(
+  const [selectedSystemLocal, setSelectedSystemLocal] = useState<"tms" | "wms" | null>(
     null,
   );
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    // Mock API call delay
-    setTimeout(() => {
-      // Simulate retrieving JWT from API
-      const mockJwtToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mockPayload123.mockSignatureXYZ";
-
-      // Dispatch to Redux which automatically natively stores it in root domain cookie
-      dispatch({
-        type: "auth/setUserLogged",
-        payload: {
-          user: { email: email || "admin@perusahaan.com", name: "Admin User" },
-          token: mockJwtToken,
-        },
-      });
-
-      setIsLoading(false);
+  // Check if user already has valid session on mount
+  useEffect(() => {
+    if (authenticated && session && (session.tms_token || session.wms_token)) {
+      // User already logged in, skip to selection
+      // Note: Don't pre-select any system - let user choose manually every time
       setLoginStep("selection");
-    }, 1500);
+    }
+  }, [authenticated, session]);
+
+  const handleLoginSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await login(email, password);
   };
 
-  const handleSystemSelect = (system: "tms" | "wms") => {
-    setSelectedSystem(system);
-    dispatch({ type: "auth/setSelectedSystem", payload: system });
-
-    if (system === "tms") {
-      window.location.href = "https://tms.onward.co.id/login";
-    } else {
-      window.location.href = "https://wms.onward.co.id/login";
+  // Watch for successful login to show system selection
+  useEffect(() => {
+    if (loginResult.isSuccess) {
+      setLoginStep("selection");
     }
+  }, [loginResult.isSuccess]);
+
+  const handleSystemSelect = (system: "tms" | "wms") => {
+    setSelectedSystemLocal(system);
+    // Dispatch to Redux which updates the cookie with selected_system
+    dispatch(setSelectedSystem(system));
+
+    // Redirect to target system with session cookie (cross-domain SSO)
+    // The target system will read the cookie and use the appropriate token
+    const targetUrl = system === "tms" ? SSO_TARGETS.TMS : SSO_TARGETS.WMS;
+    window.location.href = `${targetUrl}/login`;
   };
 
   return (
@@ -185,7 +188,7 @@ export default function LoginPage() {
                     ) : (
                       <>
                         <span className="relative z-10 flex items-center">
-                          Masuk Ke Dashboard
+                          Masuk
                           <svg
                             className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
                             fill="none"
@@ -225,7 +228,7 @@ export default function LoginPage() {
                   <button
                     onClick={() => handleSystemSelect("tms")}
                     className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 flex items-center group ${
-                      selectedSystem === "tms"
+                      selectedSystemLocal === "tms"
                         ? "border-primary-500 bg-primary-500/10"
                         : "border-surface-800 bg-surface-900/50 hover:border-primary-500/50 hover:bg-surface-800"
                     }`}
@@ -271,7 +274,7 @@ export default function LoginPage() {
                   <button
                     onClick={() => handleSystemSelect("wms")}
                     className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 flex items-center group ${
-                      selectedSystem === "wms"
+                      selectedSystemLocal === "wms"
                         ? "border-accent-500 bg-accent-500/10"
                         : "border-surface-800 bg-surface-900/50 hover:border-accent-500/50 hover:bg-surface-800"
                     }`}

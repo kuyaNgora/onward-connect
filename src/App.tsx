@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import MainLayout from "./layouts/MainLayout";
+import SessionRestorer from "./components/SessionRestorer";
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import("./pages/home/HomePage"));
@@ -63,8 +64,9 @@ function NotFoundPage() {
 
 function App() {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
+    <SessionRestorer>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         {/* Public routes with MainLayout */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
@@ -85,8 +87,9 @@ function App() {
 
         {/* 404 - Not Found */}
         <Route path="*" element={<Navigate to="/404" replace />} />
-      </Routes>
-    </Suspense>
+        </Routes>
+      </Suspense>
+    </SessionRestorer>
   );
 }
 
