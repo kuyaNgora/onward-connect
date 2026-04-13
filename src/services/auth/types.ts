@@ -1,13 +1,12 @@
 import type { User } from "../types";
 
 /**
- * Session data structure that matches Redux auth state
- * This is stored in the auth_session cookie
- * With dual-token architecture for TMS and WMS
+ * Session data structure stored in the auth_session cookie
+ * Only tokens are stored - user data is extracted from JWT by target apps
  */
 export interface SessionData {
-  /** User information */
-  user: User;
+  /** User information (optional - targets extract from JWT) */
+  user?: User;
   /** TMS specific JWT token */
   tms_token?: string;
   /** WMS specific JWT token */

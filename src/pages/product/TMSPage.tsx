@@ -688,12 +688,6 @@ export default function TMSPage() {
                     />
                   </svg>
                 </Link>
-                <Link
-                  to="#demo"
-                  className="group inline-flex items-center justify-center border-2 border-surface-700 text-surface-300 hover:text-white hover:bg-surface-800 glass px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105"
-                >
-                  Lihat Demo
-                </Link>
               </div>
             </div>
           </div>
@@ -1096,12 +1090,6 @@ export default function TMSPage() {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </Link>
-              <Link
-                to="#demo"
-                className="group inline-flex items-center justify-center glass border border-surface-600 text-white hover:bg-surface-800 px-12 py-5 rounded-3xl font-bold text-xl transition-all duration-300 hover:scale-105 active:scale-95"
-              >
-                Lihat Demo
               </Link>
             </div>
 

@@ -3,12 +3,18 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/services/auth/hooks";
 import { useAppSelector } from "@/hooks/useAppSelector";
+import { useFormActions } from "@/services/form/hooks";
+import { FormInput } from "@/components/ui/FormInput";
+import { FormTextArea } from "@/components/ui/FormTextArea";
+import { useFormErrors } from "@/hooks/useFormErrors";
 
 export default function SignupPage() {
   const navigate = useNavigate();
   const { register, registerResult } = useAuth();
-  const { isLoading, isSuccess, isError, error } = registerResult;
+  const { isLoading, isSuccess } = registerResult;
   const { authenticated } = useAppSelector((state) => state.auth);
+  const { reset: resetForm } = useFormActions();
+  const { getFieldError, getGeneralError, clearErrorOnInput } = useFormErrors();
 
   // Redirect authenticated users to login (they already have an account)
   useEffect(() => {
@@ -42,6 +48,7 @@ export default function SignupPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    resetForm(); // Clear previous errors before submitting
 
     if (formData.password !== formData.confirm_password) {
       alert("Password dan konfirmasi password tidak cocok!");
@@ -61,10 +68,12 @@ export default function SignupPage() {
     });
   };
 
+  // Clear errors when user types
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    clearErrorOnInput(e.target.name);
   };
 
   return (
@@ -155,44 +164,30 @@ export default function SignupPage() {
                   </div>
 
                   {/* Company Name */}
-                  <div>
-                    <label
-                      htmlFor="company_name"
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                    >
-                      Nama Perusahaan <span className="text-accent-400">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="company_name"
-                      name="company_name"
-                      required
-                      value={formData.company_name}
-                      onChange={handleChange}
-                      placeholder="PT Lorem Ipsum"
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                    />
-                  </div>
+                  <FormInput
+                    type="text"
+                    id="company_name"
+                    name="company_name"
+                    label="Nama Perusahaan"
+                    requiredMark
+                    value={formData.company_name}
+                    onChange={handleChange}
+                    placeholder="PT Lorem Ipsum"
+                    error={getFieldError("company_name")}
+                  />
 
                   {/* Address */}
-                  <div>
-                    <label
-                      htmlFor="address"
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                    >
-                      Alamat Perusahaan <span className="text-accent-400">*</span>
-                    </label>
-                    <textarea
-                      id="address"
-                      name="address"
-                      required
-                      value={formData.address}
-                      onChange={handleChange}
-                      placeholder="Jl. Raya Darmo Permai III No. 45"
-                      rows={2}
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium resize-none"
-                    />
-                  </div>
+                  <FormTextArea
+                    id="address"
+                    name="address"
+                    label="Alamat Perusahaan"
+                    requiredMark
+                    value={formData.address}
+                    onChange={handleChange}
+                    placeholder="Jl. Raya Darmo Permai III No. 45"
+                    rows={2}
+                    error={getFieldError("address")}
+                  />
                 </div>
 
                 {/* SECTION 2: Administrator Account */}
@@ -208,84 +203,56 @@ export default function SignupPage() {
 
                   {/* Username & Full Name */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label
-                        htmlFor="username"
-                        className="block text-sm font-semibold text-surface-300 mb-2"
-                      >
-                        Username <span className="text-accent-400">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        required
-                        value={formData.username}
-                        onChange={handleChange}
-                        placeholder="admin"
-                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                      />
-                    </div>
+                    <FormInput
+                      type="text"
+                      id="username"
+                      name="username"
+                      label="Username"
+                      requiredMark
+                      value={formData.username}
+                      onChange={handleChange}
+                      placeholder="admin"
+                      error={getFieldError("username")}
+                    />
 
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-semibold text-surface-300 mb-2"
-                      >
-                        Nama Lengkap <span className="text-accent-400">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Budi Santoso"
-                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                      />
-                    </div>
+                    <FormInput
+                      type="text"
+                      id="name"
+                      name="name"
+                      label="Nama Lengkap"
+                      requiredMark
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Budi Santoso"
+                      error={getFieldError("name")}
+                    />
                   </div>
 
                   {/* Email & Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-semibold text-surface-300 mb-2"
-                      >
-                        Email <span className="text-accent-400">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="admin@example.com"
-                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                      />
-                    </div>
+                    <FormInput
+                      type="email"
+                      id="email"
+                      name="email"
+                      label="Email"
+                      requiredMark
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="admin@example.com"
+                      error={getFieldError("email")}
+                    />
 
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-semibold text-surface-300 mb-2"
-                      >
-                        Nomor Telepon <span className="text-accent-400">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        required
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="08123456789"
-                        className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                      />
-                    </div>
+                    <FormInput
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      label="Nomor Telepon"
+                      requiredMark
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="08123456789"
+                      error={getFieldError("phone")}
+                    />
                   </div>
                 </div>
 
@@ -301,55 +268,37 @@ export default function SignupPage() {
                   </div>
 
                   {/* Password */}
-                  <div>
-                    <label
-                      htmlFor="password"
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                    >
-                      Password <span className="text-accent-400">*</span>
-                    </label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      required
-                      minLength={6}
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder="••••••••"
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                    />
-                    <p className="text-xs text-surface-500 mt-1">Minimal 6 karakter</p>
-                  </div>
+                  <FormInput
+                    type="password"
+                    id="password"
+                    name="password"
+                    label="Password"
+                    requiredMark
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="••••••••"
+                    error={getFieldError("password")}
+                    helperText="Minimal 6 karakter"
+                  />
 
                   {/* Confirm Password */}
-                  <div>
-                    <label
-                      htmlFor="confirm_password"
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                    >
-                      Konfirmasi Password <span className="text-accent-400">*</span>
-                    </label>
-                    <input
-                      type="password"
-                      id="confirm_password"
-                      name="confirm_password"
-                      required
-                      minLength={6}
-                      value={formData.confirm_password}
-                      onChange={handleChange}
-                      placeholder="••••••••"
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
-                    />
-                  </div>
+                  <FormInput
+                    type="password"
+                    id="confirm_password"
+                    name="confirm_password"
+                    label="Konfirmasi Password"
+                    requiredMark
+                    value={formData.confirm_password}
+                    onChange={handleChange}
+                    placeholder="••••••••"
+                    error={getFieldError("confirm_password")}
+                  />
                 </div>
 
                 {/* Error Message */}
-                {isError && (
+                {getGeneralError() && (
                   <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
-                    <p className="text-red-400 text-sm">
-                      {(error as any)?.data?.message || "Terjadi kesalahan saat pendaftaran. Silakan coba lagi."}
-                    </p>
+                    <p className="text-red-400 text-sm font-medium">{getGeneralError()}</p>
                   </div>
                 )}
 

@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useFormActions } from "../form/hooks";
-import { useLoginMutation, useRegisterMutation, useLogoutMutation, useChangePasswordMutation } from "./api";
+import { useLoginMutation, useRegisterMutation, useLogoutMutation } from "./api";
 import { signin, signout } from "./slice";
-import { useProfile } from "../profile";
+import { extractUserFromToken } from "./jwtUtils";
 
 /**
  * TMS Onward - Authentication Hooks
@@ -10,31 +10,38 @@ import { useProfile } from "../profile";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
-  const { getMe } = useProfile();
   const { failureWithTimeout } = useFormActions();
 
   const [loginMutation, loginResult] = useLoginMutation();
   const [registerMutation, registerResult] = useRegisterMutation();
   const [logoutMutation, logoutResult] = useLogoutMutation();
-  const [changePasswordMutation, changePasswordResult] = useChangePasswordMutation();
 
   /**
-   * Login with email and password
+   * Login with identifier (email/username) and password
    * Backend returns dual tokens: tms_token and wms_token
+   * User info is embedded inside the JWT tokens (decoded client-side)
    */
-  const login = async (email: string, password: string) => {
+  const login = async (identifier: string, password: string) => {
     try {
-      const res = await loginMutation({ email, password }).unwrap();
-      // Response format: { user, tms_token, wms_token }
-      if (res?.data?.tms_token && res?.data?.wms_token) {
-        // Dispatch signin action with dual tokens
+      const res = await loginMutation({ identifier, password }).unwrap();
+      console.log('[Connect Auth] Login response:', res);
+      // Response format: { tms_token, wms_token } (may be wrapped in data property)
+      // Normalize response structure - handle both { data: {...} } and direct { ... }
+      const tokens = res?.data || res;
+      console.log('[Connect Auth] Normalized tokens:', tokens);
+      if (tokens?.tms_token && tokens?.wms_token) {
+        // Extract user info from JWT token (prefer TMS token as it has more fields)
+        const user = extractUserFromToken(tokens.tms_token, tokens.wms_token);
+        if (!user) {
+          throw new Error("Failed to extract user information from tokens");
+        }
+
+        // Dispatch signin action with dual tokens and extracted user
         dispatch(signin({
-          user: res.data.user,
-          tms_token: res.data.tms_token,
-          wms_token: res.data.wms_token,
+          user,
+          tms_token: tokens.tms_token,
+          wms_token: tokens.wms_token,
         }));
-        // Fetch full user profile
-        getMe();
       }
     } catch (err) {
       failureWithTimeout(err);
@@ -68,7 +75,7 @@ export const useAuth = () => {
         confirm_password: data.confirm_password,
         phone: data.phone || "",
       }).unwrap();
-      // No auto-login - user will be redirected to login page by RegisterPage
+      // Registration successful - no auto-login, user navigates manually
     } catch (err) {
       failureWithTimeout(err);
     }
@@ -87,34 +94,12 @@ export const useAuth = () => {
     }
   };
 
-  /**
-   * Change password for current user
-   */
-  const changePassword = async (
-    oldPassword: string,
-    newPassword: string,
-    confirmNewPassword: string
-  ) => {
-    try {
-      await changePasswordMutation({
-        old_password: oldPassword,
-        new_password: newPassword,
-        confirm_new_password: confirmNewPassword,
-      }).unwrap();
-    } catch (err) {
-      failureWithTimeout(err);
-      throw err; // Re-throw to allow caller to handle
-    }
-  };
-
   return {
     login,
     register,
     logout,
-    changePassword,
     loginResult,
     registerResult,
     logoutResult,
-    changePasswordResult,
   };
 };

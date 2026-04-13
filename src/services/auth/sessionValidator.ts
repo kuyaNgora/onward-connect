@@ -58,6 +58,8 @@ export function isTokenExpired(token: string): boolean {
 
 /**
  * Validate session data structure for dual-token architecture
+ * NOTE: User data is now embedded in JWT tokens, not stored in cookie
+ * Cookie only needs to contain at least one token (tms_token or wms_token)
  */
 export function validateSessionStructure(session: any): session is SessionData {
   if (!session || typeof session !== 'object') {
@@ -65,20 +67,9 @@ export function validateSessionStructure(session: any): session is SessionData {
   }
 
   // With dual-token architecture, check for at least one token
+  // User data is extracted from JWT, not stored in cookie
   if (!session.tms_token && !session.wms_token) {
     return false;
-  }
-
-  if (!session.user || typeof session.user !== 'object') {
-    return false;
-  }
-
-  // Check required user fields
-  const requiredUserFields = ['id', 'email'];
-  for (const field of requiredUserFields) {
-    if (!(field in session.user)) {
-      return false;
-    }
   }
 
   return true;

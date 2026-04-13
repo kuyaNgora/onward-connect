@@ -6,21 +6,26 @@ import { useAuth } from "@/services/auth/hooks";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { setSelectedSystem } from "@/services/auth/slice";
+import { useFormActions } from "@/services/form/hooks";
+import { FormInput } from "@/components/ui/FormInput";
+import { useFormErrors } from "@/hooks/useFormErrors";
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
   const { login, loginResult } = useAuth();
   const { isLoading } = loginResult;
   const { authenticated, session } = useAppSelector((state) => state.auth);
+  const { reset: resetForm } = useFormActions();
+  const { getFieldError, getGeneralError, clearErrorOnInput } = useFormErrors();
 
   // State for login flow
   const [loginStep, setLoginStep] = useState<"form" | "selection">("form");
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [selectedSystemLocal, setSelectedSystemLocal] = useState<"tms" | "wms" | null>(
-    null,
-  );
+  const [selectedSystemLocal, setSelectedSystemLocal] = useState<
+    "tms" | "wms" | null
+  >(null);
 
   // Check if user already has valid session on mount
   useEffect(() => {
@@ -33,7 +38,19 @@ export default function LoginPage() {
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await login(email, password);
+    resetForm(); // Clear previous errors before submitting
+    await login(identifier, password);
+  };
+
+  // Clear errors when user types
+  const handleIdentifierChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIdentifier(e.target.value);
+    clearErrorOnInput("identifier");
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+    clearErrorOnInput("password");
   };
 
   // Watch for successful login to show system selection
@@ -50,8 +67,11 @@ export default function LoginPage() {
 
     // Redirect to target system with session cookie (cross-domain SSO)
     // The target system will read the cookie and use the appropriate token
-    const targetUrl = system === "tms" ? SSO_TARGETS.TMS : SSO_TARGETS.WMS;
-    window.location.href = `${targetUrl}/login`;
+    const targetUrl =
+      system === "tms"
+        ? SSO_TARGETS.TMS + "/auth/login"
+        : SSO_TARGETS.WMS + "/login";
+    window.location.href = targetUrl;
   };
 
   return (
@@ -108,41 +128,33 @@ export default function LoginPage() {
                 className={`transition-all duration-700 ease-in-out ${loginStep === "form" ? "opacity-100 translate-x-0 relative z-10" : "opacity-0 -translate-x-12 absolute inset-0 pointer-events-none"}`}
               >
                 <form onSubmit={handleLoginSubmit} className="space-y-6">
-                  <div>
-                    <label
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                      htmlFor="email"
-                    >
-                      Email / Username
-                    </label>
-                    <input
-                      type="text"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      placeholder="anda@perusahaan.com"
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-4 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium text-lg"
-                    />
-                  </div>
+                  {/* General Error Message */}
+                  {getGeneralError() && (
+                    <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                      <p className="text-red-400 text-sm font-medium">
+                        {getGeneralError()}
+                      </p>
+                    </div>
+                  )}
+                  <FormInput
+                    type="text"
+                    id="identifier"
+                    label="Email / Username"
+                    value={identifier}
+                    onChange={handleIdentifierChange}
+                    placeholder="anda@perusahaan.com"
+                    error={getFieldError("identifier")}
+                  />
 
-                  <div>
-                    <label
-                      className="block text-sm font-semibold text-surface-300 mb-2"
-                      htmlFor="password"
-                    >
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      placeholder="••••••••"
-                      className="w-full bg-surface-900 border-2 border-surface-800 rounded-xl px-5 py-4 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-xl tracking-widest font-mono"
-                    />
-                  </div>
+                  <FormInput
+                    type="password"
+                    id="password"
+                    label="Password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    placeholder="••••••••"
+                    error={getFieldError("password")}
+                  />
 
                   <div className="flex items-center pt-2">
                     <input

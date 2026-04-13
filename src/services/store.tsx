@@ -1,5 +1,5 @@
 import { authApi } from "./auth/api";
-import { profileApi } from "./profile/api";
+import { trackingApi } from "./tracking/api";
 
 import { configureStore, type Middleware } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
@@ -15,9 +15,8 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// TMS Onward - Removed WMS-specific middleware (area, batch, delivery, fulfillment, item, receiving, receivingPlan, stock, stockopname, task, warehouse)
-// TMS Onward - Removed additional WMS middleware (client, layout, location, region)
-const apiMiddleware: Middleware[] = [authApi.middleware, profileApi.middleware];
+// API middleware - auth and tracking endpoints
+const apiMiddleware: Middleware[] = [authApi.middleware, trackingApi.middleware];
 
 const store = configureStore({
   reducer: persistedReducer,

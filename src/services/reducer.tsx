@@ -5,23 +5,21 @@ import storage from "redux-persist/lib/storage";
 
 import { authApi } from "./auth/api";
 import { authReducer, signout } from "./auth/slice";
-import { profileApi } from "./profile/api";
-import { userProfileReducer } from "./profile/slice";
+import { trackingApi } from "./tracking/api";
 
 import { formReducer } from "./form/slice";
 
 // TMS Onward - Removed WMS-specific modules (area, batch, delivery, fulfillment, item, receiving, receivingPlan, stock, stockopname, task, warehouse)
 
-// gabungkan semua API slice reducers
+// API reducers
 const apiReducers = {
   [authApi.reducerPath]: authApi.reducer,
-  [profileApi.reducerPath]: profileApi.reducer,
+  [trackingApi.reducerPath]: trackingApi.reducer,
 };
 
 const sliceReducers = {
   form: formReducer,
   auth: authReducer,
-  userProfile: userProfileReducer,
 };
 
 const appReducer = combineReducers({

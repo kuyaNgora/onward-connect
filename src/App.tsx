@@ -9,6 +9,8 @@ const TMSPage = lazy(() => import("./pages/product/TMSPage"));
 const WMSPage = lazy(() => import("./pages/product/WMSPage"));
 const LoginPage = lazy(() => import("./pages/auth/LoginPage"));
 const SignupPage = lazy(() => import("./pages/auth/SignupPage"));
+const TrackingPage = lazy(() => import("./pages/tracking/TrackingPage"));
+const TrackingResultPage = lazy(() => import("./pages/tracking/TrackingResultPage"));
 
 // Loading component
 function PageLoader() {
@@ -72,6 +74,8 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="transportasi" element={<TMSPage />} />
           <Route path="gudang" element={<WMSPage />} />
+          <Route path="lacak" element={<TrackingPage />} />
+          <Route path="lacak/:orderNumber" element={<TrackingResultPage />} />
           <Route path="404" element={<NotFoundPage />} />
         </Route>
 

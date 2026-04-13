@@ -234,22 +234,11 @@ function CubeIcon({ className = "w-8 h-8" }: { className?: string }) {
 function LaptopMockup({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative">
-      {/* Laptop body */}
-      <div className="relative bg-[#1a1a1a] rounded-2xl p-1.5 shadow-2xl shadow-black/40 border border-surface-700/30">
-        {/* Camera notch */}
-        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 bg-surface-700 rounded-full z-10" />
-        {/* Screen bezel */}
-        <div className="bg-[#0d0d0d] rounded-xl overflow-hidden aspect-16/10">
-          <img
-            src={src}
-            alt={alt}
-            className="w-full h-full object-cover object-top-left"
-          />
-        </div>
-      </div>
-      {/* Laptop base/hinge */}
-      <div className="relative mx-auto w-[110%] -ml-[5%] h-3 bg-linear-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-xl border-x border-b border-surface-700/20" />
-      <div className="relative mx-auto w-[30%] h-1 bg-[#2a2a2a] rounded-b-lg" />
+      <img
+        src={src}
+        alt={alt}
+        className="w-full border-2 border-surface-700/30 rounded-2xl"
+      />
     </div>
   );
 }
@@ -643,7 +632,7 @@ export default function WMSPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-10">
                   <Link
                     to="/signup"
-                    className="group inline-flex items-center justify-center gradient-primary text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-105"
+                    className="group inline-flex items-center justify-center gradient-primary text-white px-16 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-105"
                   >
                     Mulai Gratis
                     <svg
@@ -659,12 +648,6 @@ export default function WMSPage() {
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
-                  </Link>
-                  <Link
-                    to="#features"
-                    className="group inline-flex items-center justify-center border-2 border-surface-700 text-surface-300 hover:text-white hover:bg-surface-800 glass px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
-                  >
-                    Jelajahi Fitur
                   </Link>
                 </div>
 
@@ -1164,12 +1147,6 @@ export default function WMSPage() {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </Link>
-              <Link
-                to="#demo"
-                className="group inline-flex items-center justify-center glass border border-surface-600 text-white hover:bg-surface-800 px-12 py-5 rounded-3xl font-bold text-xl transition-all duration-300 hover:scale-105 active:scale-95"
-              >
-                Lihat Demo
               </Link>
             </div>
 

@@ -4,12 +4,14 @@ This guide provides testing scenarios and troubleshooting steps for the SSO impl
 
 ## Testing Scenarios
 
-### 1. Basic Login Flow
-1. Navigate to `http://localhost:3000/login`
+### 1. Basic Login Flow (Localhost)
+1. Navigate to `http://localhost:5173/login` (Connect)
 2. Enter valid credentials
 3. Verify successful login shows system selection
-4. Select TMS system
-5. Verify redirect to `http://localhost:3001/login`
+4. Select TMS or WMS system
+5. Verify redirect to target app:
+   - TMS: `http://localhost:5175/login` → should auto-login
+   - WMS: `http://localhost:5174/login` → should auto-login
 6. Check that auth_session cookie is set with domain `localhost`
 
 ### 2. Session Persistence
@@ -22,11 +24,23 @@ This guide provides testing scenarios and troubleshooting steps for the SSO impl
 ### 3. Cross-Domain Testing (Production)
 1. Deploy to production environment
 2. Login at `https://connect.onward.co.id`
-3. Select TMS system
-4. Verify redirect to `https://tms.onward.co.id/login`
+3. Select TMS system → redirects to `https://tms.onward.co.id/login` (auto-login)
+4. Select WMS system → redirects to `https://wms.onward.co.id/login` (auto-login)
 5. Check that auth_session cookie is set with domain `.onward.co.id`
-6. Open WMS in new tab
-7. Verify user is already logged in
+6. Open the other app in new tab → verify user is already logged in
+
+### 3.1 Local Port Testing (Current Dev Setup)
+| App | URL | Port |
+|-----|-----|------|
+| Connect | http://localhost:5173 | 5173 |
+| WMS | http://localhost:5174 | 5174 |
+| TMS | http://localhost:5175 | 5175 |
+
+**Testing flow:**
+1. Login at Connect (localhost:5173)
+2. Select TMS → redirects to localhost:5175 with auto-login
+3. Or select WMS → redirects to localhost:5174 with auto-login
+4. Cookie is shared because domain is `localhost` (same across all ports)
 
 ### 4. Session Expiration
 1. Manually set an expired JWT token in cookie

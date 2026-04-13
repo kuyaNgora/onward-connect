@@ -39,6 +39,7 @@ export const getCookieSession = (): SessionData | null => {
 
   // Split cookies and find auth_session
   const cookies = document.cookie.split(";");
+  console.log('[Connect CookieUtils] All cookies:', document.cookie);
   const authCookie = cookies.find((cookie) =>
     cookie.trim().startsWith("auth_session="),
   );
@@ -94,7 +95,18 @@ export const setCookieSession = (sessionData: SessionData): void => {
 
   try {
     // Set cookie with proper security attributes
-    document.cookie = `auth_session=${encoded}; domain=${domain}; path=/; max-age=86400; SameSite=Lax;${domain !== "localhost" ? "Secure;" : ""}`;
+    // For localhost, DON'T set domain attribute (allows cross-port sharing)
+    // For production, set domain to .onward.co.id (allows cross-subdomain sharing)
+    const domainAttr = domain === "localhost" ? "" : `domain=${domain};`;
+    const secureAttr = domain === "localhost" ? "" : "Secure;";
+    const cookieValue = `auth_session=${encoded}; ${domainAttr}path=/; max-age=86400; SameSite=Lax;${secureAttr}`;
+    console.log('[Connect CookieUtils] Setting cookie:', {
+      domain,
+      domainAttr,
+      cookieValue: cookieValue.substring(0, 200) + '...', // Truncate for logging
+    });
+    document.cookie = cookieValue;
+    console.log('[Connect CookieUtils] Cookie set. Current cookies:', document.cookie.substring(0, 500) + '...');
   } catch (error) {
     throw handleCookieError(error as Error);
   }
@@ -109,8 +121,11 @@ export const clearSessionCookie = (): void => {
   }
 
   const domain = getCookieDomain();
+  // For localhost, DON'T set domain attribute (for consistency with setCookieSession)
+  const domainAttr = domain === "localhost" ? "" : `domain=${domain};`;
+  const secureAttr = domain === "localhost" ? "" : "Secure;";
   // Set cookie with expiry in the past to delete it
-  document.cookie = `auth_session=; domain=${domain}; path=/; max-age=0; SameSite=Lax;${domain !== "localhost" ? "Secure;" : ""}`;
+  document.cookie = `auth_session=; ${domainAttr}path=/; max-age=0; SameSite=Lax;${secureAttr}`;
 };
 
 /**
@@ -126,10 +141,9 @@ export const restoreSessionFromCookie = (): SessionData | null => {
     }
 
     // Basic validation of required fields
-    // With dual-token architecture, we need user and at least one token
+    // With dual-token architecture, we need at least one token (user is optional, extracted from JWT)
     if (
-      !sessionData.user ||
-      (!sessionData.tms_token && !sessionData.wms_token)
+      !sessionData.tms_token && !sessionData.wms_token
     ) {
       console.warn("Invalid session structure in cookie, clearing...");
       clearSessionCookie();

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { User } from "../types";
 import { setCookieSession, clearSessionCookie } from "./cookieUtils";
+import { extractUserFromToken } from "./jwtUtils";
 
 interface authState {
   authenticated: boolean;
@@ -25,17 +26,30 @@ export const authSlice = createSlice({
     /**
      * Sign in with dual tokens (TMS + WMS)
      * Payload: { user, tms_token, wms_token }
+     * NOTE: We only store tokens in cookie (not user) since user data is embedded in JWT
+     * Target apps (TMS/WMS) will extract user from token themselves
      */
     signin: (state, action) => {
-      state.session = action.payload;
+      const { user, tms_token, wms_token } = action.payload;
+
+      // Decode JWT to get user data if not provided (e.g., returning from TMS/WMS)
+      let decodedUser = user;
+      if (!decodedUser && (tms_token || wms_token)) {
+        decodedUser = extractUserFromToken(tms_token, wms_token);
+      }
+
+      state.session = {
+        user: decodedUser,
+        tms_token,
+        wms_token,
+      };
       state.authenticated = true;
 
-      // Store session in cookie for SSO
+      // Store tokens in cookie for SSO (user data is in JWT payload)
       if (typeof window !== 'undefined') {
         setCookieSession({
-          user: action.payload.user,
-          tms_token: action.payload.tms_token,
-          wms_token: action.payload.wms_token,
+          tms_token,
+          wms_token,
         });
       }
     },
@@ -52,10 +66,9 @@ export const authSlice = createSlice({
     session: (state, action) => {
       state.session = action.payload;
 
-      // Update cookie when session changes
+      // Update cookie when session changes (only tokens, user is in JWT)
       if (action.payload && typeof window !== 'undefined') {
         setCookieSession({
-          user: action.payload.user,
           tms_token: action.payload.tms_token,
           wms_token: action.payload.wms_token,
         });
@@ -64,14 +77,14 @@ export const authSlice = createSlice({
     /**
      * Set selected system (tms or wms)
      * This updates the selected_system in cookie for cross-domain SSO
+     * NOTE: Only tokens are stored (user data is embedded in JWT)
      */
     setSelectedSystem: (state, action) => {
       state.selectedSystem = action.payload;
 
-      // Update cookie with selected system
+      // Update cookie with selected system (only tokens, user is in JWT)
       if (state.session && typeof window !== 'undefined') {
         setCookieSession({
-          user: state.session.user,
           tms_token: state.session.tms_token,
           wms_token: state.session.wms_token,
           selected_system: action.payload,

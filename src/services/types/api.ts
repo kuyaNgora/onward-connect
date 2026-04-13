@@ -61,7 +61,7 @@ export function isApiError(error: unknown): error is ApiError {
 }
 
 export function isApiResponse<T>(
-  response: unknown
+  response: unknown,
 ): response is ApiResponse<T> {
   return (
     typeof response === "object" &&
@@ -71,7 +71,7 @@ export function isApiResponse<T>(
 }
 
 export function isPaginatedResponse<T>(
-  response: unknown
+  response: unknown,
 ): response is PaginatedResponse<T> {
   return (
     isApiResponse<T[]>(response) &&
@@ -80,4 +80,33 @@ export function isPaginatedResponse<T>(
     typeof response.meta === "object" &&
     response.meta !== null
   );
+}
+
+// ============================================================================
+// Waypoint History (for timeline display)
+// ============================================================================
+
+export interface WaypointHistory {
+  waypoint_id: string;
+  location_name: string;
+  address: string;
+  type: string; // pickup or delivery
+  status: string;
+  old_status?: string;
+  notes?: string;
+  changed_at: string;
+}
+
+// ============================================================================
+// Waypoint Images (POD & Failed Evidence)
+// ============================================================================
+
+export interface WaypointImageInfo {
+  waypoint_image_id: string;
+  type: "pod" | "failed";
+  note?: string;
+  photos?: string[];
+  signature_url?: string;
+  received_by?: string; // Name of person who received the delivery
+  submitted_at: string;
 }

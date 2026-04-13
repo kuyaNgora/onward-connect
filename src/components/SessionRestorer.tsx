@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { restoreSessionFromCookie } from "@/services/auth/cookieUtils";
-import { signin } from "@/services/auth/slice";
+import { signin, signout } from "@/services/auth/slice";
 
 interface SessionRestorerProps {
   children: React.ReactNode;
@@ -17,13 +17,18 @@ export default function SessionRestorer({ children }: SessionRestorerProps) {
         const sessionData = restoreSessionFromCookie();
 
         if (sessionData) {
-          // Restore session in Redux store
+          // Dispatch signin - the slice will decode JWT and extract user data
           dispatch(signin(sessionData));
-          console.log("Session restored from cookie successfully");
+          console.log("Session restored from cookie");
+        } else {
+          // No session in cookies - ensure user is signed out
+          dispatch(signout());
+          console.log("No session cookie found - user signed out");
         }
       } catch (error) {
-        // Silently clear invalid session - user will see login page naturally
-        console.log("Invalid session detected, cleared silently");
+        // Invalid session - clear auth state
+        dispatch(signout());
+        console.log("Invalid session detected, user signed out:", error);
       } finally {
         setIsRestoring(false);
       }

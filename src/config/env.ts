@@ -28,7 +28,7 @@ export const isProduction = import.meta.env.PROD;
  * For production: .onward.co.id
  * For development/localhost: localhost
  */
-export const COOKIE_DOMAIN = isProduction ? '.onward.com' : 'localhost';
+export const COOKIE_DOMAIN = isProduction ? '.onward.co.id' : 'localhost';
 
 /**
  * Required environment variables validation

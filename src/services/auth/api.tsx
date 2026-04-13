@@ -13,8 +13,8 @@ export const authApi = createApi({
      * User login with email and password
      */
     login: builder.mutation({
-      query: (credentials: { email: string; password: string }) => ({
-        url: "/auth/signin",
+      query: (credentials: { identifier: string; password: string }) => ({
+        url: "/auth/login",
         method: "POST",
         body: credentials,
       }),
@@ -53,33 +53,6 @@ export const authApi = createApi({
       }),
     }),
 
-    /**
-     * POST /auth/refresh
-     * Refresh access token
-     */
-    refreshToken: builder.mutation({
-      query: () => ({
-        url: "/auth/refresh",
-        method: "POST",
-      }),
-    }),
-
-    /**
-     * PUT /auth/password
-     * Change password for current user
-     * Body: { old_password, new_password, confirm_new_password }
-     */
-    changePassword: builder.mutation({
-      query: (data: {
-        old_password: string;
-        new_password: string;
-        confirm_new_password: string;
-      }) => ({
-        url: "/auth/password",
-        method: "PUT",
-        body: data,
-      }),
-    }),
   }),
 });
 
@@ -88,6 +61,4 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useLogoutMutation,
-  useRefreshTokenMutation,
-  useChangePasswordMutation,
 } = authApi;
