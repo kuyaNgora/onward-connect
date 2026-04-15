@@ -626,41 +626,40 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center overflow-hidden bg-surface-950"
+          className="relative min-h-screen flex items-center overflow-hidden bg-white"
         >
           <div className="absolute inset-0">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
               <img
-                src="/images/tms_hero_bg_generated.svg"
+                src="/images/tms_hero_generic_light.png"
                 alt="Logistics Background"
-                className="w-full h-full object-cover opacity-90 mask-image-b"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-linear-to-b from-surface-950/10 via-surface-950/50 to-surface-950" />
+              <div className="absolute inset-0 bg-surface-950/40" />
+              <div className="absolute inset-0 bg-linear-to-b from-surface-950/80 via-surface-950/20 to-transparent" />
             </div>
 
             {/* Ambient Lighting Orbs */}
-            <div className="absolute top-20 right-20 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse z-0" />
+            <div className="absolute top-20 right-20 w-96 h-96 bg-primary-500/8 rounded-full blur-3xl animate-pulse z-0" />
             <div
-              className="absolute bottom-20 left-20 w-80 h-80 bg-accent-500/10 rounded-full blur-3xl animate-pulse z-0"
+              className="absolute bottom-20 left-20 w-80 h-80 bg-accent-500/8 rounded-full blur-3xl animate-pulse z-0"
               style={{ animationDelay: "1s" }}
             />
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div className="text-center max-w-3xl mx-auto">
-              <div className="inline-flex items-center glass rounded-full px-6 py-3 mb-8 shadow-lg shadow-primary-500/10 border border-primary-500/30">
-                <span className="text-xl mr-2">🎉</span>
-                <span className="font-bold text-primary-300">
-                  100% Gratis - Selamanya
-                </span>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 shadow-sm">
+                <span className="text-sm mr-2 leading-none">🎉</span>
+                100% Gratis - Selamanya
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-white mb-6 leading-tight">
                 Kelola Pengiriman
                 <span className="gradient-text"> Tanpa Pusing</span>
               </h1>
-              <p className="text-xl text-surface-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-surface-200 mb-12 max-w-3xl mx-auto leading-relaxed">
                 Sistem manajemen transportasi{" "}
                 <strong className="text-white">gratis selamanya</strong> yang
                 dirancang khusus untuk perusahaan logistik di Indonesia. Lacak
@@ -671,7 +670,7 @@ export default function TMSPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/signup"
-                  className="group inline-flex items-center justify-center gradient-primary text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-105"
+                  className="group inline-flex items-center justify-center bg-primary-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105"
                 >
                   Daftar Sekarang - Gratis
                   <svg
@@ -698,23 +697,23 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         <section
           ref={problemRef}
-          className="relative py-32 bg-surface-950 border-t border-surface-800/50 overflow-hidden"
+          className="relative py-32 bg-surface-50 border-t border-surface-200 overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-200 h-200 bg-red-500/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-red-500/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-20">
-              <div className="inline-flex items-center glass rounded-full px-5 py-2 mb-6 border border-red-500/20 text-red-400">
+              <div className="inline-flex items-center bg-red-50 rounded-full px-5 py-2 mb-6 border border-red-200 text-red-600">
                 <ExclamationTriangleIcon className="w-5 h-5 mr-3" />
                 <span className="text-sm font-bold tracking-widest uppercase">
                   Mimpi Buruk Logistik
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-surface-950 mb-6">
                 Capek Mengelola <br className="hidden md:block" /> Logistik
                 dengan Excel?
               </h2>
-              <p className="text-xl text-surface-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-surface-600 max-w-2xl mx-auto leading-relaxed">
                 Manajemen manual menyebabkan kebocoran biaya dan kepuasan
                 pelanggan menurun. Jika Anda merasakan hal ini, Anda tidak
                 sendiri.
@@ -725,22 +724,22 @@ export default function TMSPage() {
               {problems.map((problem, i) => (
                 <div
                   key={i}
-                  className="scroll-animate group relative glass rounded-4xl p-6 md:p-8 hover:translate-x-2 transition-all duration-500"
+                  className="scroll-animate group relative bg-white rounded-4xl p-6 md:p-8 hover:translate-x-2 transition-all duration-500 shadow-lg shadow-surface-200/40 border border-surface-100"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <div className="absolute inset-0 bg-linear-to-r from-red-500/5 to-transparent rounded-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute inset-0 border border-surface-700/50 group-hover:border-red-500/30 rounded-4xl transition-colors duration-500" />
-                  <div className="absolute inset-y-8 left-0 w-0.5 bg-linear-to-b from-transparent via-red-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-r from-red-50 to-transparent rounded-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 border border-surface-100 group-hover:border-red-300 rounded-4xl transition-colors duration-500" />
+                  <div className="absolute inset-y-8 left-0 w-0.5 bg-linear-to-b from-transparent via-red-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
-                    <div className="shrink-0 w-16 h-16 rounded-2xl bg-surface-800 flex items-center justify-center text-red-400 border border-surface-700 group-hover:bg-red-500/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-lg">
+                    <div className="shrink-0 w-16 h-16 rounded-2xl bg-red-50 flex items-center justify-center text-red-500 border border-red-100 group-hover:bg-red-100 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm">
                       {problem.icon}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3 leading-snug group-hover:text-red-100 transition-colors">
+                      <h3 className="text-xl md:text-2xl font-bold text-surface-950 mb-2 md:mb-3 leading-snug group-hover:text-red-700 transition-colors">
                         {problem.title}
                       </h3>
-                      <p className="text-surface-400 leading-relaxed text-base md:text-lg">
+                      <p className="text-surface-600 leading-relaxed text-base md:text-lg">
                         {problem.description}
                       </p>
                     </div>
@@ -754,8 +753,8 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         {/* SOLUTION SECTION */}
         {/* ═════════════════════════════════════════════════════════ */}
-        <section className="py-24 gradient-hero text-white relative">
-          <div className="absolute inset-0 bg-surface-950/20 backdrop-blur-[2px]" />
+        <section className="py-24 bg-primary-600 text-white relative">
+          <div className="absolute inset-0 bg-primary-700/20" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
               Satu Platform untuk Semua Operasional Logistik Anda
@@ -764,12 +763,12 @@ export default function TMSPage() {
               Dari order masuk hingga pengiriman selesai -{" "}
               <strong className="text-white">TMS Onward</strong> memudahkan
               setiap langkahnya.{" "}
-              <span className="text-accent-300 font-bold">
+              <span className="text-accent-200 font-bold">
                 100% gratis, tanpa batasan.
               </span>
             </p>
-            <div className="inline-flex items-center glass rounded-full px-6 py-3 border border-primary-400/30">
-              <ClockIcon className="w-6 h-6 text-primary-300" />
+            <div className="inline-flex items-center bg-white/15 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+              <ClockIcon className="w-6 h-6 text-primary-200" />
               <span className="ml-3 font-medium text-white">
                 Dari manual ke digital dalam hitungan hari
               </span>
@@ -782,23 +781,23 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         <section
           ref={featureRef}
-          className="py-32 bg-surface-950 relative overflow-hidden"
+          className="py-32 bg-white relative overflow-hidden"
         >
           <div
-            className="orb orb-primary w-125 h-125 -right-40 top-40"
+            className="orb orb-primary w-[31rem] h-[31rem] -right-40 top-40"
             style={{ animation: "orbFloat2 15s ease-in-out infinite" }}
           />
           <div
-            className="orb orb-accent w-100 h-100 -left-20 bottom-40"
+            className="orb orb-accent w-[25rem] h-[25rem] -left-20 bottom-40"
             style={{ animation: "orbFloat1 18s ease-in-out infinite" }}
           />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-20">
-              <span className="inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 Fitur Lengkap
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white">
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-surface-950">
                 Semua yang Anda Butuh untuk Kelola Logistik
               </h2>
             </div>
@@ -806,7 +805,7 @@ export default function TMSPage() {
             <div className="space-y-24">
               <div className="grid md:grid-cols-3 gap-6 auto-rows-[400px]">
                 {/* Card 1: Live Tracking (Wide) */}
-                <div className="scroll-animate md:col-span-2 group relative glass rounded-[2.5rem] p-10 overflow-hidden border border-surface-700/50 hover:border-primary-500/30 transition-all duration-500 flex flex-col justify-end">
+                <div className="scroll-animate md:col-span-2 group relative rounded-[2.5rem] p-10 overflow-hidden border border-surface-200 shadow-xl shadow-surface-200/40 hover:border-primary-300 transition-all duration-500 flex flex-col justify-end">
                   <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-linear-to-t from-surface-950 via-surface-950/80 to-transparent z-10" />
                     <img
@@ -816,13 +815,13 @@ export default function TMSPage() {
                     />
                   </div>
                   <div className="relative z-20">
-                    <div className="w-14 h-14 bg-primary-500/10 rounded-2xl flex items-center justify-center text-primary-400 mb-6 border border-primary-500/20 backdrop-blur-md">
+                    <div className="w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-primary-600 mb-6 border border-white/50 backdrop-blur-md shadow-sm">
                       <MapPinIcon className="w-7 h-7" />
                     </div>
                     <h3 className="text-3xl lg:text-4xl font-bold font-display text-white mb-3 tracking-tight">
                       Live Tracking & Monitoring
                     </h3>
-                    <p className="text-surface-300 text-lg max-w-xl">
+                    <p className="text-surface-200 text-lg max-w-xl">
                       Pantau posisi armada di peta secara real-time. Berikan
                       informasi yang akurat kepada pelanggan tanpa perlu sering
                       menelepon supir.
@@ -831,7 +830,7 @@ export default function TMSPage() {
                 </div>
 
                 {/* Card 2: Manajemen Order (Square) */}
-                <div className="scroll-animate md:col-span-1 group relative glass rounded-[2.5rem] p-10 overflow-hidden border border-surface-700/50 hover:border-primary-500/30 transition-all duration-500 flex flex-col justify-end">
+                <div className="scroll-animate md:col-span-1 group relative rounded-[2.5rem] p-10 overflow-hidden border border-surface-200 shadow-xl shadow-surface-200/40 hover:border-primary-300 transition-all duration-500 flex flex-col justify-end">
                   <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-linear-to-t from-surface-950 via-surface-950/50 to-transparent z-10" />
                     <img
@@ -841,13 +840,13 @@ export default function TMSPage() {
                     />
                   </div>
                   <div className="relative z-20">
-                    <div className="w-14 h-14 bg-primary-500/10 rounded-2xl flex items-center justify-center text-primary-400 mb-6 border border-primary-500/20 backdrop-blur-md">
+                    <div className="w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-primary-600 mb-6 border border-white/50 backdrop-blur-md shadow-sm">
                       <ClipboardIcon className="w-7 h-7" />
                     </div>
                     <h3 className="text-2xl font-bold font-display text-white mb-3">
                       Manajemen Order
                     </h3>
-                    <p className="text-surface-300 text-base">
+                    <p className="text-surface-200 text-base">
                       Terima dan kelola ratusan order ekspedisi dengan sistem
                       terpusat. Proses dokumen menjadi lebih cepat dan minim
                       kesalahan manual.
@@ -856,7 +855,7 @@ export default function TMSPage() {
                 </div>
 
                 {/* Card 3: Penugasan & Rute Otomatis (Square) */}
-                <div className="scroll-animate md:col-span-1 group relative glass rounded-[2.5rem] p-10 overflow-hidden border border-surface-700/50 hover:border-accent-500/30 transition-all duration-500 flex flex-col justify-end">
+                <div className="scroll-animate md:col-span-1 group relative rounded-[2.5rem] p-10 overflow-hidden border border-surface-200 shadow-xl shadow-surface-200/40 hover:border-accent-300 transition-all duration-500 flex flex-col justify-end">
                   <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-linear-to-t from-surface-950 via-surface-950/50 to-transparent z-10" />
                     <img
@@ -866,13 +865,13 @@ export default function TMSPage() {
                     />
                   </div>
                   <div className="relative z-20 flex-1 flex flex-col justify-end">
-                    <div className="w-14 h-14 bg-accent-500/10 rounded-2xl flex items-center justify-center text-accent-400 mb-6 border border-accent-500/20 backdrop-blur-md">
+                    <div className="w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-accent-600 mb-6 border border-white/50 backdrop-blur-md shadow-sm">
                       <TruckIcon className="w-7 h-7" />
                     </div>
                     <h3 className="text-2xl font-bold font-display text-white mb-3">
                       Penugasan Rute
                     </h3>
-                    <p className="text-surface-300 text-base">
+                    <p className="text-surface-200 text-base">
                       Optimasi penugasan tanpa membuang armada secara berlebih.
                       Pilih rute perjalanan paling logis yang menghemat bahan
                       bakar.
@@ -881,7 +880,7 @@ export default function TMSPage() {
                 </div>
 
                 {/* Card 4: Analitik & Laporan (Wide) */}
-                <div className="scroll-animate md:col-span-2 group relative glass rounded-[2.5rem] p-10 overflow-hidden border border-surface-700/50 hover:border-accent-500/30 transition-all duration-500 flex flex-col justify-end">
+                <div className="scroll-animate md:col-span-2 group relative rounded-[2.5rem] p-10 overflow-hidden border border-surface-200 shadow-xl shadow-surface-200/40 hover:border-accent-300 transition-all duration-500 flex flex-col justify-end">
                   <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-linear-to-t from-surface-950 via-surface-950/80 to-transparent z-10 pointer-events-none" />
                     <img
@@ -891,13 +890,13 @@ export default function TMSPage() {
                     />
                   </div>
                   <div className="relative z-20 flex-1 flex flex-col justify-end">
-                    <div className="w-14 h-14 bg-accent-500/10 rounded-2xl flex items-center justify-center text-accent-400 mb-6 border border-accent-500/20 backdrop-blur-md">
+                    <div className="w-14 h-14 bg-white/90 rounded-2xl flex items-center justify-center text-accent-600 mb-6 border border-white/50 backdrop-blur-md shadow-sm">
                       <ChartIcon className="w-7 h-7" />
                     </div>
                     <h3 className="text-3xl lg:text-4xl font-bold font-display text-white mb-3 tracking-tight">
                       Analitik & Laporan
                     </h3>
-                    <p className="text-surface-300 text-lg max-w-xl">
+                    <p className="text-surface-200 text-lg max-w-xl">
                       Ambil keputusan bisnis berdasarkan data performa yang
                       terukur secara akurat. Dapatkan rekapitulasi data harian
                       hingga bulanan dalam satu klik cepat.
@@ -914,22 +913,22 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         <section
           ref={stepsRef}
-          className="py-32 bg-surface-900 border-y border-surface-800/50 relative"
+          className="py-32 bg-surface-50 border-y border-surface-200 relative"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-20">
-              <span className="inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 Cara Mulai
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white">
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-surface-950">
                 Gunakan TMS Onward dalam 3 Langkah Mudah
               </h2>
             </div>
 
             <div className="relative mt-20 md:mt-24">
               {/* Connecting Line (Desktop) */}
-              <div className="hidden md:block absolute top-6 left-[16.6%] right-[16.6%] h-1 bg-surface-800 rounded-full overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-r from-primary-600 via-primary-400 to-primary-600 opacity-50" />
+              <div className="hidden md:block absolute top-6 left-[16.6%] right-[16.6%] h-1 bg-surface-200 rounded-full overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-r from-primary-400 via-primary-500 to-primary-400 opacity-50" />
               </div>
 
               <div className="grid md:grid-cols-3 gap-12 relative">
@@ -940,18 +939,18 @@ export default function TMSPage() {
                     style={{ transitionDelay: `${i * 150}ms` }}
                   >
                     {/* Progress Connecting Node */}
-                    <div className="relative z-10 w-12 h-12 mx-auto gradient-primary rounded-full flex items-center justify-center font-bold font-display text-white text-xl shadow-[0_0_20px_rgba(var(--color-primary-500),0.3)] border-4 border-surface-900 group-hover:scale-125 transition-transform duration-500 delay-75">
+                    <div className="relative z-10 w-12 h-12 mx-auto bg-primary-600 rounded-full flex items-center justify-center font-bold font-display text-white text-xl shadow-lg shadow-primary-600/30 border-4 border-surface-50 group-hover:scale-125 transition-transform duration-500 delay-75">
                       {step.number}
                     </div>
 
                     {/* Step Content */}
-                    <div className="mt-8 text-center glass rounded-4xl p-8 hover:-translate-y-2 transition-all duration-500 border border-surface-700/50 group-hover:border-primary-500/40 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-linear-to-b from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="mt-8 text-center bg-white rounded-4xl p-8 hover:-translate-y-2 transition-all duration-500 border border-surface-100 shadow-lg shadow-surface-200/40 group-hover:border-primary-300 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-linear-to-b from-primary-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="relative z-10">
-                        <h3 className="text-xl md:text-2xl font-bold font-display text-white mb-3 group-hover:text-primary-300 transition-colors">
+                        <h3 className="text-xl md:text-2xl font-bold font-display text-surface-950 mb-3 group-hover:text-primary-700 transition-colors">
                           {step.title}
                         </h3>
-                        <p className="text-surface-400 leading-relaxed text-sm md:text-base">
+                        <p className="text-surface-600 leading-relaxed text-sm md:text-base">
                           {step.description}
                         </p>
                       </div>
@@ -966,13 +965,13 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         {/* BENEFITS SUMMARY SECTION */}
         {/* ═════════════════════════════════════════════════════════ */}
-        <section ref={benefitRef} className="py-24 bg-surface-950">
+        <section ref={benefitRef} className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
-              <span className="inline-block text-accent-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-accent-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 Keunggulan
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white">
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-surface-950">
                 Mengapa Memilih TMS Onward?
               </h2>
             </div>
@@ -981,18 +980,18 @@ export default function TMSPage() {
               {benefits.map((benefit, i) => (
                 <div
                   key={i}
-                  className="scroll-animate group relative glass rounded-4xl p-8 transition-all duration-500 border border-surface-700/50 hover:-translate-y-2 hover:border-primary-500/50 hover:bg-surface-800"
+                  className="scroll-animate group relative bg-white rounded-4xl p-8 transition-all duration-500 border border-surface-100 shadow-lg shadow-surface-200/30 hover:-translate-y-2 hover:border-primary-300 hover:shadow-xl"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <div className="absolute inset-0 bg-linear-to-br from-primary-500/5 to-transparent rounded-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-br from-primary-50 to-transparent rounded-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative z-10">
-                    <div className="w-16 h-16 bg-surface-900 rounded-2xl flex items-center justify-center text-primary-400 mb-6 border border-surface-700/50 group-hover:bg-primary-500/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 shadow-xl">
+                    <div className="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-600 mb-6 border border-primary-100 group-hover:bg-primary-100 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 shadow-sm">
                       {benefit.icon}
                     </div>
-                    <h3 className="text-xl font-bold font-display text-white mb-3 group-hover:text-primary-300 transition-colors">
+                    <h3 className="text-xl font-bold font-display text-surface-950 mb-3 group-hover:text-primary-700 transition-colors">
                       {benefit.title}
                     </h3>
-                    <p className="text-surface-400 text-sm md:text-base leading-relaxed wrap-break-word">
+                    <p className="text-surface-600 text-sm md:text-base leading-relaxed wrap-break-word">
                       {benefit.desc}
                     </p>
                   </div>
@@ -1007,14 +1006,14 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         <section
           ref={faqRef}
-          className="py-32 bg-surface-950 border-t border-surface-800/50"
+          className="py-32 bg-surface-50 border-t border-surface-200"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
-              <span className="inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 FAQ
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white">
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-surface-950">
                 Pertanyaan Umum
               </h2>
             </div>
@@ -1023,28 +1022,28 @@ export default function TMSPage() {
               {faqs.map((faq, i) => (
                 <div
                   key={i}
-                  className="scroll-animate glass rounded-3xl overflow-hidden border border-surface-700/50 hover:border-primary-500/50 transition-all duration-300"
+                  className="scroll-animate bg-white rounded-3xl overflow-hidden border border-surface-100 shadow-md shadow-surface-200/30 hover:border-primary-300 transition-all duration-300"
                 >
                   <button
                     onClick={() => toggleFaq(i)}
                     className="w-full px-8 py-6 flex items-center justify-between text-left group"
                   >
-                    <span className="text-lg font-semibold text-white pr-4 group-hover:text-primary-300 transition-colors">
+                    <span className="text-lg font-semibold text-surface-950 pr-4 group-hover:text-primary-700 transition-colors">
                       {faq.q}
                     </span>
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center glass shrink-0 transition-transform duration-500 ${openFaq === i ? "rotate-180 bg-primary-500/20" : ""}`}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center bg-surface-50 shrink-0 transition-transform duration-500 ${openFaq === i ? "rotate-180 bg-primary-50" : ""}`}
                     >
                       <ChevronIcon
-                        className="w-5 h-5 text-surface-300"
+                        className="w-5 h-5 text-surface-500"
                         open={openFaq === i}
                       />
                     </div>
                   </button>
                   <div
-                    className={`px-8 text-surface-400 leading-relaxed transition-all duration-500 delay-75 ease-in-out overflow-hidden ${openFaq === i ? "max-h-96 pb-8 opacity-100" : "max-h-0 pb-0 opacity-0"}`}
+                    className={`px-8 text-surface-600 leading-relaxed transition-all duration-500 delay-75 ease-in-out overflow-hidden ${openFaq === i ? "max-h-96 pb-8 opacity-100" : "max-h-0 pb-0 opacity-0"}`}
                   >
-                    <div className="w-full h-px bg-surface-800/50 mb-6" />
+                    <div className="w-full h-px bg-surface-200 mb-6" />
                     {faq.a}
                   </div>
                 </div>
@@ -1056,17 +1055,18 @@ export default function TMSPage() {
         {/* ═════════════════════════════════════════════════════════ */}
         {/* FINAL CTA SECTION */}
         {/* ═════════════════════════════════════════════════════════ */}
-        <section className="py-32 gradient-hero text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-surface-950/40 backdrop-blur-md" />
-          <div className="orb orb-primary w-125 h-125 -right-40 -top-40" />
-          <div className="orb orb-accent w-100 h-100 -left-20 -bottom-40" />
+        <section className="py-32 bg-surface-50 text-surface-950 relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute rounded-full mix-blend-multiply w-[45rem] h-[45rem]" style={{ background: "radial-gradient(circle, rgba(234, 88, 12, 0.12) 0%, transparent 70%)", top: "5%", right: "-5%", animation: "orbFloat1 10s ease-in-out infinite" }} />
+            <div className="absolute rounded-full mix-blend-multiply w-[45rem] h-[45rem]" style={{ background: "radial-gradient(circle, rgba(5, 150, 105, 0.12) 0%, transparent 70%)", bottom: "-10%", left: "-10%", animation: "orbFloat2 15s ease-in-out infinite" }} />
+          </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-display text-white mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-display text-surface-950 mb-8">
               Siap Bertransformasi{" "}
               <span className="gradient-text">Tanpa Biaya</span>?
             </h2>
-            <p className="text-xl text-surface-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-surface-600 mb-12 max-w-2xl mx-auto leading-relaxed">
               Gabung dengan komunitas logistik Indonesia yang telah berevolusi
               bersama TMS Onward.
             </p>
@@ -1074,7 +1074,7 @@ export default function TMSPage() {
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link
                 to="/signup"
-                className="group inline-flex items-center justify-center gradient-primary text-white px-12 py-5 rounded-3xl font-bold text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-105 active:scale-95"
+                className="group inline-flex items-center justify-center bg-primary-600 text-white px-12 py-5 rounded-3xl font-bold text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105 active:scale-95"
               >
                 Buat Akun Gratis
                 <svg

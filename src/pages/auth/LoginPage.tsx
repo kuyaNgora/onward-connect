@@ -85,13 +85,13 @@ export default function LoginPage() {
       </Helmet>
 
       {/* Full Screen Split Layout */}
-      <div className="flex w-full h-screen bg-surface-950 text-white overflow-hidden font-sans">
+      <div className="flex w-full h-screen bg-white text-surface-950 overflow-hidden font-sans">
         {/* LEFT SIDE - Form Content */}
         <div className="w-full lg:w-1/2 h-full overflow-y-auto scrollbar-hide relative p-8 sm:p-12 md:p-24 z-10 flex flex-col">
           {/* Subtle background glow for form area */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none min-h-200">
-            <div className="absolute w-96 h-96 bg-primary-500/10 rounded-full blur-[100px] top-0 left-0 animate-pulse" />
-            <div className="absolute w-125 h-125 bg-accent-500/10 rounded-full blur-[120px] bottom-0 right-0 opacity-50" />
+            <div className="absolute w-96 h-96 bg-primary-100/60 rounded-full blur-[100px] top-0 left-0 animate-pulse" />
+            <div className="absolute w-125 h-125 bg-accent-100/40 rounded-full blur-[120px] bottom-0 right-0 opacity-50" />
           </div>
 
           <div className="w-full max-w-md mx-auto my-auto relative py-8">
@@ -102,7 +102,7 @@ export default function LoginPage() {
                 className="inline-block transition-transform hover:scale-105"
               >
                 <img
-                  src="/logotype-white.png"
+                  src="/logotype.png"
                   alt="Onward Connect Logo"
                   className="h-10 w-auto object-contain"
                 />
@@ -111,10 +111,10 @@ export default function LoginPage() {
 
             {/* Dynamic Titles */}
             <div className="mb-10">
-              <h1 className="text-4xl font-black text-white font-display tracking-tight mb-3">
+              <h1 className="text-4xl font-black text-surface-950 font-display tracking-tight mb-3">
                 {loginStep === "form" ? "Selamat Datang" : "Pilih Sistem"}
               </h1>
-              <p className="text-lg text-surface-400">
+              <p className="text-lg text-surface-500">
                 {loginStep === "form"
                   ? "Masukkan kredensial Anda untuk mengakses platform logistik terpadu."
                   : "Pilih sistem operasional Anda untuk melanjutkan."}
@@ -130,8 +130,8 @@ export default function LoginPage() {
                 <form onSubmit={handleLoginSubmit} className="space-y-6">
                   {/* General Error Message */}
                   {getGeneralError() && (
-                    <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
-                      <p className="text-red-400 text-sm font-medium">
+                    <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+                      <p className="text-red-600 text-sm font-medium">
                         {getGeneralError()}
                       </p>
                     </div>
@@ -162,11 +162,11 @@ export default function LoginPage() {
                       id="remember"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="w-5 h-5 rounded border-surface-600 bg-surface-900 text-primary-500 focus:ring-primary-500/50 transition-colors cursor-pointer"
+                      className="w-5 h-5 rounded border-surface-300 bg-white text-primary-500 focus:ring-primary-500/50 transition-colors cursor-pointer"
                     />
                     <label
                       htmlFor="remember"
-                      className="ml-3 text-sm font-medium text-surface-300 select-none cursor-pointer"
+                      className="ml-3 text-sm font-medium text-surface-600 select-none cursor-pointer"
                     >
                       Ingat Saya
                     </label>
@@ -175,7 +175,7 @@ export default function LoginPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full gradient-primary text-white py-4 mt-4 rounded-xl font-bold text-lg shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none group relative overflow-hidden"
+                    className="w-full bg-primary-600 text-white py-4 mt-4 rounded-xl font-bold text-lg shadow-xl shadow-primary-600/25 hover:shadow-primary-600/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none group relative overflow-hidden"
                   >
                     {isLoading ? (
                       <svg
@@ -221,11 +221,11 @@ export default function LoginPage() {
                   </button>
                 </form>
 
-                <div className="mt-8 text-surface-400">
+                <div className="mt-8 text-surface-500">
                   Belum memiliki akun operasional?{" "}
                   <Link
                     to="/signup"
-                    className="text-primary-400 font-bold hover:text-primary-300 transition-colors"
+                    className="text-primary-600 font-bold hover:text-primary-700 transition-colors"
                   >
                     Daftar Sekarang
                   </Link>
@@ -241,13 +241,13 @@ export default function LoginPage() {
                     onClick={() => handleSystemSelect("tms")}
                     className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 flex items-center group ${
                       selectedSystemLocal === "tms"
-                        ? "border-primary-500 bg-primary-500/10"
-                        : "border-surface-800 bg-surface-900/50 hover:border-primary-500/50 hover:bg-surface-800"
+                        ? "border-primary-500 bg-primary-50"
+                        : "border-surface-200 bg-white hover:border-primary-300 hover:bg-surface-50"
                     }`}
                   >
-                    <div className="w-16 h-16 rounded-xl bg-primary-500/15 flex items-center justify-center mr-5 shadow-inner shadow-primary-500/20 group-hover:bg-primary-500/30 transition-all duration-300">
+                    <div className="w-16 h-16 rounded-xl bg-primary-50 flex items-center justify-center mr-5 group-hover:bg-primary-100 transition-all duration-300">
                       <svg
-                        className="w-8 h-8 text-primary-400"
+                        className="w-8 h-8 text-primary-600"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={1.5}
@@ -261,15 +261,15 @@ export default function LoginPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-bold text-white text-xl font-display mb-1">
+                      <h3 className="font-bold text-surface-950 text-xl font-display mb-1">
                         Onward TMS
                       </h3>
-                      <p className="text-surface-400 text-sm">
+                      <p className="text-surface-500 text-sm">
                         Sistem Manajemen Transportasi
                       </p>
                     </div>
                     <svg
-                      className="w-6 h-6 text-surface-500 ml-auto group-hover:text-primary-400 group-hover:translate-x-2 transition-all duration-300"
+                      className="w-6 h-6 text-surface-400 ml-auto group-hover:text-primary-600 group-hover:translate-x-2 transition-all duration-300"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2.5}
@@ -287,13 +287,13 @@ export default function LoginPage() {
                     onClick={() => handleSystemSelect("wms")}
                     className={`w-full p-6 text-left rounded-2xl border-2 transition-all duration-300 flex items-center group ${
                       selectedSystemLocal === "wms"
-                        ? "border-accent-500 bg-accent-500/10"
-                        : "border-surface-800 bg-surface-900/50 hover:border-accent-500/50 hover:bg-surface-800"
+                        ? "border-accent-500 bg-accent-50"
+                        : "border-surface-200 bg-white hover:border-accent-300 hover:bg-surface-50"
                     }`}
                   >
-                    <div className="w-16 h-16 rounded-xl bg-accent-500/15 flex items-center justify-center mr-5 shadow-inner shadow-accent-500/20 group-hover:bg-accent-500/30 transition-all duration-300">
+                    <div className="w-16 h-16 rounded-xl bg-accent-50 flex items-center justify-center mr-5 group-hover:bg-accent-100 transition-all duration-300">
                       <svg
-                        className="w-8 h-8 text-accent-400"
+                        className="w-8 h-8 text-accent-600"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={1.5}
@@ -307,15 +307,15 @@ export default function LoginPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-bold text-white text-xl font-display mb-1">
+                      <h3 className="font-bold text-surface-950 text-xl font-display mb-1">
                         Onward WMS
                       </h3>
-                      <p className="text-surface-400 text-sm">
+                      <p className="text-surface-500 text-sm">
                         Sistem Manajemen Gudang
                       </p>
                     </div>
                     <svg
-                      className="w-6 h-6 text-surface-500 ml-auto group-hover:text-accent-400 group-hover:translate-x-2 transition-all duration-300"
+                      className="w-6 h-6 text-surface-400 ml-auto group-hover:text-accent-600 group-hover:translate-x-2 transition-all duration-300"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2.5}
@@ -333,10 +333,10 @@ export default function LoginPage() {
             </div>
 
             {/* Back to Home Mobile-only (since desktop has nav space or side panel) */}
-            <div className="mt-8 pt-6 border-t border-surface-800/50">
+            <div className="mt-8 pt-6 border-t border-surface-200">
               <Link
                 to="/"
-                className="text-surface-500 hover:text-surface-300 font-medium transition-colors inline-flex items-center group"
+                className="text-surface-500 hover:text-surface-700 font-medium transition-colors inline-flex items-center group"
               >
                 <svg
                   className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"
@@ -358,7 +358,7 @@ export default function LoginPage() {
         </div>
 
         {/* RIGHT SIDE - Abstract Visual / Banner */}
-        <div className="hidden lg:block lg:w-1/2 relative bg-surface-900 border-l border-surface-800/50 overflow-hidden group">
+        <div className="hidden lg:block lg:w-1/2 relative bg-surface-900 border-l border-surface-200 overflow-hidden group">
           <img
             src="/images/login_banner.png"
             alt="Logistics Infrastructure"
@@ -369,11 +369,11 @@ export default function LoginPage() {
           <div className="absolute inset-0 bg-primary-500/10 mix-blend-overlay" />
 
           {/* Subtle text overlay */}
-          <div className="absolute bottom-16 left-16 right-16 z-10 glass p-8 rounded-3xl border border-surface-600/30 backdrop-blur-md">
+          <div className="absolute bottom-16 left-16 right-16 z-10 bg-surface-950/60 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-2xl">
             <h2 className="text-3xl font-black text-white font-display uppercase tracking-wider mb-2">
               The Digital Supply Chain
             </h2>
-            <p className="text-surface-300 text-lg leading-relaxed">
+            <p className="text-surface-100 text-lg leading-relaxed font-medium opacity-90">
               Mengakselerasi operasional pergudangan dan eksekusi transportasi
               melalui intelijen real-time dan ekosistem logistik yang terhubung
               secara penuh.

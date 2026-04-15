@@ -116,7 +116,7 @@ export default function Footer() {
             </p>
             <Link
               to="/signup"
-              className="inline-flex items-center gradient-primary text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-primary-500/20 transition-all duration-300 group"
+              className="inline-flex items-center bg-primary-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-primary-600/20 transition-all duration-300 group"
             >
               Daftar
               <svg

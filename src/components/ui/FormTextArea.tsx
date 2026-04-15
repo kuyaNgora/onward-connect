@@ -35,9 +35,9 @@ export function FormTextArea({
       {label && (
         <label
           htmlFor={id}
-          className="block text-sm font-semibold text-surface-300 mb-2"
+          className="block text-sm font-semibold text-surface-700 mb-2"
         >
-          {label} {requiredMark && <span className="text-accent-400">*</span>}
+          {label} {requiredMark && <span className="text-accent-600">*</span>}
         </label>
       )}
       <textarea
@@ -47,14 +47,14 @@ export function FormTextArea({
         onChange={onChange}
         placeholder={placeholder}
         rows={rows}
-        className={`w-full bg-surface-900 border-2 rounded-xl px-5 py-3.5 text-white placeholder:text-surface-600 focus:outline-none focus:ring-4 transition-all font-medium resize-none ${
+        className={`w-full bg-white border-2 rounded-xl px-5 py-3.5 text-surface-950 placeholder:text-surface-400 focus:outline-none focus:ring-4 transition-all font-medium resize-none ${
           hasError
-            ? "border-red-500 focus:ring-red-500/20 focus:border-red-500"
-            : "border-surface-800 focus:ring-primary-500/20 focus:border-primary-500"
+            ? "border-red-400 focus:ring-red-500/20 focus:border-red-500"
+            : "border-surface-200 focus:ring-primary-500/20 focus:border-primary-500"
         }`}
         {...rest}
       />
-      {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
+      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
     </div>
   );
 }

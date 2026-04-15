@@ -35,9 +35,9 @@ const PODGallery = ({ images = [] }: { images: any[] }) => {
   return (
     <>
       {/* Gallery Grid */}
-      <div className="bg-surface-900/60 backdrop-blur-xl rounded-3xl border border-surface-700/50 overflow-hidden p-6 sm:p-8 mt-8 shadow-2xl">
-        <h2 className="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-3">
-          <div className="p-2 bg-primary-500/10 rounded-lg text-primary-400">
+      <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-surface-200 overflow-hidden p-6 sm:p-8 mt-8 shadow-xl">
+        <h2 className="text-sm font-bold text-surface-950 uppercase tracking-widest mb-6 flex items-center gap-3">
+          <div className="p-2 bg-primary-50 rounded-lg text-primary-600">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
@@ -49,7 +49,7 @@ const PODGallery = ({ images = [] }: { images: any[] }) => {
             <button
               key={index}
               onClick={() => openLightbox(index)}
-              className="relative aspect-square rounded-2xl overflow-hidden group active:scale-95 transition-all shadow-lg ring-1 ring-surface-700/50 hover:ring-primary-500/50"
+              className="relative aspect-square rounded-2xl overflow-hidden group active:scale-95 transition-all shadow-md ring-1 ring-surface-200 hover:ring-primary-300"
             >
               <img
                 src={image.url}
@@ -151,62 +151,62 @@ const STATUS_CONFIG: Record<
 > = {
   created: {
     label: "CREATED",
-    color: "text-surface-200",
-    bg: "bg-surface-700/30 border-surface-600/30",
+    color: "text-surface-600",
+    bg: "bg-surface-100 border-surface-200",
     dot: "bg-surface-400",
   },
   pending: {
     label: "PENDING",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/20",
+    color: "text-amber-700",
+    bg: "bg-amber-50 border-amber-200",
     dot: "bg-amber-500",
   },
   dispatched: {
     label: "DISPATCHED",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10 border-blue-500/20",
+    color: "text-blue-700",
+    bg: "bg-blue-50 border-blue-200",
     dot: "bg-blue-500",
   },
   picked_up: {
     label: "PICKED UP",
-    color: "text-indigo-400",
-    bg: "bg-indigo-500/10 border-indigo-500/20",
+    color: "text-indigo-700",
+    bg: "bg-indigo-50 border-indigo-200",
     dot: "bg-indigo-500",
   },
   in_transit: {
     label: "IN TRANSIT",
-    color: "text-primary-400",
-    bg: "bg-primary-500/10 border-primary-500/20",
+    color: "text-primary-700",
+    bg: "bg-primary-50 border-primary-200",
     dot: "bg-primary-500",
   },
   out_for_delivery: {
     label: "OUT FOR DELIVERY",
-    color: "text-accent-400",
-    bg: "bg-accent-500/10 border-accent-500/20",
+    color: "text-accent-700",
+    bg: "bg-accent-50 border-accent-200",
     dot: "bg-accent-500",
   },
   delivered: {
     label: "DELIVERED",
-    color: "text-green-400",
-    bg: "bg-green-500/10 border-green-500/20",
+    color: "text-green-700",
+    bg: "bg-green-50 border-green-200",
     dot: "bg-green-500",
   },
   completed: {
     label: "COMPLETED",
-    color: "text-green-400",
-    bg: "bg-green-500/10 border-green-500/20",
+    color: "text-green-700",
+    bg: "bg-green-50 border-green-200",
     dot: "bg-green-500",
   },
   returned: {
     label: "RETURNED",
-    color: "text-orange-400",
-    bg: "bg-orange-500/10 border-orange-500/20",
+    color: "text-orange-700",
+    bg: "bg-orange-50 border-orange-200",
     dot: "bg-orange-500",
   },
   failed: {
     label: "FAILED",
-    color: "text-red-400",
-    bg: "bg-red-500/10 border-red-500/20",
+    color: "text-red-700",
+    bg: "bg-red-50 border-red-200",
     dot: "bg-red-500",
   },
 };
@@ -300,9 +300,9 @@ const WaypointTimeline = ({
 }) => {
   if (!waypoint_history || waypoint_history.length === 0) {
     return (
-      <div className="bg-surface-900/60 backdrop-blur-xl rounded-3xl p-12 text-center border border-surface-700/50">
+      <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-12 text-center border border-surface-200 shadow-lg">
         <div className="text-5xl mb-6 opacity-50 animate-bounce">⏳</div>
-        <p className="text-sm font-bold text-surface-400 uppercase tracking-widest">
+        <p className="text-sm font-bold text-surface-500 uppercase tracking-widest">
           Awaiting Status Updates
         </p>
       </div>
@@ -319,20 +319,20 @@ const WaypointTimeline = ({
   };
 
   return (
-    <div className="bg-surface-900/60 backdrop-blur-xl rounded-3xl border border-surface-700/50 overflow-hidden shadow-2xl">
-      <div className="px-8 py-5 border-b border-surface-700/50 bg-surface-800/30 flex items-center justify-between">
-        <h2 className="text-sm font-bold text-white uppercase tracking-widest flex items-center gap-3">
-          <div className="p-2 bg-primary-500/10 rounded-lg text-primary-400 shadow-[0_0_15px_rgba(var(--color-primary-500),0.2)]">
+    <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-surface-200 overflow-hidden shadow-xl">
+      <div className="px-8 py-5 border-b border-surface-200 bg-surface-50/50 flex items-center justify-between">
+        <h2 className="text-sm font-bold text-surface-950 uppercase tracking-widest flex items-center gap-3">
+          <div className="p-2 bg-primary-50 rounded-lg text-primary-600 shadow-sm">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
           Journey Log
         </h2>
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-[0_0_10px_rgba(var(--color-primary-500),0.1)]">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-black uppercase tracking-widest">
           <div className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-400" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500" />
           </div>
           LIVE
         </div>
@@ -341,7 +341,7 @@ const WaypointTimeline = ({
       <div className="p-8">
         <div className="relative pl-4">
           {/* Vertical line gradient */}
-          <div className="absolute left-[35px] top-4 bottom-8 w-[2px] bg-gradient-to-b from-primary-500 via-surface-700 to-transparent rounded-full opacity-60" />
+          <div className="absolute left-[35px] top-4 bottom-8 w-[2px] bg-gradient-to-b from-primary-500 via-surface-200 to-transparent rounded-full opacity-60" />
 
           <div className="space-y-10">
             {sortedLogs.map((log, index) => {
@@ -357,23 +357,23 @@ const WaypointTimeline = ({
                   <div
                     className={`relative z-10 flex-shrink-0 h-10 w-10 rounded-2xl flex items-center justify-center transition-all duration-500 ${
                       isLatest
-                        ? "bg-primary-500 text-white shadow-[0_0_20px_rgba(var(--color-primary-500),0.4)] scale-110 rotate-3"
-                        : "bg-surface-800 text-surface-400 border border-surface-700 group-hover:bg-surface-700 group-hover:scale-105"
+                        ? "bg-primary-500 text-white shadow-lg shadow-primary-500/30 scale-110 rotate-3"
+                        : "bg-surface-100 text-surface-500 border border-surface-200 group-hover:bg-surface-200 group-hover:scale-105"
                     }`}
                   >
                     <WaypointIcon status={log.status} className={isLatest ? "text-white" : ""} />
                   </div>
 
                   {/* Content Card */}
-                  <div className={`flex-1 min-w-0 bg-surface-800/20 rounded-2xl p-5 border transition-all duration-300 ${
-                    isLatest ? "border-primary-500/30 bg-primary-500/5 shadow-xl" : "border-surface-700/50 group-hover:bg-surface-800/40"
+                  <div className={`flex-1 min-w-0 bg-white rounded-2xl p-5 border transition-all duration-300 ${
+                    isLatest ? "border-primary-300 bg-primary-50/50 shadow-lg" : "border-surface-200 shadow-sm group-hover:bg-surface-50"
                   }`}>
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
                       <div>
-                        <p className={`text-base font-black tracking-wide ${isLatest ? "text-white" : "text-surface-100"}`}>
+                        <p className={`text-base font-black tracking-wide ${isLatest ? "text-surface-950" : "text-surface-800"}`}>
                           {log.location_name || log.address || ""}
                         </p>
-                        <p className="text-[11px] font-medium text-surface-400 mt-1 uppercase tracking-wider flex items-center gap-1.5">
+                        <p className="text-[11px] font-medium text-surface-500 mt-1 uppercase tracking-wider flex items-center gap-1.5">
                           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                           {formatDate(log.changed_at)}
                         </p>
@@ -384,8 +384,8 @@ const WaypointTimeline = ({
                     </div>
 
                     {log.location_name && log.address && (
-                      <p className="text-xs text-surface-300 mb-4 leading-relaxed flex items-start gap-2">
-                        <svg className="w-4 h-4 text-surface-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                      <p className="text-xs text-surface-600 mb-4 leading-relaxed flex items-start gap-2">
+                        <svg className="w-4 h-4 text-surface-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         {log.address}
                       </p>
                     )}
@@ -400,7 +400,7 @@ const WaypointTimeline = ({
                             .map((photo: string, i: number) => (
                               <div
                                 key={i}
-                                className="relative aspect-square rounded-xl overflow-hidden shadow-md ring-1 ring-surface-700 hover:ring-primary-500/50 transition-all cursor-pointer group/photo"
+                                className="relative aspect-square rounded-xl overflow-hidden shadow-sm ring-1 ring-surface-200 hover:ring-primary-300 transition-all cursor-pointer group/photo"
                               >
                                 <img
                                   src={photo}
@@ -418,9 +418,9 @@ const WaypointTimeline = ({
                       )}
 
                     {log.notes && (
-                      <div className="mt-3 inline-flex px-4 py-2 bg-surface-950/50 rounded-xl border border-surface-700/50 shadow-inner">
-                        <p className="text-xs text-surface-300">
-                          <span className="font-black text-primary-400 mr-2 tracking-widest text-[10px]">
+                      <div className="mt-3 inline-flex px-4 py-2 bg-surface-50 rounded-xl border border-surface-200">
+                        <p className="text-xs text-surface-700">
+                          <span className="font-black text-primary-600 mr-2 tracking-widest text-[10px]">
                             NOTE
                           </span>
                           {log.notes}
@@ -432,12 +432,12 @@ const WaypointTimeline = ({
                     {log.status === "completed" &&
                       log.type === "delivery" &&
                       waypointImage?.received_by && (
-                        <div className="mt-4 px-4 py-3 bg-green-500/10 border border-green-500/20 rounded-xl">
-                           <div className="text-xs font-black text-green-400 flex items-center gap-2 uppercase tracking-wide">
-                             <div className="p-1.5 bg-green-500/20 rounded-lg">
+                        <div className="mt-4 px-4 py-3 bg-green-50 border border-green-200 rounded-xl">
+                           <div className="text-xs font-black text-green-700 flex items-center gap-2 uppercase tracking-wide">
+                             <div className="p-1.5 bg-green-100 rounded-lg">
                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" /></svg>
                              </div>
-                             Handed to: <span className="text-white">{waypointImage.received_by}</span>
+                             Handed to: <span className="text-surface-950">{waypointImage.received_by}</span>
                            </div>
                         </div>
                       )}
@@ -498,10 +498,10 @@ export default function TrackingResultPage() {
           <div className="mb-8 flex justify-between items-center">
             <button
               onClick={handleBack}
-              className="group inline-flex items-center gap-2 px-4 py-2 bg-surface-900/60 backdrop-blur-md border border-surface-700/50 rounded-full text-[11px] font-black text-surface-300 uppercase tracking-widest hover:text-white hover:bg-primary-500/20 hover:border-primary-500/50 transition-all shadow-lg"
+              className="group inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md border border-surface-200 rounded-full text-[11px] font-black text-surface-600 uppercase tracking-widest hover:text-primary-700 hover:bg-primary-50 hover:border-primary-300 transition-all shadow-sm"
             >
               <svg
-                className="w-4 h-4 transition-transform group-hover:-translate-x-1 text-primary-400 group-hover:text-white"
+                className="w-4 h-4 transition-transform group-hover:-translate-x-1 text-primary-600 group-hover:text-primary-700"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={3}
@@ -513,8 +513,8 @@ export default function TrackingResultPage() {
             </button>
 
             {trackingData && (
-              <div className="hidden sm:flex text-[10px] font-bold text-surface-400 uppercase tracking-widest bg-surface-900/60 backdrop-blur-md px-4 py-2 border border-surface-700/50 rounded-full shadow-lg items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+              <div className="hidden sm:flex text-[10px] font-bold text-surface-500 uppercase tracking-widest bg-white/80 backdrop-blur-md px-4 py-2 border border-surface-200 rounded-full shadow-sm items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
                 System Online
               </div>
             )}
@@ -524,29 +524,29 @@ export default function TrackingResultPage() {
           {isLoading && (
             <div className="space-y-8 animate-pulse">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="md:col-span-2 bg-surface-900/60 rounded-3xl p-8 border border-surface-700/50 h-48" />
-                <div className="bg-surface-900/60 rounded-3xl p-6 border border-surface-700/50 h-48" />
+                <div className="md:col-span-2 bg-white/60 rounded-3xl p-8 border border-surface-200 h-48" />
+                <div className="bg-white/60 rounded-3xl p-6 border border-surface-200 h-48" />
               </div>
-              <div className="bg-surface-900/60 rounded-3xl p-8 border border-surface-700/50 h-96" />
+              <div className="bg-white/60 rounded-3xl p-8 border border-surface-200 h-96" />
             </div>
           )}
 
           {/* Error State */}
           {error && !isLoading && (
-            <div className="flex flex-col items-center justify-center py-20 bg-surface-900/60 backdrop-blur-xl border border-red-500/20 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-red-500/5" />
-              <div className="w-20 h-20 bg-red-500/20 border border-red-500/30 rounded-3xl flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(239,68,68,0.2)] rotate-12 relative z-10">
+            <div className="flex flex-col items-center justify-center py-20 bg-white/80 backdrop-blur-xl border border-red-200 rounded-3xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-red-50/50" />
+              <div className="w-20 h-20 bg-red-50 border border-red-200 rounded-3xl flex items-center justify-center mb-6 shadow-sm rotate-12 relative z-10">
                 <span className="text-4xl">⚠️</span>
               </div>
-              <h2 className="text-2xl font-black text-white mb-3 uppercase tracking-widest relative z-10">
+              <h2 className="text-2xl font-black text-surface-950 mb-3 uppercase tracking-widest relative z-10">
                 Order Not Found
               </h2>
-              <p className="text-sm text-surface-400 text-center mb-10 max-w-sm relative z-10 leading-relaxed">
-                We couldn't retrieve tracking information for <strong className="text-white">"{orderNumber}"</strong>. Please verify the tracking number and try again.
+              <p className="text-sm text-surface-600 text-center mb-10 max-w-sm relative z-10 leading-relaxed">
+                We couldn't retrieve tracking information for <strong className="text-surface-950">"{orderNumber}"</strong>. Please verify the tracking number and try again.
               </p>
               <button
                 onClick={handleBack}
-                className="px-8 py-4 gradient-primary border border-primary-500/50 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:shadow-lg hover:shadow-primary-500/20 hover:-translate-y-1 transition-all relative z-10"
+                className="px-8 py-4 bg-primary-600 border border-primary-500 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:shadow-lg hover:shadow-primary-600/20 hover:-translate-y-1 transition-all relative z-10"
               >
                 Enter Another Code
               </button>
@@ -560,7 +560,7 @@ export default function TrackingResultPage() {
               {/* Bento Grid Header */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Main Order Highlight (Spans 2 columns on desktop) */}
-                <div className="md:col-span-2 bg-gradient-to-br from-surface-900/80 to-surface-900/40 backdrop-blur-xl rounded-3xl p-8 border border-surface-700/50 shadow-2xl relative overflow-hidden group">
+                <div className="md:col-span-2 bg-white/80 backdrop-blur-xl rounded-3xl p-8 border border-surface-200 shadow-xl relative overflow-hidden group">
                   {/* Decorative background watermark */}
                   <div className="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity duration-700">
                     <svg className="w-64 h-64 text-primary-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -569,13 +569,13 @@ export default function TrackingResultPage() {
                   <div className="relative z-10 flex flex-col h-full justify-between gap-6">
                     <div className="flex flex-wrap items-start justify-between gap-4">
                        <div className="flex flex-wrap gap-2">
-                         <div className="px-4 py-1.5 bg-surface-950/60 border border-surface-700/50 rounded-full text-[10px] font-black text-surface-300 uppercase tracking-widest flex items-center gap-2 shadow-inner">
-                           <svg className="w-3 h-3 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" /></svg>
+                         <div className="px-4 py-1.5 bg-surface-50 border border-surface-200 rounded-full text-[10px] font-black text-surface-600 uppercase tracking-widest flex items-center gap-2">
+                           <svg className="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" /></svg>
                            {trackingData.order_number || orderNumber}
                          </div>
-                         {trackingData.ref_code && (
-                           <div className="px-4 py-1.5 bg-surface-950/60 border border-surface-700/50 rounded-full text-[10px] font-black text-surface-300 uppercase tracking-widest flex items-center gap-2 shadow-inner">
-                             REF: {trackingData.ref_code}
+                         {trackingData.reference_code && (
+                           <div className="px-4 py-1.5 bg-surface-50 border border-surface-200 rounded-full text-[10px] font-black text-surface-600 uppercase tracking-widest flex items-center gap-2">
+                             REF: {trackingData.reference_code}
                            </div>
                          )}
                        </div>
@@ -583,12 +583,12 @@ export default function TrackingResultPage() {
                     </div>
 
                     <div>
-                      <h3 className="text-[10px] font-bold text-primary-400 uppercase tracking-widest mb-1.5">Recipient</h3>
-                      <h2 className="text-3xl sm:text-4xl font-black font-display text-white tracking-tight uppercase leading-none drop-shadow-md">
+                      <h3 className="text-[10px] font-bold text-primary-600 uppercase tracking-widest mb-1.5">Recipient</h3>
+                      <h2 className="text-3xl sm:text-4xl font-black font-display text-surface-950 tracking-tight uppercase leading-none">
                         {trackingData.customer_name || "Shipment"}
                       </h2>
                       {trackingData.order_type && (
-                        <div className="inline-block mt-4 px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-lg text-[10px] font-black text-purple-400 uppercase tracking-widest">
+                        <div className="inline-block mt-4 px-3 py-1 bg-purple-50 border border-purple-200 rounded-lg text-[10px] font-black text-purple-700 uppercase tracking-widest">
                           TYPE: {trackingData.order_type}
                         </div>
                       )}
@@ -597,18 +597,18 @@ export default function TrackingResultPage() {
                 </div>
 
                 {/* Logistics Info Card */}
-                <div className="bg-surface-900/60 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-surface-700/50 shadow-xl flex flex-col gap-6 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-3xl" />
+                <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-surface-200 shadow-lg flex flex-col gap-6 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100/50 rounded-full blur-3xl" />
 
                   <div className="relative z-10">
                     <p className="text-[10px] font-bold text-surface-500 uppercase tracking-widest mb-1">Issue Date</p>
-                    <p className="text-sm font-bold text-white flex items-center gap-2">
-                       <svg className="w-4 h-4 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <p className="text-sm font-bold text-surface-950 flex items-center gap-2">
+                       <svg className="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                        {formatDate(trackingData.created_at || new Date().toISOString())}
                     </p>
                   </div>
 
-                  <div className="h-px w-full bg-gradient-to-r from-surface-700 to-transparent relative z-10" />
+                  <div className="h-px w-full bg-gradient-to-r from-surface-200 to-transparent relative z-10" />
 
                   <div className="relative z-10 space-y-4">
                     {trackingData.driver && (
@@ -617,7 +617,7 @@ export default function TrackingResultPage() {
                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                            Driver
                          </p>
-                         <p className="text-sm font-bold text-white uppercase">{trackingData.driver.name}</p>
+                         <p className="text-sm font-bold text-surface-950 uppercase">{trackingData.driver.name}</p>
                        </div>
                     )}
 
@@ -627,13 +627,13 @@ export default function TrackingResultPage() {
                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
                            Vehicle Plate
                          </p>
-                         <p className="text-sm font-black text-primary-400 uppercase tracking-wider">{trackingData.vehicle.plate_number}</p>
+                         <p className="text-sm font-black text-primary-600 uppercase tracking-wider">{trackingData.vehicle.plate_number}</p>
                        </div>
                     )}
 
                     {!trackingData.driver && !trackingData.vehicle && (
-                       <div className="h-full flex items-center justify-center p-4 bg-surface-800/30 rounded-xl border border-surface-700 border-dashed">
-                         <p className="text-[10px] text-surface-400 uppercase tracking-widest text-center">No driver assigned</p>
+                       <div className="h-full flex items-center justify-center p-4 bg-surface-50 rounded-xl border border-surface-200 border-dashed">
+                         <p className="text-[10px] text-surface-500 uppercase tracking-widest text-center">No driver assigned</p>
                        </div>
                     )}
                   </div>

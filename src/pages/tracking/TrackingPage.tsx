@@ -54,20 +54,20 @@ export default function TrackingPage() {
       {/* Hero Section */}
       <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 relative z-10">
         {/* Badge */}
-        <div className="inline-block px-4 py-1.5 rounded-full bg-surface-900/80 backdrop-blur-md border border-primary-500/20 text-primary-400 text-[10px] font-bold uppercase tracking-widest mb-4 shadow-[0_0_15px_rgba(var(--color-primary-500),0.2)]">
+        <div className="inline-block px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-4 shadow-sm">
           Order Tracking System
         </div>
 
         {/* Title */}
-        <h1 className="text-5xl sm:text-6xl font-black text-white mb-6 tracking-tight text-center drop-shadow-xl">
+        <h1 className="text-5xl sm:text-6xl font-black text-surface-950 mb-6 tracking-tight text-center">
           Dimana{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-500">
             Pesanan Saya?
           </span>{" "}
         </h1>
 
         {/* Subtitle */}
-        <p className="text-base text-surface-300 max-w-lg mx-auto leading-relaxed text-center mb-10 drop-shadow-md">
+        <p className="text-base text-surface-600 max-w-lg mx-auto leading-relaxed text-center mb-10">
           Masukkan nomor order atau resi di bawah untuk melihat perjalanan pesanan
           Anda secara real-time.
         </p>
@@ -75,8 +75,8 @@ export default function TrackingPage() {
         {/* Tracking Form */}
         <div className="max-w-2xl mx-auto w-full relative group">
           {/* Glow effect */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-3xl blur-md opacity-30 group-hover:opacity-60 transition-opacity duration-1000" />
-          <div className="relative bg-surface-900/60 backdrop-blur-xl rounded-2xl p-2 sm:p-4 shadow-2xl shadow-black/50 border border-surface-700/50">
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-3xl blur-md opacity-30 group-hover:opacity-60 transition-opacity duration-1000" />
+          <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl p-2 sm:p-4 shadow-xl shadow-surface-200/40 border border-surface-200">
             <form onSubmit={handleSubmit} className="w-full">
               <div className="flex flex-col sm:flex-row gap-2 relative">
                 <div
@@ -87,7 +87,7 @@ export default function TrackingPage() {
                   {/* Search icon */}
                   <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-surface-400">
                     <svg
-                      className={`w-5 h-5 transition-colors duration-300 ${isFocused ? "text-primary-400 drop-shadow-[0_0_8px_rgba(var(--color-primary-400),0.5)]" : ""}`}
+                      className={`w-5 h-5 transition-colors duration-300 ${isFocused ? "text-primary-600" : ""}`}
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -108,18 +108,18 @@ export default function TrackingPage() {
                     onBlur={() => setIsFocused(false)}
                     onChange={(e) => handleInputChange(e.target.value)}
                     placeholder="Search order number..."
-                    className={`w-full pl-12 pr-4 py-4 text-sm font-medium bg-surface-950/50 text-white rounded-xl border-2 transition-all duration-300 outline-none ${
+                    className={`w-full pl-12 pr-4 py-4 text-sm font-medium bg-surface-50 text-surface-950 rounded-xl border-2 transition-all duration-300 outline-none ${
                       error
-                        ? "border-red-500/50 bg-red-500/10"
+                        ? "border-red-400 bg-red-50"
                         : isFocused
-                        ? "border-primary-500/40 bg-surface-900/80 ring-4 ring-primary-500/10 shadow-[inner_0_0_20px_rgba(var(--color-primary-500),0.1)]"
-                        : "border-surface-700/50 hover:border-surface-600/80"
-                    } placeholder:text-surface-500`}
+                        ? "border-primary-400 bg-white ring-4 ring-primary-500/10"
+                        : "border-surface-200 hover:border-surface-300"
+                    } placeholder:text-surface-400`}
                   />
 
                   {/* Error message */}
                   {error && (
-                     <div className="absolute -top-8 left-0 text-[11px] font-bold text-red-400 uppercase tracking-wider bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 backdrop-blur-sm">
+                     <div className="absolute -top-8 left-0 text-[11px] font-bold text-red-600 uppercase tracking-wider bg-red-50 px-3 py-1 rounded-full border border-red-200 backdrop-blur-sm">
                       {error}
                     </div>
                   )}
@@ -128,7 +128,7 @@ export default function TrackingPage() {
                 <button
                   type="submit"
                   disabled={!orderNumber.trim()}
-                  className="px-8 py-4 gradient-primary text-white text-sm font-bold rounded-xl shadow-xl shadow-primary-500/20 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:grayscale disabled:pointer-events-none whitespace-nowrap"
+                  className="px-8 py-4 bg-primary-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-primary-600/20 hover:shadow-xl hover:shadow-primary-600/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:grayscale disabled:pointer-events-none whitespace-nowrap"
                 >
                   Lacak
                 </button>
@@ -136,18 +136,18 @@ export default function TrackingPage() {
 
               {/* Examples */}
               <div className="mt-4 flex flex-wrap justify-center gap-3 items-center">
-                <span className="text-[10px] font-bold text-surface-400 uppercase tracking-widest bg-surface-900/50 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-bold text-surface-500 uppercase tracking-widest bg-surface-100 px-2 py-0.5 rounded">
                   Examples:
                 </span>
                 <button
                   type="button"
-                  className="text-[11px] font-mono font-medium text-surface-300 hover:text-white bg-surface-800/50 hover:bg-primary-500/20 hover:border-primary-500/30 border border-surface-700/50 px-3 py-1 rounded-full transition-all cursor-pointer"
+                  className="text-[11px] font-mono font-medium text-surface-600 hover:text-surface-950 bg-white hover:bg-primary-50 hover:border-primary-300 border border-surface-200 px-3 py-1 rounded-full transition-all cursor-pointer shadow-sm"
                 >
                   ORD-001
                 </button>
                 <button
                   type="button"
-                  className="text-[11px] font-mono font-medium text-surface-300 hover:text-white bg-surface-800/50 hover:bg-primary-500/20 hover:border-primary-500/30 border border-surface-700/50 px-3 py-1 rounded-full transition-all cursor-pointer"
+                  className="text-[11px] font-mono font-medium text-surface-600 hover:text-surface-950 bg-white hover:bg-primary-50 hover:border-primary-300 border border-surface-200 px-3 py-1 rounded-full transition-all cursor-pointer shadow-sm"
                 >
                   TRK-123
                 </button>
@@ -158,43 +158,43 @@ export default function TrackingPage() {
 
         {/* Features */}
         <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto w-full">
-          <div className="text-left overflow-hidden group bg-surface-900/40 backdrop-blur-md rounded-2xl p-6 border border-surface-800/50 hover:border-primary-500/30 hover:bg-surface-800/60 transition-all duration-500 relative min-h-[160px] flex flex-col justify-end">
-            <div className="absolute top-1/2 -translate-y-1/2 -left-4 text-[140px] sm:text-[180px] font-black leading-none text-surface-800/20 group-hover:text-primary-500/25 group-hover:scale-110 origin-left transition-all duration-700 select-none z-0">
+          <div className="text-left overflow-hidden group bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-surface-200 shadow-lg shadow-surface-200/30 hover:border-primary-300 hover:shadow-xl transition-all duration-500 relative min-h-[160px] flex flex-col justify-end">
+            <div className="absolute top-1/2 -translate-y-1/2 -left-4 text-[140px] sm:text-[180px] font-black leading-none text-surface-100 group-hover:text-primary-100 group-hover:scale-110 origin-left transition-all duration-700 select-none z-0">
               1
             </div>
             <div className="relative z-10 mt-auto pt-16">
-              <h3 className="text-sm font-bold text-white mb-2">
+              <h3 className="text-sm font-bold text-surface-950 mb-2">
                 Real-Time
               </h3>
-              <p className="text-xs text-surface-400 leading-relaxed">
+              <p className="text-xs text-surface-600 leading-relaxed">
                 Instant status updates
               </p>
             </div>
           </div>
 
-          <div className="text-left overflow-hidden group bg-surface-900/40 backdrop-blur-md rounded-2xl p-6 border border-surface-800/50 hover:border-primary-500/30 hover:bg-surface-800/60 transition-all duration-500 relative min-h-[160px] flex flex-col justify-end">
-             <div className="absolute top-1/2 -translate-y-1/2 -left-4 text-[140px] sm:text-[180px] font-black leading-none text-surface-800/20 group-hover:text-primary-500/25 group-hover:scale-110 origin-left transition-all duration-700 select-none z-0">
+          <div className="text-left overflow-hidden group bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-surface-200 shadow-lg shadow-surface-200/30 hover:border-primary-300 hover:shadow-xl transition-all duration-500 relative min-h-[160px] flex flex-col justify-end">
+             <div className="absolute top-1/2 -translate-y-1/2 -left-4 text-[140px] sm:text-[180px] font-black leading-none text-surface-100 group-hover:text-primary-100 group-hover:scale-110 origin-left transition-all duration-700 select-none z-0">
               2
             </div>
             <div className="relative z-10 mt-auto pt-16">
-              <h3 className="text-sm font-bold text-white mb-2">
+              <h3 className="text-sm font-bold text-surface-950 mb-2">
                 Timeline
               </h3>
-              <p className="text-xs text-surface-400 leading-relaxed">
+              <p className="text-xs text-surface-600 leading-relaxed">
                 Detailed journey log
               </p>
             </div>
           </div>
 
-          <div className="text-left overflow-hidden group bg-surface-900/40 backdrop-blur-md rounded-2xl p-6 border border-surface-800/50 hover:border-primary-500/30 hover:bg-surface-800/60 transition-all duration-500 relative min-h-[160px] flex flex-col justify-end">
-             <div className="absolute top-1/2 -translate-y-1/2 -left-4 text-[140px] sm:text-[180px] font-black leading-none text-surface-800/20 group-hover:text-primary-500/25 group-hover:scale-110 origin-left transition-all duration-700 select-none z-0">
+          <div className="text-left overflow-hidden group bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-surface-200 shadow-lg shadow-surface-200/30 hover:border-primary-300 hover:shadow-xl transition-all duration-500 relative min-h-[160px] flex flex-col justify-end">
+             <div className="absolute top-1/2 -translate-y-1/2 -left-4 text-[140px] sm:text-[180px] font-black leading-none text-surface-100 group-hover:text-primary-100 group-hover:scale-110 origin-left transition-all duration-700 select-none z-0">
               3
             </div>
             <div className="relative z-10 mt-auto pt-16">
-              <h3 className="text-sm font-bold text-white mb-2">
+              <h3 className="text-sm font-bold text-surface-950 mb-2">
                 Proof
               </h3>
-              <p className="text-xs text-surface-400 leading-relaxed">
+              <p className="text-xs text-surface-600 leading-relaxed">
                 Signatures & photos
               </p>
             </div>

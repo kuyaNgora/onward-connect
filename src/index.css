@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* Primary teal palette – based on oklch(59.6% .1274 163.23) */
-  --color-primary-50: oklch(97% .012 163.23);
-  --color-primary-100: oklch(93% .028 163.23);
-  --color-primary-200: oklch(87% .055 163.23);
-  --color-primary-300: oklch(78% .085 163.23);
-  --color-primary-400: oklch(68% .11 163.23);
-  --color-primary-500: oklch(59.6% .1274 163.23);
-  --color-primary-600: oklch(52% .112 163.23);
-  --color-primary-700: oklch(44% .092 163.23);
-  --color-primary-800: oklch(37.8% .073 168.94);
-  --color-primary-900: oklch(30% .058 168.94);
-  --color-primary-950: oklch(22% .038 168.94);
+  /* Primary emerald palette – based on #059669 */
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+  --color-primary-950: #022c22;
 
-  /* Accent orange palette – based on oklch(64.61% .1943 41.12) */
-  --color-accent-50: oklch(97% .015 41.12);
-  --color-accent-100: oklch(93% .035 41.12);
-  --color-accent-200: oklch(87% .075 41.12);
-  --color-accent-300: oklch(78% .125 41.12);
-  --color-accent-400: oklch(71% .16 41.12);
-  --color-accent-500: oklch(64.61% .1943 41.12);
-  --color-accent-600: oklch(56% .175 41.12);
-  --color-accent-700: oklch(48% .145 41.12);
-  --color-accent-800: oklch(40% .115 41.12);
-  --color-accent-900: oklch(32% .085 41.12);
-  --color-accent-950: oklch(24% .06 41.12);
+  /* Accent orange palette – based on #ea580c */
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+  --color-accent-950: #431407;
 
   /* Surface / neutral shades – dark teal-tinted grays */
   --color-surface-50: oklch(98% .005 168);
@@ -62,8 +62,8 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-surface-950);
-  color: var(--color-surface-100);
+  background-color: white;
+  color: var(--color-surface-950);
   overflow-x: hidden;
 }
 
@@ -138,17 +138,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-15px) rotate(2deg); }
-  66% { transform: translateY(-8px) rotate(-1deg); }
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-15px) translateX(10px); }
+  66% { transform: translateY(10px) translateX(-15px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
 }
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 20px oklch(59.6% .1274 163.23 / 0.3);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px oklch(59.6% .1274 163.23 / 0.6), 0 0 80px oklch(59.6% .1274 163.23 / 0.2);
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6), 0 0 80px rgba(16, 185, 129, 0.2);
   }
 }
 
@@ -338,10 +343,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Glassmorphism ─── */
 .glass {
-  background: oklch(16% .01 168 / 0.6);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid oklch(50% .02 168 / 0.15);
+  border: 1px solid var(--color-surface-200);
 }
 
 .glass-light {
@@ -352,10 +357,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-accent {
-  background: oklch(59.6% .1274 163.23 / 0.1);
+  background: rgba(16, 185, 129, 0.1);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid oklch(59.6% .1274 163.23 / 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 /* ─── Gradient Utilities ─── */
@@ -370,19 +375,19 @@ h1, h2, h3, h4, h5, h6 {
 .gradient-hero {
   background: linear-gradient(
     160deg,
-    var(--color-surface-950) 0%,
-    var(--color-primary-900) 30%,
-    var(--color-primary-800) 60%,
-    var(--color-surface-950) 100%
+    white 0%,
+    var(--color-primary-50) 30%,
+    var(--color-primary-100) 60%,
+    white 100%
   );
 }
 
 .gradient-mesh {
   background:
-    radial-gradient(ellipse at 20% 50%, oklch(59.6% .1274 163.23 / 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, oklch(64.61% .1943 41.12 / 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 80%, oklch(59.6% .1274 163.23 / 0.08) 0%, transparent 50%),
-    var(--color-surface-950);
+    radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    white;
 }
 
 .gradient-text {
@@ -400,8 +405,8 @@ h1, h2, h3, h4, h5, h6 {
 .hover-lift:hover {
   transform: translateY(-8px);
   box-shadow:
-    0 20px 40px oklch(0% 0 0 / 0.3),
-    0 0 30px oklch(59.6% .1274 163.23 / 0.1);
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(16, 185, 129, 0.1);
 }
 
 .hover-glow {
@@ -410,8 +415,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hover-glow:hover {
   box-shadow:
-    0 0 30px oklch(59.6% .1274 163.23 / 0.2),
-    0 0 60px oklch(59.6% .1274 163.23 / 0.1);
+    0 0 30px rgba(16, 185, 129, 0.2),
+    0 0 60px rgba(16, 185, 129, 0.1);
 }
 
 /* ─── Section Backgrounds ─── */
@@ -443,11 +448,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .orb-primary {
-  background: oklch(59.6% .1274 163.23 / 0.12);
+  background: rgba(16, 185, 129, 0.12);
 }
 
 .orb-accent {
-  background: oklch(64.61% .1943 41.12 / 0.08);
+  background: rgba(249, 115, 22, 0.08);
 }
 
 /* ─── Custom Scrollbar ─── */
@@ -456,16 +461,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-surface-950);
+  background: white;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary-800);
+  background: var(--color-primary-200);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-600);
+  background: var(--color-primary-400);
 }
 
 /* ─── Hide Scrollbar Utility ─── */
@@ -481,8 +486,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Selection Colors ─── */
 ::selection {
-  background: oklch(59.6% .1274 163.23 / 0.3);
-  color: white;
+  background: var(--color-primary-100);
+  color: var(--color-primary-900);
 }
 
 /* ─── Focus Styles ─── */

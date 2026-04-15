@@ -87,13 +87,13 @@ export default function SignupPage() {
       </Helmet>
 
       {/* Full Screen Split Layout */}
-      <div className="flex w-full h-screen bg-surface-950 text-white overflow-hidden font-sans">
+      <div className="flex w-full h-screen bg-white text-surface-950 overflow-hidden font-sans">
         {/* LEFT SIDE - Form Content */}
         <div className="w-full lg:w-1/2 h-full overflow-y-auto scrollbar-hide relative p-8 sm:p-12 md:p-16 xl:p-24 z-10 flex flex-col">
           {/* Subtle background glow for form area */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none min-h-200">
-            <div className="absolute w-96 h-96 bg-primary-500/10 rounded-full blur-[100px] top-0 left-0 animate-pulse" />
-            <div className="absolute w-125 h-125 bg-accent-500/10 rounded-full blur-[120px] bottom-0 right-0 opacity-50" />
+            <div className="absolute w-96 h-96 bg-primary-100/60 rounded-full blur-[100px] top-0 left-0 animate-pulse" />
+            <div className="absolute w-125 h-125 bg-accent-100/40 rounded-full blur-[120px] bottom-0 right-0 opacity-50" />
           </div>
 
           <div className="w-full max-w-lg mx-auto my-auto relative py-8">
@@ -104,7 +104,7 @@ export default function SignupPage() {
                 className="inline-block transition-transform hover:scale-105"
               >
                 <img
-                  src="/logotype-white.png"
+                  src="/logotype.png"
                   alt="Onward Connect Logo"
                   className="h-10 w-auto object-contain"
                 />
@@ -113,20 +113,20 @@ export default function SignupPage() {
 
             {/* Title */}
             <div className="mb-8">
-              <h1 className="text-3xl sm:text-4xl font-black text-white font-display tracking-tight mb-3">
+              <h1 className="text-3xl sm:text-4xl font-black text-surface-950 font-display tracking-tight mb-3">
                 Buat Akun Perusahaan
               </h1>
-              <p className="text-lg text-surface-400">
+              <p className="text-lg text-surface-500">
                 Dapatkan akses penuh ke TMS dan WMS untuk transformasi rantai pasok
                 cerdas.
               </p>
             </div>
 
             {submitted ? (
-              <div className="bg-primary-500/10 border border-primary-500/20 rounded-2xl p-8 text-center animate-scale-in">
-                <div className="w-20 h-20 rounded-full bg-primary-500/20 flex items-center justify-center mx-auto mb-5">
+              <div className="bg-primary-50 border border-primary-200 rounded-2xl p-8 text-center animate-scale-in">
+                <div className="w-20 h-20 rounded-full bg-primary-100 flex items-center justify-center mx-auto mb-5">
                   <svg
-                    className="w-10 h-10 text-primary-400"
+                    className="w-10 h-10 text-primary-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -139,10 +139,10 @@ export default function SignupPage() {
                     />
                   </svg>
                 </div>
-                <h2 className="font-black text-white text-2xl font-display mb-2">
+                <h2 className="font-black text-surface-950 text-2xl font-display mb-2">
                   Pendaftaran Berhasil!
                 </h2>
-                <p className="text-surface-400 text-base leading-relaxed">
+                <p className="text-surface-600 text-base leading-relaxed">
                   Akun Anda telah berhasil dibuat. Anda akan dialihkan ke halaman
                   login dalam beberapa detik...
                 </p>
@@ -154,13 +154,13 @@ export default function SignupPage() {
               >
                 {/* SECTION 1: Company Information */}
                 <div className="space-y-5">
-                  <div className="flex items-center gap-3 pb-2 border-b border-surface-800">
-                    <div className="w-8 h-8 rounded-lg bg-primary-500/20 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-center gap-3 pb-2 border-b border-surface-200">
+                    <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-bold text-white">Informasi Perusahaan</h3>
+                    <h3 className="text-lg font-bold text-surface-950">Informasi Perusahaan</h3>
                   </div>
 
                   {/* Company Name */}
@@ -192,13 +192,13 @@ export default function SignupPage() {
 
                 {/* SECTION 2: Administrator Account */}
                 <div className="space-y-5">
-                  <div className="flex items-center gap-3 pb-2 border-b border-surface-800">
-                    <div className="w-8 h-8 rounded-lg bg-accent-500/20 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-center gap-3 pb-2 border-b border-surface-200">
+                    <div className="w-8 h-8 rounded-lg bg-accent-50 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-bold text-white">Akun Administrator</h3>
+                    <h3 className="text-lg font-bold text-surface-950">Akun Administrator</h3>
                   </div>
 
                   {/* Username & Full Name */}
@@ -258,13 +258,13 @@ export default function SignupPage() {
 
                 {/* SECTION 3: Security */}
                 <div className="space-y-5">
-                  <div className="flex items-center gap-3 pb-2 border-b border-surface-800">
-                    <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-center gap-3 pb-2 border-b border-surface-200">
+                    <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-bold text-white">Keamanan</h3>
+                    <h3 className="text-lg font-bold text-surface-950">Keamanan</h3>
                   </div>
 
                   {/* Password */}
@@ -297,8 +297,8 @@ export default function SignupPage() {
 
                 {/* Error Message */}
                 {getGeneralError() && (
-                  <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
-                    <p className="text-red-400 text-sm font-medium">{getGeneralError()}</p>
+                  <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+                    <p className="text-red-600 text-sm font-medium">{getGeneralError()}</p>
                   </div>
                 )}
 
@@ -307,7 +307,7 @@ export default function SignupPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full gradient-primary text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group relative overflow-hidden"
+                    className="w-full bg-primary-600 text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary-600/25 hover:shadow-primary-600/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group relative overflow-hidden"
                   >
                     {isLoading ? (
                       <svg
@@ -348,12 +348,12 @@ export default function SignupPage() {
 
             {/* Login Link */}
             <div
-              className={`mt-8 text-surface-400 ${submitted ? "text-center" : ""}`}
+              className={`mt-8 text-surface-500 ${submitted ? "text-center" : ""}`}
             >
               Sudah memiliki akun?{" "}
               <Link
                 to="/login"
-                className="text-primary-400 font-bold hover:text-primary-300 transition-colors"
+                className="text-primary-600 font-bold hover:text-primary-700 transition-colors"
               >
                 Masuk di sini
               </Link>
@@ -361,11 +361,11 @@ export default function SignupPage() {
 
             {/* Back to Home Mobile-only */}
             <div
-              className={`mt-8 pt-6 border-t border-surface-800/50 ${submitted ? "text-center" : ""}`}
+              className={`mt-8 pt-6 border-t border-surface-200 ${submitted ? "text-center" : ""}`}
             >
               <Link
                 to="/"
-                className="text-surface-500 hover:text-surface-300 font-medium transition-colors inline-flex items-center group"
+                className="text-surface-500 hover:text-surface-700 font-medium transition-colors inline-flex items-center group"
               >
                 <svg
                   className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"
@@ -387,7 +387,7 @@ export default function SignupPage() {
         </div>
 
         {/* RIGHT SIDE - Abstract Visual / Banner */}
-        <div className="hidden lg:block lg:w-1/2 relative bg-surface-900 border-l border-surface-800/50 overflow-hidden group">
+        <div className="hidden lg:block lg:w-1/2 relative bg-surface-900 border-l border-surface-200 overflow-hidden group">
           <img
             src="/images/login_banner.png"
             alt="Logistics Infrastructure"
@@ -397,11 +397,11 @@ export default function SignupPage() {
           <div className="absolute inset-0 bg-primary-500/10 mix-blend-overlay" />
 
           {/* Subtle text overlay */}
-          <div className="absolute bottom-16 left-16 right-16 z-10 glass p-8 rounded-3xl border border-surface-600/30 backdrop-blur-md">
+          <div className="absolute bottom-16 left-16 right-16 z-10 bg-surface-950/60 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-2xl">
             <h2 className="text-3xl font-black text-white font-display uppercase tracking-wider mb-2">
               The Digital Supply Chain
             </h2>
-            <p className="text-surface-300 text-lg leading-relaxed">
+            <p className="text-surface-100 text-lg leading-relaxed font-medium opacity-90">
               Mengakselerasi operasional pergudangan dan eksekusi transportasi
               melalui intelijen real-time dan ekosistem logistik yang terhubung
               secara penuh.

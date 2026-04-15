@@ -89,11 +89,14 @@ export default function Navbar() {
       .slice(0, 2);
   };
 
+  const darkHeroRoutes = ["/", "/transportasi", "/gudang"];
+  const isDarkHero = !scrolled && darkHeroRoutes.includes(location.pathname);
+
   return (
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "py-2 bg-surface-950/80 backdrop-blur-xl shadow-lg shadow-surface-950/30"
+          ? "py-2 bg-white/80 backdrop-blur-xl shadow-lg shadow-surface-200/30"
           : "py-4 bg-transparent"
       }`}
     >
@@ -102,7 +105,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img
-              src="/logotype-white.png"
+              src={isDarkHero ? "/logotype-white.png" : "/logotype.png"}
               alt="Onward Connect"
               className="h-8 w-auto object-contain transition-transform duration-300 group-hover:opacity-80"
             />
@@ -116,8 +119,8 @@ export default function Navbar() {
                 to={link.to}
                 className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive(link.to)
-                    ? "text-primary-400 bg-primary-500/10"
-                    : "text-surface-300 hover:text-white hover:bg-surface-800/50"
+                    ? isDarkHero ? "text-white bg-white/10" : "text-primary-600 bg-primary-50"
+                    : isDarkHero ? "text-surface-100 hover:text-white hover:bg-white/5" : "text-surface-700 hover:text-primary-600 hover:bg-surface-100"
                 }`}
               >
                 {link.label}
@@ -134,16 +137,16 @@ export default function Navbar() {
               <>
                 <Link
                   to="/login"
-                  className="text-surface-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-surface-800/50"
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${isDarkHero ? "text-white hover:bg-white/10" : "text-surface-700 hover:text-primary-600 hover:bg-surface-100"}`}
                 >
                   Masuk
                 </Link>
                 <Link
                   to="/signup"
-                  className="relative overflow-hidden gradient-primary text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/30 hover:scale-105 active:scale-95"
+                  className="relative overflow-hidden bg-primary-600 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary-600/30 hover:scale-105 active:scale-95"
                 >
                   <span className="relative z-10">Daftar</span>
-                  <div className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Link>
               </>
             ) : (
@@ -151,17 +154,17 @@ export default function Navbar() {
                 {/* Profile Button */}
                 <button
                   onClick={() => setProfileOpen(!profileOpen)}
-                  className="flex items-center space-x-3 px-4 py-2 rounded-xl bg-surface-800/50 hover:bg-surface-700/50 border border-surface-700/50 transition-all duration-300"
+                  className="flex items-center space-x-3 px-4 py-2 rounded-xl bg-surface-100 hover:bg-surface-200 border border-surface-200 transition-all duration-300"
                 >
                   {/* Avatar */}
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-sm font-bold">
                     {getUserInitials()}
                   </div>
                   <div className="text-left">
-                    <p className="text-sm font-medium text-white">
+                    <p className="text-sm font-medium text-surface-950">
                       {user?.name}
                     </p>
-                    <p className="text-xs text-surface-400">
+                    <p className="text-xs text-surface-600">
                       {user?.email || "User"}
                     </p>
                   </div>
@@ -182,21 +185,21 @@ export default function Navbar() {
 
                 {/* Profile Dropdown */}
                 <div
-                  className={`absolute right-0 mt-2 w-72 bg-surface-900 border border-surface-700/50 rounded-2xl shadow-xl shadow-surface-950/50 overflow-hidden transition-all duration-300 origin-top-right ${
+                  className={`absolute right-0 mt-2 w-72 bg-white border border-surface-200 rounded-2xl shadow-xl shadow-surface-200/50 overflow-hidden transition-all duration-300 origin-top-right ${
                     profileOpen
                       ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                       : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                   }`}
                 >
                   {/* User Info */}
-                  <div className="p-4 border-b border-surface-800">
+                  <div className="p-4 border-b border-surface-100">
                     <div className="flex items-center space-x-3">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-lg font-bold">
                         {getUserInitials()}
                       </div>
                       <div>
-                        <p className="font-semibold text-white">{user?.name}</p>
-                        <p className="text-sm text-surface-400">
+                        <p className="font-semibold text-surface-950">{user?.name}</p>
+                        <p className="text-sm text-surface-600">
                           {user?.email}
                         </p>
                       </div>
@@ -214,10 +217,10 @@ export default function Navbar() {
                         className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${
                           selectedSystem === "tms"
                             ? "bg-primary-500/10 border border-primary-500/30"
-                            : "hover:bg-surface-800 border border-transparent"
+                            : "hover:bg-surface-50 border border-transparent"
                         }`}
                       >
-                        <div className="w-10 h-10 rounded-lg bg-primary-500/15 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center">
                           <svg
                             className="w-5 h-5 text-primary-400"
                             fill="none"
@@ -233,10 +236,10 @@ export default function Navbar() {
                           </svg>
                         </div>
                         <div className="flex-1 text-left">
-                          <p className="text-sm font-medium text-white">
+                          <p className="text-sm font-medium text-surface-950">
                             Onward TMS
                           </p>
-                          <p className="text-xs text-surface-400">
+                          <p className="text-xs text-surface-600">
                             Transportasi
                           </p>
                         </div>
@@ -250,10 +253,10 @@ export default function Navbar() {
                         className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${
                           selectedSystem === "wms"
                             ? "bg-accent-500/10 border border-accent-500/30"
-                            : "hover:bg-surface-800 border border-transparent"
+                            : "hover:bg-surface-50 border border-transparent"
                         }`}
                       >
-                        <div className="w-10 h-10 rounded-lg bg-accent-500/15 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-accent-50 flex items-center justify-center">
                           <svg
                             className="w-5 h-5 text-accent-400"
                             fill="none"
@@ -269,10 +272,10 @@ export default function Navbar() {
                           </svg>
                         </div>
                         <div className="flex-1 text-left">
-                          <p className="text-sm font-medium text-white">
+                          <p className="text-sm font-medium text-surface-950">
                             Onward WMS
                           </p>
-                          <p className="text-xs text-surface-400">Gudang</p>
+                          <p className="text-xs text-surface-600">Gudang</p>
                         </div>
                         {selectedSystem === "wms" && (
                           <span className="w-2 h-2 rounded-full bg-accent-400" />
@@ -282,10 +285,10 @@ export default function Navbar() {
                   </div>
 
                   {/* Logout */}
-                  <div className="p-3 border-t border-surface-800">
+                  <div className="p-3 border-t border-surface-100">
                     <button
                       onClick={handleLogout}
-                      className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-200"
+                      className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl text-sm font-medium text-red-500 hover:bg-red-500/10 transition-all duration-200"
                     >
                       <svg
                         className="w-4 h-4"
@@ -311,7 +314,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-surface-300 hover:text-white hover:bg-surface-800/50 transition-all duration-300"
+            className={`md:hidden p-2 rounded-lg transition-all duration-300 ${isDarkHero ? "text-white hover:bg-white/10" : "text-surface-700 hover:text-primary-600 hover:bg-surface-100"}`}
             aria-label="Toggle menu"
           >
             <svg
@@ -341,19 +344,19 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
-            mobileMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-out bg-white ${
+            mobileMenuOpen ? "max-h-96 opacity-100 mt-4 shadow-xl rounded-2xl" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="glass rounded-2xl p-4 space-y-1">
+          <div className="rounded-2xl p-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   isActive(link.to)
-                    ? "text-primary-400 bg-primary-500/10"
-                    : "text-surface-300 hover:text-white hover:bg-surface-800/50"
+                    ? "text-primary-600 bg-primary-500/10"
+                    : "text-surface-700 hover:text-primary-600 hover:bg-surface-100"
                 }`}
               >
                 {link.label}
@@ -361,18 +364,18 @@ export default function Navbar() {
             ))}
 
             {/* Mobile: Auth / Profile */}
-            <div className="pt-3 mt-3 border-t border-surface-700/50 space-y-2">
+            <div className="pt-3 mt-3 border-t border-surface-200 space-y-2">
               {!authenticated ? (
                 <>
                   <Link
                     to="/login"
-                    className="block text-center px-4 py-3 rounded-xl text-surface-300 hover:text-white text-sm font-medium hover:bg-surface-800/50 transition-all duration-300"
+                    className="block text-center px-4 py-3 rounded-xl text-surface-700 hover:text-primary-600 text-sm font-medium hover:bg-surface-100 transition-all duration-300"
                   >
                     Masuk
                   </Link>
                   <Link
                     to="/signup"
-                    className="block text-center gradient-primary text-white px-4 py-3 rounded-xl text-sm font-semibold"
+                    className="block text-center bg-primary-600 text-white px-4 py-3 rounded-xl text-sm font-semibold"
                   >
                     Daftar
                   </Link>
@@ -380,15 +383,15 @@ export default function Navbar() {
               ) : (
                 <>
                   {/* User Profile Card */}
-                  <div className="px-4 py-3 rounded-xl bg-surface-800/50 flex items-center space-x-3">
+                  <div className="px-4 py-3 rounded-xl bg-surface-50 flex items-center space-x-3 border border-surface-100">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-sm font-bold">
                       {getUserInitials()}
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-white">
+                      <p className="text-sm font-medium text-surface-950">
                         {user?.name}
                       </p>
-                      <p className="text-xs text-surface-400">{user?.email}</p>
+                      <p className="text-xs text-surface-600">{user?.email}</p>
                     </div>
                   </div>
 
@@ -399,7 +402,7 @@ export default function Navbar() {
                     </p>
                     <button
                       onClick={() => handlePlatformSwitch("tms")}
-                      className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:bg-surface-800"
+                      className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:bg-surface-50"
                     >
                       <div className="w-8 h-8 rounded-lg bg-primary-500/15 flex items-center justify-center">
                         <svg
@@ -417,10 +420,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <div className="flex-1 text-left">
-                        <p className="text-sm font-medium text-white">
+                        <p className="text-sm font-medium text-surface-950">
                           Onward TMS
                         </p>
-                        <p className="text-xs text-surface-400">Transportasi</p>
+                        <p className="text-xs text-surface-600">Transportasi</p>
                       </div>
                       <svg
                         className="w-4 h-4 text-surface-500"
@@ -439,7 +442,7 @@ export default function Navbar() {
 
                     <button
                       onClick={() => handlePlatformSwitch("wms")}
-                      className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:bg-surface-800"
+                      className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:bg-surface-50"
                     >
                       <div className="w-8 h-8 rounded-lg bg-accent-500/15 flex items-center justify-center">
                         <svg
@@ -457,10 +460,10 @@ export default function Navbar() {
                         </svg>
                       </div>
                       <div className="flex-1 text-left">
-                        <p className="text-sm font-medium text-white">
+                        <p className="text-sm font-medium text-surface-950">
                           Onward WMS
                         </p>
-                        <p className="text-xs text-surface-400">Gudang</p>
+                        <p className="text-xs text-surface-600">Gudang</p>
                       </div>
                       <svg
                         className="w-4 h-4 text-surface-500"
@@ -481,7 +484,7 @@ export default function Navbar() {
                   {/* Mobile Logout */}
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-200"
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-500/10 transition-all duration-200"
                   >
                     <svg
                       className="w-4 h-4"

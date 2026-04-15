@@ -237,7 +237,7 @@ function LaptopMockup({ src, alt }: { src: string; alt: string }) {
       <img
         src={src}
         alt={alt}
-        className="w-full border-2 border-surface-700/30 rounded-2xl"
+        className="w-full border border-surface-200 rounded-2xl shadow-lg"
       />
     </div>
   );
@@ -247,7 +247,7 @@ function PhoneMockup({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative inline-block mx-auto">
       {/* Phone body */}
-      <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-1.5 shadow-2xl shadow-black/40 border border-surface-700/30">
+      <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-1.5 shadow-2xl shadow-black/20 border border-surface-200">
         {/* Dynamic Island / Notch */}
         <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-5 bg-[#0d0d0d] rounded-full z-10" />
         {/* Side button - right */}
@@ -454,11 +454,11 @@ function StatCounter({
   const { count, ref } = useCounter(value);
   return (
     <div ref={ref} className="text-center group">
-      <div className="text-5xl md:text-6xl font-black font-display text-white mb-2 tabular-nums">
+      <div className="text-5xl md:text-6xl font-black font-display text-surface-950 mb-2 tabular-nums">
         {count}
         <span className="gradient-text">{suffix}</span>
       </div>
-      <div className="text-surface-400 text-sm font-medium uppercase tracking-widest">
+      <div className="text-surface-500 text-sm font-medium uppercase tracking-widest">
         {label}
       </div>
     </div>
@@ -585,21 +585,21 @@ export default function WMSPage() {
         {/* ═══════════════════════════════════════════════════════ */}
         {/* HERO SECTION — Split layout with floating cards */}
         {/* ═══════════════════════════════════════════════════════ */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-surface-950">
+        <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
           {/* Background */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 z-0">
               <img
-                src="/images/wms_hero_bg_generated_1775529707132.png"
-                alt=""
-                className="w-full h-full object-cover opacity-30"
+                src="/images/wms_hero_bg_indonesia.png"
+                alt="Indonesian Logistics Warehouse"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-linear-to-r from-surface-950 via-surface-950/80 to-surface-950/40" />
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-surface-950" />
+              <div className="absolute inset-0 bg-surface-950/40" />
+              <div className="absolute inset-0 bg-linear-to-b from-surface-950/80 via-surface-950/20 to-transparent" />
             </div>
-            <div className="absolute top-1/4 right-1/4 w-125 h-125 bg-primary-500/8 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute top-1/4 right-1/4 w-[31rem] h-[31rem] bg-primary-500/8 rounded-full blur-[120px] animate-pulse" />
             <div
-              className="absolute bottom-1/4 left-1/3 w-100 h-100 bg-accent-500/6 rounded-full blur-[100px] animate-pulse"
+              className="absolute bottom-1/4 left-1/3 w-[25rem] h-[25rem] bg-accent-500/6 rounded-full blur-[100px] animate-pulse"
               style={{ animationDelay: "2s" }}
             />
           </div>
@@ -608,21 +608,19 @@ export default function WMSPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left: Text content */}
               <div>
-                <div className="inline-flex items-center glass rounded-full px-5 py-2.5 mb-8 border border-primary-500/30">
-                  <span className="w-2 h-2 bg-primary-400 rounded-full mr-3 animate-pulse" />
-                  <span className="text-primary-300 text-sm font-bold tracking-wide">
-                    Warehouse Management System
-                  </span>
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 shadow-sm">
+                  <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
+                  Warehouse Management System
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-white mb-6 leading-[1.1]">
                   Gudang Cerdas,{" "}
-                  <span className="gradient-text block">
+                  <span className="gradient-text">
                     Bisnis Lebih Maju.
                   </span>
                 </h1>
 
-                <p className="text-xl text-surface-300 mb-10 max-w-xl leading-relaxed">
+                <p className="text-xl text-surface-200 mb-10 max-w-xl leading-relaxed">
                   Hilangkan kekacauan inventori dan ubah gudang Anda menjadi
                   mesin presisi dengan visibilitas{" "}
                   <strong className="text-white">real-time</strong> dan
@@ -632,7 +630,7 @@ export default function WMSPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-10">
                   <Link
                     to="/signup"
-                    className="group inline-flex items-center justify-center gradient-primary text-white px-16 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-105"
+                    className="group inline-flex items-center justify-center bg-primary-600 text-white px-16 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105"
                   >
                     Mulai Gratis
                     <svg
@@ -651,7 +649,7 @@ export default function WMSPage() {
                   </Link>
                 </div>
 
-                <div className="flex gap-8 text-sm text-surface-400">
+                <div className="flex gap-8 text-sm text-surface-200 leading-relaxed font-medium">
                   {[
                     "Tanpa kartu kredit",
                     "Setup 5 menit",
@@ -659,7 +657,7 @@ export default function WMSPage() {
                   ].map((t, i) => (
                     <div key={i} className="flex items-center">
                       <svg
-                        className="w-4 h-4 mr-2 text-primary-400"
+                        className="w-4 h-4 mr-2 text-primary-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -688,42 +686,42 @@ export default function WMSPage() {
 
                   {/* Floating stat card - top right */}
                   <div
-                    className="absolute -top-4 -right-4 glass rounded-2xl px-5 py-4 border border-primary-500/30 shadow-xl animate-bounce z-10"
+                    className="absolute -top-4 -right-4 bg-white rounded-2xl px-5 py-4 border border-surface-200 shadow-xl animate-bounce z-10"
                     style={{ animationDuration: "3s" }}
                   >
-                    <div className="text-xs text-surface-400 mb-1">
+                    <div className="text-xs text-surface-500 mb-1">
                       Akurasi Inventori
                     </div>
-                    <div className="text-2xl font-black text-white">
-                      99.9<span className="text-primary-400">%</span>
+                    <div className="text-2xl font-black text-surface-950">
+                      99.9<span className="text-primary-600">%</span>
                     </div>
                   </div>
 
                   {/* Floating stat card - bottom left */}
                   <div
-                    className="absolute bottom-8 -left-4 glass rounded-2xl px-5 py-4 border border-accent-500/30 shadow-xl animate-bounce z-10"
+                    className="absolute -bottom-10 -left-4 bg-white rounded-2xl px-5 py-4 border border-surface-200 shadow-xl animate-bounce z-10"
                     style={{
                       animationDuration: "3.5s",
                       animationDelay: "0.5s",
                     }}
                   >
-                    <div className="text-xs text-surface-400 mb-1">
+                    <div className="text-xs text-surface-500 mb-1">
                       Order Hari Ini
                     </div>
-                    <div className="text-2xl font-black text-white">
+                    <div className="text-2xl font-black text-surface-950">
                       2,847{" "}
-                      <span className="text-accent-400 text-sm">↑12%</span>
+                      <span className="text-accent-600 text-sm">↑12%</span>
                     </div>
                   </div>
 
                   {/* Floating badge - mid left */}
                   <div
-                    className="absolute top-1/3 -left-6 glass rounded-xl px-4 py-3 border border-surface-600/50 shadow-lg animate-bounce z-10"
+                    className="absolute top-1/6 -left-6 bg-white rounded-xl px-4 py-3 border border-surface-200 shadow-lg animate-bounce z-10"
                     style={{ animationDuration: "4s", animationDelay: "1s" }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-400 rounded-full" />
-                      <span className="text-sm font-semibold text-green-300">
+                      <div className="w-2 h-2 bg-green-500 rounded-full" />
+                      <span className="text-sm font-semibold text-green-600">
                         Semua Sistem Online
                       </span>
                     </div>
@@ -737,18 +735,33 @@ export default function WMSPage() {
         {/* ═══════════════════════════════════════════════════════ */}
         {/* STATS COUNTER BAR */}
         {/* ═══════════════════════════════════════════════════════ */}
-        <section className="relative py-20 bg-surface-950 border-y border-surface-800/50">
-          <div className="absolute inset-0 bg-linear-to-r from-primary-500/3 via-transparent to-accent-500/3" />
+        {/* ═══════════════════════════════════════════════════════ */}
+        {/* STATS COUNTER BAR — Premium Light Design */}
+        {/* ═══════════════════════════════════════════════════════ */}
+        <section className="relative py-24 bg-white overflow-hidden">
+          {/* Subtle grid pattern background */}
+          <div
+            className="absolute inset-0 opacity-[0.4] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]"
+            style={{
+              backgroundImage:
+                "radial-gradient(var(--color-surface-200) 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+            }}
+          />
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-              {stats.map((stat, i) => (
-                <StatCounter
-                  key={i}
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  label={stat.label}
-                />
-              ))}
+            <div className="bg-white/70 backdrop-blur-md rounded-[3rem] border border-surface-100 p-10 md:p-16 shadow-2xl shadow-surface-200/30">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-surface-100">
+                {stats.map((stat, i) => (
+                  <div key={i} className={`${i > 1 ? 'pt-8 md:pt-0' : 'md:pt-0'} ${i % 2 !== 0 ? 'ps-4 md:ps-0' : ''}`}>
+                    <StatCounter
+                      value={stat.value}
+                      suffix={stat.suffix}
+                      label={stat.label}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -759,14 +772,14 @@ export default function WMSPage() {
         <section
           ref={featureRef}
           id="features"
-          className="py-32 bg-surface-950 relative overflow-hidden"
+          className="py-32 bg-white relative overflow-hidden"
         >
           <div
-            className="orb orb-primary w-125 h-125 -right-40 top-20"
+            className="orb orb-primary w-[31rem] h-[31rem] -right-40 top-20"
             style={{ animation: "orbFloat2 15s ease-in-out infinite" }}
           />
           <div
-            className="orb orb-accent w-100 h-100 -left-20 bottom-20"
+            className="orb orb-accent w-[25rem] h-[25rem] -left-20 bottom-20"
             style={{ animation: "orbFloat1 18s ease-in-out infinite" }}
           />
 
@@ -776,14 +789,14 @@ export default function WMSPage() {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              <span className="inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 Fitur Unggulan
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6">
-                Alat yang Mengubah{" "}
-                <span className="gradient-text">Cara Kerja Gudang</span>
-              </h2>
-              <p className="text-xl text-surface-400 max-w-2xl mx-auto">
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-surface-950 mb-6 leading-[1.1]">
+                  Kendali Penuh <br />
+                  <span className="gradient-text">Gudang Anda</span>
+                </h2>
+                <p className="text-xl text-surface-600 mb-10 leading-relaxed font-medium">
                 Tiga pilar teknologi yang membuat gudang Anda beroperasi di
                 level berikutnya.
               </p>
@@ -797,8 +810,8 @@ export default function WMSPage() {
                   onClick={() => handleTabChange(i)}
                   className={`group relative inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl font-semibold text-base transition-all duration-500 border overflow-hidden ${
                     activeFeature === i
-                      ? "gradient-primary text-white border-primary-500/50 shadow-lg shadow-primary-500/20 scale-105"
-                      : "glass text-surface-300 border-surface-700/50 hover:border-primary-500/30 hover:text-white"
+                      ? "bg-primary-600 text-white border-primary-500 shadow-lg shadow-primary-600/20 scale-105"
+                      : "bg-white text-surface-600 border-surface-200 shadow-sm hover:border-primary-300 hover:text-surface-950"
                   }`}
                 >
                   {/* Progress Line */}
@@ -846,18 +859,18 @@ export default function WMSPage() {
                 <div
                   className={`inline-flex items-center rounded-full px-4 py-2 mb-6 text-sm font-bold ${
                     currentFeature.accent === "primary"
-                      ? "bg-primary-500/10 text-primary-300 border border-primary-500/20"
-                      : "bg-accent-500/10 text-accent-300 border border-accent-500/20"
+                      ? "bg-primary-50 text-primary-700 border border-primary-200"
+                      : "bg-accent-50 text-accent-700 border border-accent-200"
                   }`}
                 >
                   {currentFeature.icon}
                   <span className="ml-2">{currentFeature.title}</span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-bold font-display text-white mb-5 leading-tight">
+                <h3 className="text-3xl md:text-4xl font-bold font-display text-surface-950 mb-5 leading-tight">
                   {currentFeature.headline}
                 </h3>
-                <p className="text-lg text-surface-400 mb-8 leading-relaxed">
+                <p className="text-lg text-surface-600 mb-8 leading-relaxed">
                   {currentFeature.description}
                 </p>
 
@@ -867,12 +880,12 @@ export default function WMSPage() {
                       <div
                         className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
                           currentFeature.accent === "primary"
-                            ? "bg-primary-500/20"
-                            : "bg-accent-500/20"
+                            ? "bg-primary-100"
+                            : "bg-accent-100"
                         }`}
                       >
                         <svg
-                          className={`w-3.5 h-3.5 ${currentFeature.accent === "primary" ? "text-primary-400" : "text-accent-400"}`}
+                          className={`w-3.5 h-3.5 ${currentFeature.accent === "primary" ? "text-primary-600" : "text-accent-600"}`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -885,7 +898,7 @@ export default function WMSPage() {
                           />
                         </svg>
                       </div>
-                      <span className="text-surface-300 text-lg">{bullet}</span>
+                      <span className="text-surface-700 text-lg">{bullet}</span>
                     </li>
                   ))}
                 </ul>
@@ -894,8 +907,8 @@ export default function WMSPage() {
                   to="/signup"
                   className={`inline-flex items-center font-bold text-lg transition-all duration-300 group ${
                     currentFeature.accent === "primary"
-                      ? "text-primary-400 hover:text-primary-300"
-                      : "text-accent-400 hover:text-accent-300"
+                      ? "text-primary-600 hover:text-primary-700"
+                      : "text-accent-600 hover:text-accent-700"
                   }`}
                 >
                   Coba Fitur Ini
@@ -955,20 +968,20 @@ export default function WMSPage() {
         {/* ═══════════════════════════════════════════════════════ */}
         <section
           ref={benefitRef}
-          className="py-32 bg-surface-900 border-y border-surface-800/50 relative overflow-hidden"
+          className="py-32 bg-surface-50 border-y border-surface-200 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--color-primary-500)_0%,transparent_70%)] opacity-[0.03]" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-20">
-              <span className="inline-block text-accent-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-accent-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 Keunggulan
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-surface-950 mb-4">
                 Mengapa Tim Gudang Memilih{" "}
                 <span className="gradient-text">Onward WMS</span>
               </h2>
-              <p className="text-lg text-surface-400 max-w-2xl mx-auto">
+              <p className="text-lg text-surface-600 max-w-2xl mx-auto">
                 Delapan alasan mengapa ratusan gudang telah beralih ke platform
                 kami.
               </p>
@@ -978,18 +991,18 @@ export default function WMSPage() {
               {benefits.map((benefit, i) => (
                 <div
                   key={i}
-                  className="scroll-animate group relative glass rounded-3xl p-7 transition-all duration-500 border border-surface-700/50 hover:-translate-y-2 hover:border-primary-500/40"
+                  className="scroll-animate group relative bg-white rounded-3xl p-7 transition-all duration-500 border border-surface-100 shadow-lg shadow-surface-200/30 hover:-translate-y-2 hover:border-primary-300 hover:shadow-xl"
                   style={{ transitionDelay: `${i * 75}ms` }}
                 >
-                  <div className="absolute inset-0 bg-linear-to-br from-primary-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-br from-primary-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative z-10">
-                    <div className="w-12 h-12 bg-surface-800 rounded-xl flex items-center justify-center text-primary-400 mb-5 border border-surface-700/50 group-hover:bg-primary-500/10 group-hover:scale-110 group-hover:rotate-[-8deg] transition-all duration-500 shadow-lg">
+                    <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 mb-5 border border-primary-100 group-hover:bg-primary-100 group-hover:scale-110 group-hover:rotate-[-8deg] transition-all duration-500 shadow-sm">
                       {benefit.icon}
                     </div>
-                    <h3 className="text-lg font-bold font-display text-white mb-2 group-hover:text-primary-300 transition-colors">
+                    <h3 className="text-lg font-bold font-display text-surface-950 mb-2 group-hover:text-primary-700 transition-colors">
                       {benefit.title}
                     </h3>
-                    <p className="text-surface-400 text-sm leading-relaxed">
+                    <p className="text-surface-600 text-sm leading-relaxed">
                       {benefit.desc}
                     </p>
                   </div>
@@ -1002,21 +1015,21 @@ export default function WMSPage() {
         {/* ═══════════════════════════════════════════════════════ */}
         {/* HOW IT WORKS — Visual Process */}
         {/* ═══════════════════════════════════════════════════════ */}
-        <section className="py-32 bg-surface-950 relative overflow-hidden">
+        <section className="py-32 bg-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-20">
-              <span className="inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 Cara Kerja
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white">
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-surface-950">
                 Tiga Langkah Menuju Gudang Digital
               </h2>
             </div>
 
             <div className="relative">
               {/* Connecting line (desktop) */}
-              <div className="hidden md:block absolute top-8 left-[16.6%] right-[16.6%] h-1 bg-surface-800 rounded-full overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-r from-primary-600 via-primary-400 to-primary-600 opacity-50" />
+              <div className="hidden md:block absolute top-8 left-[16.6%] right-[16.6%] h-1 bg-surface-200 rounded-full overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-r from-primary-400 via-primary-500 to-primary-400 opacity-50" />
               </div>
 
               <div className="grid md:grid-cols-3 gap-12 relative">
@@ -1038,16 +1051,16 @@ export default function WMSPage() {
                   },
                 ].map((step, i) => (
                   <div key={i} className="relative group">
-                    <div className="relative z-10 w-16 h-16 mx-auto gradient-primary rounded-full flex items-center justify-center font-bold font-display text-white text-2xl shadow-[0_0_30px_rgba(var(--color-primary-500),0.3)] border-4 border-surface-950 group-hover:scale-125 transition-transform duration-500">
+                    <div className="relative z-10 w-16 h-16 mx-auto bg-primary-600 rounded-full flex items-center justify-center font-bold font-display text-white text-2xl shadow-lg shadow-primary-600/30 border-4 border-white group-hover:scale-125 transition-transform duration-500">
                       {step.n}
                     </div>
-                    <div className="mt-8 text-center glass rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 border border-surface-700/50 group-hover:border-primary-500/40 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-linear-to-b from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="mt-8 text-center bg-white rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 border border-surface-100 shadow-lg shadow-surface-200/40 group-hover:border-primary-300 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-linear-to-b from-primary-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="relative z-10">
-                        <h3 className="text-xl font-bold font-display text-white mb-3 group-hover:text-primary-300 transition-colors">
+                        <h3 className="text-xl font-bold font-display text-surface-950 mb-3 group-hover:text-primary-700 transition-colors">
                           {step.title}
                         </h3>
-                        <p className="text-surface-400 leading-relaxed text-sm">
+                        <p className="text-surface-600 leading-relaxed text-sm">
                           {step.desc}
                         </p>
                       </div>
@@ -1064,14 +1077,14 @@ export default function WMSPage() {
         {/* ═══════════════════════════════════════════════════════ */}
         <section
           ref={faqRef}
-          className="py-32 bg-surface-950 border-t border-surface-800/50"
+          className="py-32 bg-surface-50 border-t border-surface-200"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
-              <span className="inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
+              <span className="inline-block text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
                 FAQ
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold font-display text-white">
+              <h2 className="text-4xl md:text-5xl font-bold font-display text-surface-950">
                 Pertanyaan yang Sering Diajukan
               </h2>
             </div>
@@ -1080,28 +1093,28 @@ export default function WMSPage() {
               {faqs.map((faq, i) => (
                 <div
                   key={i}
-                  className="scroll-animate glass rounded-3xl overflow-hidden border border-surface-700/50 hover:border-primary-500/50 transition-all duration-300"
+                  className="scroll-animate bg-white rounded-3xl overflow-hidden border border-surface-100 shadow-md shadow-surface-200/30 hover:border-primary-300 transition-all duration-300"
                 >
                   <button
                     onClick={() => toggleFaq(i)}
                     className="w-full px-8 py-6 flex items-center justify-between text-left group"
                   >
-                    <span className="text-lg font-semibold text-white pr-4 group-hover:text-primary-300 transition-colors">
+                    <span className="text-lg font-semibold text-surface-950 pr-4 group-hover:text-primary-700 transition-colors">
                       {faq.q}
                     </span>
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center glass shrink-0 transition-transform duration-500 ${openFaq === i ? "rotate-180 bg-primary-500/20" : ""}`}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center bg-surface-50 shrink-0 transition-transform duration-500 ${openFaq === i ? "rotate-180 bg-primary-50" : ""}`}
                     >
                       <ChevronIcon
-                        className="w-5 h-5 text-surface-300"
+                        className="w-5 h-5 text-surface-500"
                         open={openFaq === i}
                       />
                     </div>
                   </button>
                   <div
-                    className={`px-8 text-surface-400 leading-relaxed transition-all duration-500 delay-75 ease-in-out overflow-hidden ${openFaq === i ? "max-h-96 pb-8 opacity-100" : "max-h-0 pb-0 opacity-0"}`}
+                    className={`px-8 text-surface-600 leading-relaxed transition-all duration-500 delay-75 ease-in-out overflow-hidden ${openFaq === i ? "max-h-96 pb-8 opacity-100" : "max-h-0 pb-0 opacity-0"}`}
                   >
-                    <div className="w-full h-px bg-surface-800/50 mb-6" />
+                    <div className="w-full h-px bg-surface-200 mb-6" />
                     {faq.a}
                   </div>
                 </div>
@@ -1113,17 +1126,18 @@ export default function WMSPage() {
         {/* ═══════════════════════════════════════════════════════ */}
         {/* CTA SECTION */}
         {/* ═══════════════════════════════════════════════════════ */}
-        <section className="py-32 gradient-hero text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-surface-950/40 backdrop-blur-md" />
-          <div className="orb orb-primary w-125 h-125 -right-40 -top-40" />
-          <div className="orb orb-accent w-100 h-100 -left-20 -bottom-40" />
+        <section className="py-32 bg-surface-50 text-surface-950 relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute rounded-full mix-blend-multiply w-[45rem] h-[45rem]" style={{ background: "radial-gradient(circle, rgba(234, 88, 12, 0.12) 0%, transparent 70%)", top: "5%", right: "-5%", animation: "orbFloat1 10s ease-in-out infinite" }} />
+            <div className="absolute rounded-full mix-blend-multiply w-[45rem] h-[45rem]" style={{ background: "radial-gradient(circle, rgba(5, 150, 105, 0.12) 0%, transparent 70%)", bottom: "-10%", left: "-10%", animation: "orbFloat2 15s ease-in-out infinite" }} />
+          </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-display text-white mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-display text-surface-950 mb-8">
               Transformasi Gudang Anda{" "}
               <span className="gradient-text">Dimulai Hari Ini</span>.
             </h2>
-            <p className="text-xl text-surface-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-surface-600 mb-12 max-w-2xl mx-auto leading-relaxed">
               Bergabunglah bersama ratusan tim gudang yang sudah merasakan
               presisi dan kecepatan Onward WMS.
             </p>
@@ -1131,7 +1145,7 @@ export default function WMSPage() {
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link
                 to="/signup"
-                className="group inline-flex items-center justify-center gradient-primary text-white px-12 py-5 rounded-3xl font-bold text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/30 hover:scale-105 active:scale-95"
+                className="group inline-flex items-center justify-center bg-primary-600 text-white px-12 py-5 rounded-3xl font-bold text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105 active:scale-95"
               >
                 Buat Akun WMS Gratis
                 <svg

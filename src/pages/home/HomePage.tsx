@@ -158,28 +158,21 @@ export default function HomePage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
           style={{
-            backgroundImage: "url(/images/hero_logistics_1775469197698.png)",
+            backgroundImage: "url(/images/hero_logistics_light.png)",
           }}
         />
-        <div className="absolute inset-0 bg-surface-950/70" />
-        <div className="absolute inset-0 bg-linear-to-t from-surface-950 via-surface-950/30 to-surface-900/10" />
+        <div className="absolute inset-0 bg-surface-950/40" />
+        <div className="absolute inset-0 bg-linear-to-b from-surface-950/80 via-surface-950/20 to-transparent" />
 
         {/* Hero content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
           {/* Badge */}
           <div
-            className="inline-flex items-center glass-accent rounded-full px-5 py-2 mb-8 animate-fade-in-down"
-            style={{
-              animationDelay: "0.2s",
-              background: "rgba(255,255,255,0.05)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
+            className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 animate-fade-in-down shadow-sm"
+            style={{ animationDelay: "0.2s" }}
           >
-            <span className="w-2 h-2 bg-primary-400 rounded-full mr-3 animate-pulse" />
-            <span className="text-sm font-medium text-white shadow-sm">
-              Platform Logistik Terintegrasi
-            </span>
+            <span className="w-2 h-2 bg-primary-400 rounded-full mr-2 animate-pulse" />
+            Platform Logistik Terintegrasi
           </div>
 
           {/* Heading */}
@@ -187,7 +180,7 @@ export default function HomePage() {
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display leading-[0.95] mb-8 animate-fade-in-up"
             style={{ animationDelay: "0.4s" }}
           >
-            <span className="text-white drop-shadow-md">Kelola Logistik</span>
+            <span className="text-white drop-shadow-lg">Kelola Logistik</span>
             <br />
             <span
               className="gradient-text drop-shadow-xl"
@@ -202,7 +195,7 @@ export default function HomePage() {
 
           {/* Subtitle */}
           <p
-            className="text-lg md:text-xl text-surface-200 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up font-medium drop-shadow-sm"
+            className="text-lg md:text-xl text-surface-200 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up font-medium"
             style={{ animationDelay: "0.6s" }}
           >
             Gudang, armada, dan pengiriman — dalam satu sistem yang mudah
@@ -241,7 +234,7 @@ export default function HomePage() {
 
           {/* Stats row */}
           <div
-            className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in-up glass rounded-3xl p-6 border border-white/10"
+            className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in-up glass-light rounded-3xl p-6 border border-surface-200"
             style={{ animationDelay: "1s" }}
           >
             {[
@@ -250,10 +243,10 @@ export default function HomePage() {
               { value: "24/7", label: "Pantau 24 Jam Nonstop" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold font-display text-white">
+                <div className="text-3xl md:text-4xl font-bold font-display text-surface-950">
                   {stat.value}
                 </div>
-                <div className="text-xs md:text-sm text-surface-300 mt-2 font-medium">
+                <div className="text-xs md:text-sm text-surface-900 mt-2 font-semibold">
                   {stat.label}
                 </div>
               </div>
@@ -267,17 +260,17 @@ export default function HomePage() {
       {/* ═════════════════════════════════════════════════════════ */}
       <section
         ref={aboutRef}
-        className="relative min-h-screen py-32 overflow-hidden bg-surface-950 flex items-center"
+        className="relative min-h-screen py-32 overflow-hidden bg-surface-50 flex items-center"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-16">
           <div className="flex-1 text-left">
             <span className="scroll-animate inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
               Tentang Platform
             </span>
-            <h2 className="scroll-animate stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6">
+            <h2 className="scroll-animate stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold font-display text-surface-950 mb-6">
               Apa itu <span className="gradient-text">Connect</span>?
             </h2>
-            <p className="scroll-animate stagger-2 text-lg text-surface-300 leading-relaxed mb-10 max-w-xl">
+            <p className="scroll-animate stagger-2 text-lg text-surface-700 leading-relaxed mb-10 max-w-xl">
               Connect adalah platform terpadu yang membantu perusahaan logistik
               mengelola seluruh operasional dalam satu ekosistem. Mulai dari
               pantauan gudang, optimalisasi rute, pengelolaan armada, hingga
@@ -307,10 +300,10 @@ export default function HomePage() {
                   key={i}
                   className={`scroll-animate-left stagger-${i + 2} flex items-center`}
                 >
-                  <div className="shrink-0 w-12 h-12 rounded-xl bg-primary-500/15 text-primary-400 flex items-center justify-center mr-5 border border-primary-500/20">
+                  <div className="shrink-0 w-12 h-12 rounded-xl bg-white text-primary-600 flex items-center justify-center mr-5 border border-surface-200 shadow-sm">
                     {item.icon}
                   </div>
-                  <span className="text-white font-medium text-lg">
+                  <span className="text-surface-900 font-medium text-lg">
                     {item.title}
                   </span>
                 </div>
@@ -320,15 +313,20 @@ export default function HomePage() {
 
           <div className="flex-1 scroll-animate-right stagger-3 relative w-full mt-10 lg:mt-0">
             <div className="relative flex items-center justify-center">
-              {/* Soft ambient glow behind the holographic network */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary-500/10 blur-[100px] rounded-full pointer-events-none" />
+              {/* Explicit Circular Frame (Glass Stage) */}
+              <div className="relative w-full aspect-square max-w-md rounded-full overflow-hidden flex items-center justify-center bg-white/5 backdrop-blur-md shadow-2xl shadow-primary-500/5 transition-transform duration-700 hover:scale-[1.02] group/frame">
+                {/* Internal Inner Glow for definition without a hard border */}
+                <div className="absolute inset-0 rounded-full shadow-[inset_0_0_100px_rgba(255,255,255,0.2)] pointer-events-none z-20" />
 
-              <img
-                src="/images/connect_network_visual.png"
-                alt="Onward Connect Network"
-                className="relative z-10 w-full md:w-[115%] md:-ml-[5%] lg:w-[125%] lg:-ml-[10%] max-w-none h-auto object-contain transform hover:scale-[1.03] transition-transform duration-700"
-                style={{ filter: "drop-shadow(0 30px 40px rgba(0,0,0,0.5))" }}
-              />
+                <img
+                  src="/images/connect_ecosystem_3d.png"
+                  alt="Onward Connect Ecosystem"
+                  className="relative z-0 w-[140%] h-auto object-contain transition-all duration-1000 group-hover/frame:scale-110"
+                />
+              </div>
+
+              {/* Ambient Glow behind the frame */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary-200/15 blur-[150px] rounded-full pointer-events-none -z-10" />
             </div>
           </div>
         </div>
@@ -339,11 +337,11 @@ export default function HomePage() {
       {/* ═════════════════════════════════════════════════════════ */}
       <section
         ref={produkRef}
-        className="relative min-h-screen py-32 overflow-hidden bg-surface-900 flex items-center"
+        className="relative min-h-screen py-32 overflow-hidden bg-white flex items-center"
       >
         {/* Background decorations */}
         <div
-          className="orb orb-primary w-150 h-150 -top-40 right-10"
+          className="orb orb-primary w-[38rem] h-[38rem] -top-40 right-10"
           style={{ animation: "orbFloat1 18s ease-in-out infinite" }}
         />
 
@@ -352,11 +350,11 @@ export default function HomePage() {
             <span className="scroll-animate inline-block text-primary-400 text-sm font-semibold uppercase tracking-widest mb-4">
               Ekosistem Produk
             </span>
-            <h2 className="scroll-animate stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6">
+            <h2 className="scroll-animate stagger-1 text-4xl md:text-5xl lg:text-6xl font-bold font-display text-surface-950 mb-6">
               Sistem yang Menggerakkan{" "}
               <span className="gradient-text">Bisnis Anda</span>
             </h2>
-            <p className="scroll-animate stagger-2 text-lg text-surface-300">
+            <p className="scroll-animate stagger-2 text-lg text-surface-700">
               Pilih produk yang sesuai dengan kebutuhan operasional Anda, atau
               gunakan keduanya untuk integrasi tanpa batas.
             </p>
@@ -366,12 +364,12 @@ export default function HomePage() {
             {/* TMS Card */}
             <Link
               to="/transportasi"
-              className="scroll-animate stagger-3 group flex flex-col glass rounded-[2.5rem] overflow-hidden hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-500 border border-surface-700"
+              className="scroll-animate stagger-3 group flex flex-col bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-surface-200/40 border border-surface-100 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-1 transition-all duration-500"
             >
               {/* Image Header */}
               <div className="h-72 w-full relative overflow-hidden shrink-0">
                 <img
-                  src="/images/fleet_trucks_1775469273861.png"
+                  src="/images/tms_fleet_generic.png"
                   alt="Fleet Trucks"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
                 />
@@ -392,15 +390,14 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-8 grow flex flex-col">
+              <div className="p-8 grow flex flex-col text-surface-900">
                 <div className="inline-flex items-center glass-accent rounded-full px-4 py-1.5 mb-4 border border-accent-500/30 self-start">
                   <span className="text-sm mr-2 leading-none">🎉</span>
-                  <span className="text-xs font-bold text-accent-300 uppercase tracking-wider">
+                  <span className="text-xs font-bold text-accent-600 uppercase tracking-wider">
                     100% Gratis Selamanya
                   </span>
                 </div>
-                <p className="text-surface-300 text-lg mb-6 leading-relaxed">
+                <p className="text-surface-700 text-lg mb-6 leading-relaxed">
                   Platform lengkap tanpa biaya untuk memantau armada kendaraan,
                   manajemen rute, dan melacak pengiriman.
                 </p>
@@ -413,14 +410,14 @@ export default function HomePage() {
                     ].map((feature, i) => (
                       <li
                         key={i}
-                        className="flex items-center text-surface-300 text-sm"
+                        className="flex items-center text-surface-700 text-sm font-medium"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <span className="inline-flex items-center text-primary-400 font-bold group-hover:text-primary-300 transition-colors text-lg">
+                  <span className="inline-flex items-center text-primary-600 font-bold group-hover:text-primary-700 transition-colors text-lg">
                     Pelajari TMS Lebih Lanjut
                     <svg
                       className="w-6 h-6 ml-2 group-hover:translate-x-2 transition-transform duration-300"
@@ -443,12 +440,12 @@ export default function HomePage() {
             {/* WMS Card */}
             <Link
               to="/gudang"
-              className="scroll-animate stagger-4 group flex flex-col glass rounded-[2.5rem] overflow-hidden hover:shadow-2xl hover:shadow-accent-500/20 transition-all duration-500 border border-surface-700"
+              className="scroll-animate stagger-4 group flex flex-col bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-surface-200/40 border border-surface-100 hover:shadow-2xl hover:shadow-accent-500/10 hover:-translate-y-1 transition-all duration-500"
             >
               {/* Image Header */}
               <div className="h-72 w-full relative overflow-hidden shrink-0">
                 <img
-                  src="/images/warehouse_interior_1775469508413.png"
+                  src="/images/warehouse_interior_light.png"
                   alt="Warehouse Interior"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
                 />
@@ -471,13 +468,13 @@ export default function HomePage() {
 
               {/* Content */}
               <div className="p-8 grow flex flex-col">
-                <p className="text-surface-300 text-lg mb-8 leading-relaxed">
+                <p className="text-surface-700 text-lg mb-8 leading-relaxed font-medium">
                   Sistem cerdas untuk mengelola stok barang, memproses
                   penerimaan barang, dan mengotomatisasi proses pengambilan &
                   pengepakan barang.
                 </p>
                 <div className="mt-auto">
-                  <span className="inline-flex items-center text-accent-400 font-bold group-hover:text-accent-300 transition-colors text-lg">
+                  <span className="inline-flex items-center text-accent-600 font-bold group-hover:text-accent-700 transition-colors text-lg">
                     Pelajari WMS Lebih Lanjut
                     <svg
                       className="w-6 h-6 ml-2 group-hover:translate-x-2 transition-transform duration-300"
@@ -509,35 +506,40 @@ export default function HomePage() {
       >
         {/* Full animated gradient background */}
         <div
-          className="absolute inset-0 animate-gradient"
-          style={{
-            background:
-              "linear-gradient(135deg, oklch(22% .038 168.94) 0%, oklch(30% .058 168.94) 25%, oklch(37.8% .073 168.94) 50%, oklch(30% .06 41.12) 75%, oklch(22% .038 168.94) 100%)",
-            backgroundSize: "400% 400%",
-          }}
+          className="absolute inset-0 bg-surface-50"
         />
 
         {/* Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
-            className="absolute w-125 h-125 rounded-full mix-blend-screen"
+            className="absolute rounded-full mix-blend-multiply w-[45rem] h-[45rem]"
             style={{
               background:
-                "radial-gradient(circle, oklch(59.6% .1274 163.23 / 0.3) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(234, 88, 12, 0.15) 0%, transparent 70%)",
               top: "5%",
               right: "-5%",
               animation: "orbFloat1 10s ease-in-out infinite",
             }}
           />
+          <div
+            className="absolute rounded-full mix-blend-multiply w-[45rem] h-[45rem]"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(5, 150, 105, 0.15) 0%, transparent 70%)",
+              bottom: "-10%",
+              left: "-10%",
+              animation: "orbFloat2 15s ease-in-out infinite",
+            }}
+          />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
-          <h2 className="scroll-animate text-5xl md:text-6xl font-bold font-display text-white mb-6">
+          <h2 className="scroll-animate text-5xl md:text-6xl font-bold font-display text-surface-950 mb-6 drop-shadow-sm">
             Siap Mengubah Cara
             <br /> Anda Beroperasi?
           </h2>
 
-          <p className="scroll-animate stagger-2 text-xl text-surface-200 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="scroll-animate stagger-2 text-xl text-surface-700 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
             Bergabunglah dengan daftar tunggu kami sekarang dan bersiaplah untuk
             meningkatkan efisiensi logistik Anda ke level berikutnya.
           </p>
@@ -545,7 +547,7 @@ export default function HomePage() {
           <div className="scroll-animate stagger-3">
             <Link
               to="/signup"
-              className="group relative inline-flex items-center justify-center overflow-hidden bg-white text-surface-950 px-12 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-white/20 hover:-translate-y-1"
+              className="group relative inline-flex items-center justify-center overflow-hidden bg-primary-600 text-white px-12 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:-translate-y-1"
             >
               <span className="relative z-10 flex items-center">
                 Mulai Sekarang — Gratis
@@ -563,11 +565,11 @@ export default function HomePage() {
                   />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-primary-50 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <div className="absolute inset-0 bg-primary-700 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             </Link>
           </div>
 
-          <p className="scroll-animate stagger-4 text-surface-400 mt-6 text-sm font-medium">
+          <p className="scroll-animate stagger-4 text-surface-500 mt-6 text-sm font-medium">
             Tidak ada komitmen. Batalkan kapan saja.
           </p>
         </div>
