@@ -650,16 +650,17 @@ export default function TMSPage() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div className="text-center max-w-3xl mx-auto">
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 shadow-sm">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 animate-reveal delay-200 shadow-sm">
                 <span className="text-sm mr-2 leading-none">🎉</span>
                 100% Gratis - Selamanya
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-white mb-6 leading-tight">
-                Kelola Pengiriman
-                <span className="gradient-text"> Tanpa Pusing</span>
+                <span className="inline-block animate-reveal delay-400">Kelola Pengiriman</span>
+                <br />
+                <span className="inline-block gradient-text animate-reveal delay-600">Tanpa Pusing</span>
               </h1>
-              <p className="text-xl text-surface-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-surface-200 mb-12 max-w-3xl mx-auto leading-relaxed animate-reveal delay-800">
                 Sistem manajemen transportasi{" "}
                 <strong className="text-white">gratis selamanya</strong> yang
                 dirancang khusus untuk perusahaan logistik di Indonesia. Lacak
@@ -670,7 +671,7 @@ export default function TMSPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/signup"
-                  className="group inline-flex items-center justify-center bg-primary-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105"
+                  className="group inline-flex items-center justify-center bg-primary-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105 animate-reveal delay-1000"
                 >
                   Daftar Sekarang - Gratis
                   <svg

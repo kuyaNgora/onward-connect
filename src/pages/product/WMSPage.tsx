@@ -608,19 +608,20 @@ export default function WMSPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left: Text content */}
               <div>
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 shadow-sm">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 animate-reveal delay-200 shadow-sm">
                   <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
                   Warehouse Management System
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-white mb-6 leading-[1.1]">
-                  Gudang Cerdas,{" "}
-                  <span className="gradient-text">
+                  <span className="inline-block animate-reveal delay-400">Gudang Cerdas,</span>{" "}
+                  <br />
+                  <span className="inline-block gradient-text animate-reveal delay-600">
                     Bisnis Lebih Maju.
                   </span>
                 </h1>
 
-                <p className="text-xl text-surface-200 mb-10 max-w-xl leading-relaxed">
+                <p className="text-xl text-surface-200 mb-10 max-w-xl leading-relaxed animate-reveal delay-800">
                   Hilangkan kekacauan inventori dan ubah gudang Anda menjadi
                   mesin presisi dengan visibilitas{" "}
                   <strong className="text-white">real-time</strong> dan
@@ -630,7 +631,7 @@ export default function WMSPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-10">
                   <Link
                     to="/signup"
-                    className="group inline-flex items-center justify-center bg-primary-600 text-white px-16 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105"
+                    className="group inline-flex items-center justify-center bg-primary-600 text-white px-16 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary-600/30 hover:scale-105 animate-reveal delay-1000"
                   >
                     Mulai Gratis
                     <svg

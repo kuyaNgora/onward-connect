@@ -168,8 +168,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
           {/* Badge */}
           <div
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 animate-fade-in-down shadow-sm"
-            style={{ animationDelay: "0.2s" }}
+            className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 animate-reveal delay-200 shadow-sm"
           >
             <span className="w-2 h-2 bg-primary-400 rounded-full mr-2 animate-pulse" />
             Platform Logistik Terintegrasi
@@ -177,20 +176,20 @@ export default function HomePage() {
 
           {/* Heading */}
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display leading-[0.95] mb-8 animate-fade-in-up"
-            style={{ animationDelay: "0.4s" }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display leading-[0.95] mb-8"
           >
-            <span className="text-white drop-shadow-lg">Kelola Logistik</span>
+            <span className="inline-block text-white drop-shadow-lg animate-reveal delay-400">
+              Kelola Logistik
+            </span>
             <br />
-            <span className="gradient-text drop-shadow-xl">
+            <span className="inline-block gradient-text drop-shadow-xl animate-reveal delay-600">
               Lebih Cerdas
             </span>
           </h1>
 
           {/* Subtitle */}
           <p
-            className="text-lg md:text-xl text-surface-200 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up font-medium"
-            style={{ animationDelay: "0.6s" }}
+            className="text-lg md:text-xl text-surface-200 max-w-2xl mx-auto mb-10 leading-relaxed animate-reveal delay-800 font-medium"
           >
             Gudang, armada, dan pengiriman — dalam satu sistem yang mudah
             digunakan. Connect membantu perusahaan logistik menjalankan
@@ -199,8 +198,7 @@ export default function HomePage() {
 
           {/* CTA Buttons */}
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
-            style={{ animationDelay: "0.8s" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center animate-reveal delay-1000"
           >
             <Link
               to="/signup"
@@ -228,8 +226,7 @@ export default function HomePage() {
 
           {/* Stats row */}
           <div
-            className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in-up bg-white/10 backdrop-blur-lg rounded-3xl p-6 border border-white/20 shadow-2xl"
-            style={{ animationDelay: "1s" }}
+            className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-reveal delay-1000 bg-white/10 backdrop-blur-lg rounded-3xl p-6 border border-white/20 shadow-2xl"
           >
             {[
               { value: "2", label: "Produk Utama" },
