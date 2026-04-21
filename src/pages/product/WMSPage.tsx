@@ -614,9 +614,9 @@ export default function WMSPage() {
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-white mb-6 leading-[1.1]">
-                  <span className="inline-block animate-reveal delay-400">Gudang Cerdas,</span>{" "}
+                  <span className="inline-block animate-elastic delay-400">Gudang Cerdas,</span>{" "}
                   <br />
-                  <span className="inline-block gradient-text animate-reveal delay-600">
+                  <span className="inline-block gradient-text animate-elastic delay-600">
                     Bisnis Lebih Maju.
                   </span>
                 </h1>

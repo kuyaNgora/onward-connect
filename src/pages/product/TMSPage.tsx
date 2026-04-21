@@ -655,10 +655,10 @@ export default function TMSPage() {
                 100% Gratis - Selamanya
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-white mb-6 leading-tight">
-                <span className="inline-block animate-reveal delay-400">Kelola Pengiriman</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display text-white mb-6 leading-[1.1]">
+                <span className="inline-block animate-elastic delay-400">Kelola Pengiriman</span>
                 <br />
-                <span className="inline-block gradient-text animate-reveal delay-600">Tanpa Pusing</span>
+                <span className="inline-block gradient-text animate-elastic delay-600">Tanpa Pusing</span>
               </h1>
               <p className="text-xl text-surface-200 mb-12 max-w-3xl mx-auto leading-relaxed animate-reveal delay-800">
                 Sistem manajemen transportasi{" "}

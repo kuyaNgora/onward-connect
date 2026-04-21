@@ -166,6 +166,7 @@ export default function HomePage() {
 
         {/* Hero content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+
           {/* Badge */}
           <div
             className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-8 animate-reveal delay-200 shadow-sm"
@@ -176,13 +177,13 @@ export default function HomePage() {
 
           {/* Heading */}
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display leading-[0.95] mb-8"
+            className="text-5xl md:text-6xl lg:text-7xl font-black font-display leading-[1.1] mb-8"
           >
-            <span className="inline-block text-white drop-shadow-lg animate-reveal delay-400">
+            <span className="inline-block text-white drop-shadow-lg animate-elastic delay-400">
               Kelola Logistik
             </span>
             <br />
-            <span className="inline-block gradient-text drop-shadow-xl animate-reveal delay-600">
+            <span className="inline-block gradient-text drop-shadow-xl animate-elastic delay-600">
               Lebih Cerdas
             </span>
           </h1>

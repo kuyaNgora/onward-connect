@@ -239,6 +239,139 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@keyframes revealMasked {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes zoomFocus {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+    filter: blur(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes elasticPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    filter: blur(15px);
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes horizonBloom {
+  0% {
+    opacity: 0;
+    filter: blur(30px);
+    transform: scale(1.1) translateY(20px);
+    letter-spacing: 0.2em;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+    letter-spacing: normal;
+  }
+}
+
+@keyframes splitMirrorTop {
+  0% { opacity: 0; transform: translateY(-50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splitMirrorBottom {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flipInX {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-90deg) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+  }
+}
+
+@keyframes flashExplosion {
+  0% { opacity: 0; transform: scale(0.1); background: white; }
+  20% { opacity: 1; transform: scale(1.5); background: white; }
+  100% { opacity: 0; transform: scale(5); background: transparent; }
+}
+
+@keyframes textArrival {
+  0% { opacity: 0; transform: scale(1.2); filter: blur(20px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+@keyframes etherealGlide {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(15px);
+    letter-spacing: 0.15em;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+    letter-spacing: normal;
+  }
+}
+
+@keyframes emeraldStrike {
+  0% { transform: scaleX(0); opacity: 0; }
+  20% { transform: scaleX(1); opacity: 1; }
+  80% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1.2); opacity: 0; }
+}
+
+@keyframes strikeReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    clip-path: inset(50% 0 50% 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 /* ─── Animation Utility Classes ─── */
 .animate-fade-in-up {
   animation: fadeInUp 0.8s var(--ease-out-expo) forwards;
@@ -292,6 +425,83 @@ h1, h2, h3, h4, h5, h6 {
 .animate-reveal {
   opacity: 0;
   animation: revealUp 1.2s var(--ease-out-expo) forwards;
+}
+
+.animate-masked {
+  transform: translateY(110%);
+  animation: revealMasked 1.2s var(--ease-out-expo) forwards;
+}
+
+.animate-focus {
+  opacity: 0;
+  animation: zoomFocus 1.5s var(--ease-out-expo) forwards;
+}
+
+.animate-elastic {
+  opacity: 0;
+  animation: elasticPop 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-word {
+  opacity: 0;
+  animation: wordReveal 1.2s var(--ease-out-expo) forwards;
+}
+
+.shimmer-text {
+  position: relative;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerSweep 3s infinite;
+  animation-delay: 2s;
+}
+
+.animate-bloom {
+  opacity: 0;
+  animation: horizonBloom 1.5s var(--ease-out-expo) forwards;
+}
+
+.animate-mirror-top {
+  opacity: 0;
+  animation: splitMirrorTop 1.2s var(--ease-out-expo) forwards;
+}
+
+.animate-mirror-bottom {
+  opacity: 0;
+  animation: splitMirrorBottom 1.2s var(--ease-out-expo) forwards;
+}
+
+.animate-flip-x {
+  opacity: 0;
+  transform-origin: top;
+  animation: flipInX 1.2s var(--ease-out-expo) forwards;
+}
+
+.animate-flash {
+  pointer-events: none;
+  animation: flashExplosion 0.8s ease-out forwards;
+}
+
+.animate-arrival {
+  opacity: 0;
+  animation: textArrival 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-ethereal {
+  opacity: 0;
+  animation: etherealGlide 1.8s var(--ease-out-expo) forwards;
+}
+
+.animate-strike {
+  background: var(--color-primary-400);
+  box-shadow: 0 0 30px var(--color-primary-500), 0 0 60px var(--color-primary-600);
+  animation: emeraldStrike 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.animate-strike-reveal {
+  opacity: 0;
+  animation: strikeReveal 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 .delay-100 { animation-delay: 100ms; }
