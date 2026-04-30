@@ -10,7 +10,7 @@ interface authState {
     tms_token?: string;
     wms_token?: string;
   } | null;
-  selectedSystem: 'tms' | 'wms' | null;
+  selectedSystem: "tms" | "wms" | null;
 }
 
 const defineInitialState = (): authState => ({
@@ -46,7 +46,7 @@ export const authSlice = createSlice({
       state.authenticated = true;
 
       // Store tokens in cookie for SSO (user data is in JWT payload)
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         setCookieSession({
           tms_token,
           wms_token,
@@ -59,7 +59,7 @@ export const authSlice = createSlice({
       state.selectedSystem = null;
 
       // Clear session cookie
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         clearSessionCookie();
       }
     },
@@ -67,7 +67,7 @@ export const authSlice = createSlice({
       state.session = action.payload;
 
       // Update cookie when session changes (only tokens, user is in JWT)
-      if (action.payload && typeof window !== 'undefined') {
+      if (action.payload && typeof window !== "undefined") {
         setCookieSession({
           tms_token: action.payload.tms_token,
           wms_token: action.payload.wms_token,
@@ -83,7 +83,7 @@ export const authSlice = createSlice({
       state.selectedSystem = action.payload;
 
       // Update cookie with selected system (only tokens, user is in JWT)
-      if (state.session && typeof window !== 'undefined') {
+      if (state.session && typeof window !== "undefined") {
         setCookieSession({
           tms_token: state.session.tms_token,
           wms_token: state.session.wms_token,
@@ -97,10 +97,11 @@ export const authSlice = createSlice({
 // Selector to get active token based on selected system
 export const selectActiveToken = (state: { auth: authState }) => {
   if (!state.auth.session) return null;
-  if (state.auth.selectedSystem === 'tms') return state.auth.session.tms_token;
-  if (state.auth.selectedSystem === 'wms') return state.auth.session.wms_token;
+  if (state.auth.selectedSystem === "tms") return state.auth.session.tms_token;
+  if (state.auth.selectedSystem === "wms") return state.auth.session.wms_token;
   return null;
 };
 
-export const { signin, signout, session, setSelectedSystem } = authSlice.actions;
+export const { signin, signout, session, setSelectedSystem } =
+  authSlice.actions;
 export const authReducer = authSlice.reducer;

@@ -1,6 +1,10 @@
 import { useDispatch } from "react-redux";
 import { useFormActions } from "../form/hooks";
-import { useLoginMutation, useRegisterMutation, useLogoutMutation } from "./api";
+import {
+  useLoginMutation,
+  useRegisterMutation,
+  useLogoutMutation,
+} from "./api";
 import { signin, signout } from "./slice";
 import { extractUserFromToken } from "./jwtUtils";
 
@@ -24,12 +28,12 @@ export const useAuth = () => {
   const login = async (identifier: string, password: string) => {
     try {
       const res = await loginMutation({ identifier, password }).unwrap();
-      console.log('[Connect Auth] Login response:', res);
+      console.log("[Connect Auth] Login response:", res);
       // Response format: { tms_token, wms_token } (may be wrapped in data property)
       // Normalize response structure - handle both { data: {...} } and direct { ... }
       const tokens = res?.data || res;
-      console.log('[Connect Auth] Normalized tokens:', tokens);
-      if (tokens?.tms_token && tokens?.wms_token) {
+      console.log("[Connect Auth] Normalized tokens:", tokens);
+      if (tokens?.tms_token || tokens?.wms_token) {
         // Extract user info from JWT token (prefer TMS token as it has more fields)
         const user = extractUserFromToken(tokens.tms_token, tokens.wms_token);
         if (!user) {
@@ -37,11 +41,13 @@ export const useAuth = () => {
         }
 
         // Dispatch signin action with dual tokens and extracted user
-        dispatch(signin({
-          user,
-          tms_token: tokens.tms_token,
-          wms_token: tokens.wms_token,
-        }));
+        dispatch(
+          signin({
+            user,
+            tms_token: tokens.tms_token,
+            wms_token: tokens.wms_token,
+          }),
+        );
       }
     } catch (err) {
       failureWithTimeout(err);
